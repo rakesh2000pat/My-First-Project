@@ -718,7 +718,7 @@ function cfgAlert(type,msg){
   const c={ok:"alert-ok",warn:"alert-warn",err:"alert-err"}[type]||"alert-warn";
   document.getElementById("cfg-alert").innerHTML=`<div class="alert-box ${c}">${msg}</div>`;
 }
-
+const res = await fetch("https://corsproxy.io/?https://kf.kobotoolbox.org/api/v2/assets/adcLjEuy3acFyeBF45CKbT/data/?format=json");
 const FIELD_MAP={
   district: ["district", "gp_demographics/district"],
   block: ["block", "gp_demographics/block"],
