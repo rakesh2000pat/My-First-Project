@@ -767,36 +767,49 @@ function mapKoboRow(raw){
   };
 }
 
+const PUBLIC_URL = "https://corsproxy.io/?https://kf.kobotoolbox.org/api/v2/assets/adcLjEuy3acFyeBF45CKbT/data/?format=json";
+
 async function fetchFromKobo(){
-  const token=document.getElementById("cfg-token").value.trim();
-  const uid=document.getElementById("cfg-uid").value.trim();
-  const server=document.getElementById("cfg-server").value.trim()||"kf.kobotoolbox.org";
-  if(!token||!uid){cfgAlert("warn","⚠ Enter your API Token and Asset UID.");return false;}
-  setStatus("fetching","Fetching…");
   try{
-    const res = await fetch("https://corsproxy.io/?https://kf.kobotoolbox.org/api/v2/assets/adcLjEuy3acFyeBF45CKbT/data/?format=json");
-    if(!res.ok)throw new Error("HTTP "+res.status+" "+res.statusText);
-    const json=await res.json();
-    const results=json.results||[];
-    if(!results.length){cfgAlert("warn","⚠ 0 records returned. Check Asset UID.");setStatus("error","Empty");return false;}
-    RAW=results.map(mapKoboRow);
-    DATA=[...RAW];
+    const res = await fetch(PUBLIC_URL);
+    if(!res.ok) throw new Error("HTTP " + res.status);
+    const json = await res.json();
+    RAW = json.results.map(mapKoboRow);
+    DATA = [...RAW];
     rebuildFilters();
-    ["f-district","f-partner","f-block"].forEach(id=>document.getElementById(id).value="All");
     renderAll();
-    const now=new Date().toLocaleTimeString("en-IN");
-    setStatus("live","Live · "+RAW.length+" rows · "+now);
-    document.getElementById("footer-txt").textContent="Data source: KoboToolbox (Live) · Bihar · "+RAW.length+" records · "+now;
-    document.getElementById("hdr-date").textContent=new Date().toLocaleDateString("en-IN",{month:"long",year:"numeric"});
-    cfgAlert("ok","✓ Loaded "+RAW.length+" live submissions at "+now);
-    return true;
-  }catch(e){
-    setStatus("error","Error");
-    cfgAlert("err","✗ "+e.message+"<br>Usually a CORS restriction. Host this file on a web server to enable live API fetch. Your static/CSV data is still displayed.");
-    return false;
+    document.getElementById("sub-badge").textContent = RAW.length + " Submissions";
+    document.getElementById("status-txt").textContent = "Live · Updated at " + new Date().toLocaleTimeString();
+  } catch(e){
+    console.error("Fetch Error:", e);
   }
 }
 
+function manualRefresh(){ fetchFromKobo(); }
+Fix the automatic start:
+
+Scroll to the very bottom of your file.
+
+Find the window.onload = function() { ... } block.
+
+Replace it with this simple version:
+
+JavaScript
+window.onload = function() {
+    fetchFromKobo();
+    setInterval(fetchFromKobo, 300000); // Auto-refresh every 5 mins
+    
+    // Automatically switch to Indicators tab
+    setTimeout(() => {
+        const buttons = document.getElementsByTagName('button');
+        for(let i = 0; i < buttons.length; i++) {
+            if(buttons[i].innerText.includes('Indicators')) {
+                buttons[i].click();
+                break;
+            }
+        }
+    }, 1000);
+};
 async function startLive(){
   if(liveTimer){clearInterval(liveTimer);liveTimer=null;}
   const ok=await fetchFromKobo();if(!ok)return;
@@ -811,29 +824,20 @@ function manualRefresh(){fetchFromKobo();}
 // INIT
 // ═══════════════════════════════════════════
 renderAll();
-  window.onload = function() {
+ window.onload = function() {
+    fetchFromKobo();
+    setInterval(fetchFromKobo, 300000); // Auto-refresh every 5 mins
+    
+    // Automatically switch to Indicators tab
     setTimeout(() => {
         const buttons = document.getElementsByTagName('button');
-        
-        // 1. Automatically click the Fetch button
         for(let i = 0; i < buttons.length; i++) {
-            if(buttons[i].innerText.includes('Fetch') || buttons[i].innerText.includes('Connect')) {
+            if(buttons[i].innerText.includes('Indicators')) {
                 buttons[i].click();
                 break;
             }
         }
-        
-        // 2. Automatically switch to the "Indicators" tab so the dashboard is visible
-        setTimeout(() => {
-            for(let i = 0; i < buttons.length; i++) {
-                if(buttons[i].innerText.includes('Indicators') || buttons[i].innerText === 'Indicators') {
-                    buttons[i].click();
-                    break;
-                }
-            }
-        }, 300); // Waits a fraction of a second for data to load before switching tabs
-
-    }, 500);
+    }, 1000);
 };
 </script>
 </body>
