@@ -767,9 +767,10 @@ function mapKoboRow(raw){
   };
 }
 const PUBLIC_URL = "https://corsproxy.io/?https://kf.kobotoolbox.org/api/v2/assets/adcLjEuy3acFyeBF45CKbT/data/?format=json";
+
 async function fetchFromKobo(){
   try{
-    const res = await fetch("https://corsproxy.io/?https://kf.kobotoolbox.org/api/v2/assets/adcLjEuy3acFyeBF45CKbT/data/?format=json");
+    const res = await fetch(PUBLIC_URL);
     if(!res.ok) throw new Error("HTTP " + res.status);
     const json = await res.json();
     RAW = json.results.map(mapKoboRow);
@@ -777,18 +778,15 @@ async function fetchFromKobo(){
     rebuildFilters();
     renderAll();
     document.getElementById("sub-badge").textContent = RAW.length + " Submissions";
-    document.getElementById("status-txt").textContent = "Live · Updated at " + new Date().toLocaleTimeString();
+    document.getElementById("status-txt").textContent = "Live · " + new Date().toLocaleTimeString();
   } catch(e){
     console.error("Fetch failed:", e);
   }
 }
-function manualRefresh(){ fetchFromKobo(); }
-Fix the automatic start:
-Scroll to the very bottom of your file.
-// ═══════════════════════════════════════════
-// FINAL INITIALIZATION
-// ═══════════════════════════════════════════
 
+// ═══════════════════════════════════════════
+// AUTOMATIC INITIALIZATION
+// ═══════════════════════════════════════════
 window.onload = function() {
     // 1. Initial data fetch
     fetchFromKobo();
@@ -796,7 +794,7 @@ window.onload = function() {
     // 2. Set the auto-refresh timer (5 minutes)
     setInterval(fetchFromKobo, 300000); 
     
-    // 3. Automatically show the dashboard view
+    // 3. Automatically show the dashboard
     setTimeout(() => {
         const buttons = document.getElementsByTagName('button');
         for(let i = 0; i < buttons.length; i++) {
