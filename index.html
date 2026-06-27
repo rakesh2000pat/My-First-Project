@@ -20,17 +20,12 @@ h2::before{content:'';display:inline-block;width:4px;height:18px;border-radius:4
 .kpi-val{font-size:26px;font-weight:800;color:#111827;line-height:1.1}
 .kpi-lbl{font-size:12px;font-weight:600;color:#374151;margin-top:3px}
 .kpi-sub{font-size:11px;color:#9CA3AF;margin-top:3px}
-.kpi-remove{position:absolute;top:8px;right:8px;background:none;border:none;color:#D1D5DB;cursor:pointer;font-size:16px;line-height:1;padding:2px 5px;border-radius:4px}
-.kpi-remove:hover{color:#DC2626;background:#FEE2E2}
 .chart-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
 .chart-card{background:#fff;border-radius:16px;border:1px solid #E5E7EB;box-shadow:0 1px 3px rgba(0,0,0,.06);padding:20px;position:relative}
-.chart-remove{position:absolute;top:10px;right:10px;background:none;border:none;color:#D1D5DB;cursor:pointer;font-size:16px;padding:2px 5px;border-radius:4px}
-.chart-remove:hover{color:#DC2626;background:#FEE2E2}
 .filters{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
 .filter-wrap label{display:block;font-size:11px;font-weight:700;color:#6B7280;text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px}
 .filter-wrap select{width:100%;font-size:13px;border:1px solid #D1D5DB;border-radius:9px;padding:8px 12px;background:#fff;color:#374151;cursor:pointer}
 .filter-wrap select:focus{outline:2px solid #7C3AED;outline-offset:1px}
-/* bar chart */
 .bar-chart{width:100%;overflow:hidden}
 .bar-group{display:flex;align-items:flex-end;gap:6px;height:180px;padding:0 4px;border-left:2px solid #E5E7EB;border-bottom:2px solid #E5E7EB}
 .bar-col{display:flex;flex-direction:column;align-items:center;flex:1;gap:3px;height:100%;justify-content:flex-end}
@@ -39,27 +34,23 @@ h2::before{content:'';display:inline-block;width:4px;height:18px;border-radius:4
 .bar-label{font-size:10px;color:#6B7280;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%}
 .bar-val{font-size:10px;font-weight:700;color:#374151;text-align:center}
 .chart-xtitle{font-size:11px;color:#9CA3AF;text-align:center;margin-top:6px}
-/* pie */
 .pie-wrap{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
 .pie-legend{display:flex;flex-direction:column;gap:10px}
 .pie-legend-item{display:flex;align-items:center;gap:8px;font-size:13px}
 .pie-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
 .pie-name{color:#6B7280}
 .pie-num{font-weight:700;color:#111827;margin-left:auto;padding-left:16px}
-/* progress bar */
 .prog-list{display:flex;flex-direction:column;gap:16px;margin-top:10px}
 .prog-head{display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px}
 .prog-label{font-weight:600;color:#4B5563}
 .prog-stat{font-weight:700;color:#111827}
 .prog-track{background:#F3F4F6;border-radius:999px;height:12px;overflow:hidden}
 .prog-fill{height:12px;border-radius:999px;transition:width .4s ease}
-/* tooltip */
 .tooltip{position:fixed;background:#fff;border:1px solid #E5E7EB;border-radius:10px;box-shadow:0 4px 16px rgba(0,0,0,.12);padding:10px 14px;font-size:12px;pointer-events:none;z-index:9999;display:none;max-width:200px}
 .tooltip.show{display:block}
 .tooltip-title{font-weight:700;color:#374151;margin-bottom:5px}
 .tooltip-row{display:flex;align-items:center;gap:6px;color:#374151;margin-bottom:2px}
 .footer{text-align:center;font-size:11px;color:#9CA3AF;padding:10px 0 20px}
-/* panel shared */
 .panel-section{background:#fff;border-bottom:1px solid #E5E7EB;padding:16px 24px}
 .panel-title{font-size:11px;font-weight:700;color:#7C3AED;text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px}
 .btn{border:none;border-radius:8px;padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
@@ -69,7 +60,6 @@ h2::before{content:'';display:inline-block;width:4px;height:18px;border-radius:4
 .btn-red{background:#FEE2E2;color:#DC2626}.btn-red:hover{background:#FECACA}
 input[type=text],input[type=password],select.inp{width:100%;padding:8px 10px;border:1px solid #D1D5DB;border-radius:8px;font-size:12px;color:#111;background:#F9FAFB}
 input[type=text]:focus,input[type=password]:focus{outline:2px solid #7C3AED;outline-offset:1px}
-/* guidance note */
 .guide{background:linear-gradient(135deg,#F5F3FF,#EDE9FE);border:1px solid #C4B5FD;border-radius:14px;padding:20px 24px}
 .guide h3{font-size:14px;font-weight:700;color:#4C1D95;margin-bottom:14px}
 .guide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
@@ -77,20 +67,17 @@ input[type=text]:focus,input[type=password]:focus{outline:2px solid #7C3AED;outl
 .guide-box h4{font-size:12px;font-weight:700;color:#6D28D9;margin-bottom:8px;display:flex;align-items:center;gap:6px}
 .guide-box ul{padding-left:16px;font-size:12px;color:#374151;line-height:1.8}
 .guide-box code{background:#F5F3FF;color:#7C3AED;padding:1px 5px;border-radius:4px;font-size:11px}
-/* indicator manager */
 .ind-list{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
 .ind-item{display:flex;align-items:center;gap:10px;padding:10px 12px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:8px}
 .ind-item input[type=checkbox]{width:16px;height:16px;accent-color:#7C3AED;cursor:pointer;flex-shrink:0}
 .ind-item-label{flex:1;font-size:13px;color:#374151;font-weight:500}
 .ind-item-key{font-size:11px;color:#9CA3AF;margin-left:auto}
-/* CSV area */
 textarea.csv-ta{width:100%;height:120px;font-family:monospace;font-size:11px;border:1px solid #D1D5DB;border-radius:8px;padding:8px;resize:vertical;background:#F9FAFB;color:#111;display:block}
 textarea.csv-ta:focus{outline:2px solid #7C3AED;outline-offset:1px}
 .alert-box{padding:10px 14px;border-radius:8px;font-size:12px;line-height:1.6;margin-top:8px}
 .alert-ok{background:#D1FAE5;color:#065F46;border:1px solid #6EE7B7}
 .alert-warn{background:#FEF3C7;color:#92400E;border:1px solid #FCD34D}
 .alert-err{background:#FEE2E2;color:#7F1D1D;border:1px solid #FCA5A5}
-/* tab bar */
 .tab-bar{display:flex;gap:4px;border-bottom:2px solid #E5E7EB;margin-bottom:16px}
 .tab{padding:8px 16px;font-size:12px;font-weight:700;color:#6B7280;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px}
 .tab.active{color:#7C3AED;border-bottom-color:#7C3AED}
@@ -99,7 +86,7 @@ textarea.csv-ta:focus{outline:2px solid #7C3AED;outline-offset:1px}
 </head>
 <body>
 
-<!-- ═══ HEADER ═══ -->
+<!-- HEADER -->
 <div class="header">
   <div>
     <h1>Child Marriage Prevention Dashboard</h1>
@@ -108,7 +95,7 @@ textarea.csv-ta:focus{outline:2px solid #7C3AED;outline-offset:1px}
   <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
     <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:#6B7280;background:#F3F4F6;border-radius:999px;padding:5px 12px;">
       <span id="live-dot" style="width:8px;height:8px;border-radius:50%;background:#D1D5DB;flex-shrink:0;transition:background .3s"></span>
-      <span id="live-txt">Static data</span>
+      <span id="live-txt">Built-in data</span>
     </div>
     <span class="badge" id="sub-badge">17 Submissions</span>
     <button class="btn btn-gray" onclick="togglePanel('panel-guide')" style="font-size:12px">📖 Guide</button>
@@ -119,13 +106,12 @@ textarea.csv-ta:focus{outline:2px solid #7C3AED;outline-offset:1px}
   </div>
 </div>
 
-<!-- ═══ GUIDANCE NOTE ═══ -->
+<!-- GUIDANCE NOTE -->
 <div id="panel-guide" class="panel-section" style="display:none">
   <div style="max-width:1200px;margin:0 auto">
     <div class="guide">
       <h3>📖 How to Use This Dashboard — Complete Guide</h3>
       <div class="guide-grid">
-
         <div class="guide-box">
           <h4>📂 Updating Data via CSV</h4>
           <ul>
@@ -134,10 +120,8 @@ textarea.csv-ta:focus{outline:2px solid #7C3AED;outline-offset:1px}
             <li>Paste the CSV text or upload the file</li>
             <li>Click <strong>"Load CSV"</strong> — dashboard refreshes instantly</li>
             <li>Required columns: <code>district</code>, <code>block</code>, <code>partner</code></li>
-            <li>All other columns are auto-detected</li>
           </ul>
         </div>
-
         <div class="guide-box">
           <h4>🔗 Live Auto-Refresh (KoboToolbox API)</h4>
           <ul>
@@ -145,31 +129,27 @@ textarea.csv-ta:focus{outline:2px solid #7C3AED;outline-offset:1px}
             <li>Enter your <strong>API Token</strong>: KoboToolbox → Account → Security</li>
             <li>Enter your <strong>Asset UID</strong>: from your form's URL</li>
             <li>Set auto-refresh interval (e.g. every 5 minutes)</li>
-            <li>Click <strong>"Connect"</strong> — dashboard auto-updates after every new submission</li>
-            <li>⚠ Requires the file to be hosted on a web server (not opened locally) due to browser CORS rules</li>
+            <li>Click <strong>"Connect"</strong> — dashboard auto-updates</li>
+            <li>⚠ Requires hosting on a web server (GitHub Pages works)</li>
           </ul>
         </div>
-
         <div class="guide-box">
           <h4>⚙ Adding / Removing Indicators</h4>
           <ul>
             <li>Click <strong>"Indicators"</strong> in the header</li>
             <li>Check or uncheck any KPI card or chart</li>
             <li>Changes apply immediately — no reload needed</li>
-            <li>To add a new custom indicator, use <strong>"Add Custom KPI"</strong> and enter the CSV column name</li>
-            <li>Your indicator settings are remembered during the session</li>
+            <li>Use <strong>"Add Custom KPI"</strong> to add any CSV column</li>
           </ul>
         </div>
-
         <div class="guide-box">
           <h4>🔍 Filtering Data</h4>
           <ul>
-            <li>Use the <strong>District / Partner / Block</strong> dropdowns to filter all charts simultaneously</li>
+            <li>Use the <strong>District / Partner / Block</strong> dropdowns</li>
+            <li>All charts update simultaneously</li>
             <li>Select <strong>"All"</strong> to reset any filter</li>
-            <li>Filters work on both CSV and live API data</li>
           </ul>
         </div>
-
         <div class="guide-box">
           <h4>📋 CSV Column Name Guide</h4>
           <ul>
@@ -180,27 +160,25 @@ textarea.csv-ta:focus{outline:2px solid #7C3AED;outline-offset:1px}
             <li><code>vuln_m</code> / <code>vuln_f</code> — Vulnerable boys/girls</li>
             <li><code>oos_girls</code> / <code>oos_boys</code> — Out-of-school</li>
             <li><code>pcwpc</code> — yes/no — PCWPC formed</li>
-            <li><code>ch1098</code> / <code>pol112</code> / <code>wh181</code> — Helplines painted (yes/no)</li>
+            <li><code>ch1098</code> / <code>pol112</code> / <code>wh181</code> — Helplines (yes/no)</li>
           </ul>
         </div>
-
         <div class="guide-box">
           <h4>💡 Tips</h4>
           <ul>
-            <li>The dashboard works fully <strong>offline</strong> — no internet needed for CSV mode</li>
-            <li>Click any bar in a chart to see a tooltip with exact values</li>
-            <li>The built-in data (17 rows) is always available as a fallback</li>
-            <li>You can share this HTML file with colleagues — it contains everything</li>
-            <li>For questions, contact your data team or check KoboToolbox documentation</li>
+            <li>Dashboard works fully <strong>offline</strong> with CSV mode</li>
+            <li>Click any bar to see exact values in tooltip</li>
+            <li>Built-in 17-row dataset is always the fallback</li>
+            <li>Share this single HTML file — it contains everything</li>
+            <li>Host on GitHub Pages for free live deployment</li>
           </ul>
         </div>
-
       </div>
     </div>
   </div>
 </div>
 
-<!-- ═══ CSV UPDATE PANEL ═══ -->
+<!-- CSV UPDATE PANEL -->
 <div id="panel-csv" class="panel-section" style="display:none">
   <div style="max-width:1200px;margin:0 auto">
     <div class="panel-title">📂 Update Dashboard Data via CSV</div>
@@ -222,15 +200,14 @@ textarea.csv-ta:focus{outline:2px solid #7C3AED;outline-offset:1px}
         <div style="font-size:12px;font-weight:700;color:#374151;margin-bottom:8px">📋 Sample CSV Format</div>
         <pre style="font-size:10px;color:#6B7280;line-height:1.7;overflow-x:auto;white-space:pre-wrap">district,block,partner,month,cm_prevented,sbc_reach,pcma,jj,pocso,sops,vuln_m,vuln_f,adol_groups,oos_girls,oos_boys,cp_m,cp_f,cp_g,cp_b,pcwpc,vuln_map,ch1098,pol112,wh181
 Patna,Danapur,PRATHAM,Jun 2026,0,0,40,32,8,12,0,0,0,0,0,0,0,0,0,yes,no,yes,yes,yes
-Sitamarhi,Parihar,ADITHI,Jun 2026,4,5,3,0,0,0,60,68,5,10,7,5,5,5,5,no,no,no,no,no
-Katihar,Falka,PRATHAM,Jun 2026,8,0,0,0,0,0,0,0,0,10,5,0,0,0,0,no,no,no,no,no</pre>
-        <div style="font-size:11px;color:#9CA3AF;margin-top:8px">Column names must match exactly (case-sensitive). Add as many rows as needed.</div>
+Sitamarhi,Parihar,ADITHI,Jun 2026,4,5,3,0,0,0,60,68,5,10,7,5,5,5,5,no,no,no,no,no</pre>
+        <div style="font-size:11px;color:#9CA3AF;margin-top:8px">Column names must match exactly (case-sensitive).</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ═══ INDICATOR MANAGER ═══ -->
+<!-- INDICATOR MANAGER -->
 <div id="panel-ind" class="panel-section" style="display:none">
   <div style="max-width:1200px;margin:0 auto">
     <div class="panel-title">⚙ Manage Indicators &amp; Charts</div>
@@ -268,18 +245,28 @@ Katihar,Falka,PRATHAM,Jun 2026,8,0,0,0,0,0,0,0,0,10,5,0,0,0,0,no,no,no,no,no</pr
   </div>
 </div>
 
-<!-- ═══ LIVE API PANEL ═══ -->
+<!-- LIVE API PANEL -->
 <div id="panel-live" class="panel-section" style="display:none">
   <div style="max-width:1200px;margin:0 auto">
     <div class="panel-title">🔗 KoboToolbox Live Connection</div>
+    <div style="background:#FEF3C7;border:1px solid #FCD34D;border-radius:8px;padding:10px 14px;font-size:12px;margin-bottom:14px;color:#92400E">
+      ⚠ <strong>Security note:</strong> Your API token grants access to your KoboToolbox account. Never share this HTML file with the token pre-filled. The token is only used client-side and is not sent to any third-party server except KoboToolbox via corsproxy.io.
+    </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:12px">
-      <div><label style="font-size:11px;font-weight:700;color:#6B7280;display:block;margin-bottom:4px">API Token</label>
-       <input id="cfg-token" type="password" value="12fd4d99b5dd976a7ec3c7ac652a86e3d9ac1389" class="inp">
-      <div><label style="font-size:11px;font-weight:700;color:#6B7280;display:block;margin-bottom:4px">Asset UID</label>
-        <input id="cfg-uid" type="text" placeholder="e.g. aXyZ123abc" class="inp"></div>
-      <div><label style="font-size:11px;font-weight:700;color:#6B7280;display:block;margin-bottom:4px">Server</label>
-        <input id="cfg-server" type="text" value="kf.kobotoolbox.org" class="inp"></div>
-      <div><label style="font-size:11px;font-weight:700;color:#6B7280;display:block;margin-bottom:4px">Auto-refresh every</label>
+      <div>
+        <label style="font-size:11px;font-weight:700;color:#6B7280;display:block;margin-bottom:4px">API Token</label>
+        <input id="cfg-token" type="password" placeholder="Paste your KoboToolbox API token" class="inp">
+      </div>
+      <div>
+        <label style="font-size:11px;font-weight:700;color:#6B7280;display:block;margin-bottom:4px">Asset UID</label>
+        <input id="cfg-uid" type="text" placeholder="e.g. aXyZ123abc" class="inp">
+      </div>
+      <div>
+        <label style="font-size:11px;font-weight:700;color:#6B7280;display:block;margin-bottom:4px">Server</label>
+        <input id="cfg-server" type="text" value="kf.kobotoolbox.org" class="inp">
+      </div>
+      <div>
+        <label style="font-size:11px;font-weight:700;color:#6B7280;display:block;margin-bottom:4px">Auto-refresh every</label>
         <select id="cfg-interval" class="inp">
           <option value="0">Manual only</option>
           <option value="60">1 minute</option>
@@ -297,10 +284,8 @@ Katihar,Falka,PRATHAM,Jun 2026,8,0,0,0,0,0,0,0,0,10,5,0,0,0,0,no,no,no,no,no</pr
   </div>
 </div>
 
-<!-- ═══ MAIN PAGE ═══ -->
+<!-- MAIN PAGE -->
 <div class="page">
-
-  <!-- Filters -->
   <div class="card">
     <div style="font-size:11px;font-weight:700;color:#6B7280;text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px">🔍 Filter Data</div>
     <div class="filters">
@@ -310,43 +295,40 @@ Katihar,Falka,PRATHAM,Jun 2026,8,0,0,0,0,0,0,0,0,10,5,0,0,0,0,no,no,no,no,no</pr
     </div>
   </div>
 
-  <!-- KPIs -->
   <div>
     <h2>Key Performance Indicators</h2>
     <div class="kpi-grid" id="kpi-grid"></div>
   </div>
 
-  <!-- Charts container — rendered dynamically -->
   <div id="charts-container"></div>
 
-  <div class="footer" id="footer-txt">Data source: Built-in static data · Bihar · 17 records · June 2026</div>
+  <div class="footer" id="footer-txt">Data source: Built-in data · Bihar · 17 records · June 2026</div>
 </div>
 
-<!-- Tooltip -->
 <div class="tooltip" id="tt"><div class="tooltip-title" id="tt-title"></div><div id="tt-body"></div></div>
 
 <script>
 // ═══════════════════════════════════════════
-// BUILT-IN DATA (your 17 original rows)
+// BUILT-IN DATA
 // ═══════════════════════════════════════════
 const BUILTIN=[
-  {district:"Patna",    block:"Danapur",       partner:"PRATHAM",                    month:"Jun 2026",cm_prevented:0, sbc_reach:0,  pcma:40,jj:32,pocso:8, sops:12,vuln_m:0,  vuln_f:0,  adol_groups:0,oos_girls:0, oos_boys:0,cp_m:0, cp_f:0, cp_g:0, cp_b:0, pcwpc:"yes",vuln_map:"no", ch1098:"yes",pol112:"yes",wh181:"yes"},
-  {district:"Patna",    block:"Dinapur",       partner:"PRATHAM",                    month:"Jun 2026",cm_prevented:0, sbc_reach:0,  pcma:0, jj:0, pocso:0, sops:0, vuln_m:0,  vuln_f:0,  adol_groups:0,oos_girls:0, oos_boys:0,cp_m:0, cp_f:0, cp_g:0, cp_b:0, pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
-  {district:"Patna",    block:"Bikram",        partner:"PRATHAM",                    month:"Jun 2026",cm_prevented:1, sbc_reach:10, pcma:0, jj:0, pocso:0, sops:0, vuln_m:20, vuln_f:25, adol_groups:0,oos_girls:10,oos_boys:5, cp_m:10,cp_f:10,cp_g:10,cp_b:10,pcwpc:"no", vuln_map:"yes",ch1098:"no", pol112:"no", wh181:"no"},
-  {district:"Patna",    block:"Bikram",        partner:"PRATHAM",                    month:"Jun 2026",cm_prevented:1, sbc_reach:10, pcma:0, jj:0, pocso:0, sops:0, vuln_m:20, vuln_f:25, adol_groups:0,oos_girls:10,oos_boys:5, cp_m:10,cp_f:10,cp_g:10,cp_b:10,pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
-  {district:"Patna",    block:"Bihta",         partner:"BAL MITRA",                  month:"Jun 2026",cm_prevented:1, sbc_reach:0,  pcma:0, jj:0, pocso:0, sops:0, vuln_m:0,  vuln_f:0,  adol_groups:0,oos_girls:4, oos_boys:0, cp_m:0, cp_f:0, cp_g:0, cp_b:0, pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
-  {district:"Patna",    block:"Paliganj",      partner:"PRATHAM",                    month:"Jun 2026",cm_prevented:0, sbc_reach:0,  pcma:0, jj:0, pocso:0, sops:0, vuln_m:0,  vuln_f:0,  adol_groups:0,oos_girls:0, oos_boys:0,cp_m:0, cp_f:0, cp_g:0, cp_b:0, pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
-  {district:"Patna",    block:"Phulwarisharif",partner:"SRI KRISHNA MISSION SOCIETY",month:"Jun 2026",cm_prevented:0, sbc_reach:0,  pcma:0, jj:0, pocso:0, sops:0, vuln_m:0,  vuln_f:0,  adol_groups:0,oos_girls:0, oos_boys:0,cp_m:0, cp_f:0, cp_g:0, cp_b:0, pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
-  {district:"Sitamarhi",block:"Parihar",       partner:"ADITHI (BAT)",               month:"Jun 2026",cm_prevented:4, sbc_reach:5,  pcma:3, jj:0, pocso:0, sops:0, vuln_m:60, vuln_f:68, adol_groups:5,oos_girls:10,oos_boys:7, cp_m:5, cp_f:5, cp_g:5, cp_b:5, pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
-  {district:"Sitamarhi",block:"Parihar",       partner:"ADITHI (BAT)",               month:"Jun 2026",cm_prevented:4, sbc_reach:5,  pcma:3, jj:0, pocso:0, sops:0, vuln_m:60, vuln_f:68, adol_groups:5,oos_girls:10,oos_boys:7, cp_m:5, cp_f:5, cp_g:5, cp_b:5, pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
-  {district:"Sitamarhi",block:"Parihar",       partner:"ADITHI (BAT)",               month:"Jun 2026",cm_prevented:4, sbc_reach:5,  pcma:3, jj:0, pocso:0, sops:0, vuln_m:60, vuln_f:68, adol_groups:5,oos_girls:10,oos_boys:7, cp_m:5, cp_f:5, cp_g:5, cp_b:5, pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
-  {district:"Sitamarhi",block:"Parihar",       partner:"ADITHI (BAT)",               month:"Jun 2026",cm_prevented:3, sbc_reach:5,  pcma:3, jj:0, pocso:0, sops:0, vuln_m:60, vuln_f:68, adol_groups:4,oos_girls:10,oos_boys:7, cp_m:5, cp_f:5, cp_g:5, cp_b:5, pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
-  {district:"Sitamarhi",block:"Parihar",       partner:"ADITHI (BAT)",               month:"Jun 2026",cm_prevented:4, sbc_reach:5,  pcma:3, jj:0, pocso:0, sops:0, vuln_m:60, vuln_f:68, adol_groups:5,oos_girls:10,oos_boys:7, cp_m:5, cp_f:5, cp_g:5, cp_b:5, pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
-  {district:"Sitamarhi",block:"Parihar",       partner:"ADITHI (BAT)",               month:"Jun 2026",cm_prevented:4, sbc_reach:5,  pcma:3, jj:0, pocso:0, sops:0, vuln_m:60, vuln_f:68, adol_groups:5,oos_girls:10,oos_boys:7, cp_m:5, cp_f:5, cp_g:5, cp_b:5, pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
-  {district:"Sitamarhi",block:"Parihar",       partner:"ADITHI (BAT)",               month:"Jun 2026",cm_prevented:4, sbc_reach:5,  pcma:3, jj:0, pocso:0, sops:0, vuln_m:60, vuln_f:68, adol_groups:5,oos_girls:10,oos_boys:7, cp_m:5, cp_f:5, cp_g:5, cp_b:5, pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
-  {district:"Sitamarhi",block:"Parihar",       partner:"ADITHI (BAT)",               month:"Jun 2026",cm_prevented:6, sbc_reach:7,  pcma:3, jj:0, pocso:0, sops:0, vuln_m:60, vuln_f:68, adol_groups:8,oos_girls:10,oos_boys:7, cp_m:9, cp_f:11,cp_g:11,cp_b:11,pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
-  {district:"Saran",    block:"Maker",         partner:"UNFPA",                      month:"Jun 2026",cm_prevented:0, sbc_reach:0,  pcma:0, jj:0, pocso:0, sops:0, vuln_m:0,  vuln_f:0,  adol_groups:0,oos_girls:0, oos_boys:0,cp_m:0, cp_f:0, cp_g:0, cp_b:0, pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
-  {district:"Katihar",  block:"Falka",         partner:"PRATHAM",                    month:"Jun 2026",cm_prevented:8, sbc_reach:0,  pcma:0, jj:0, pocso:0, sops:0, vuln_m:0,  vuln_f:0,  adol_groups:0,oos_girls:10,oos_boys:5, cp_m:0, cp_f:0, cp_g:0, cp_b:0, pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
+  {district:"Patna",    block:"Danapur",        partner:"PRATHAM",                    month:"Jun 2026",cm_prevented:0, sbc_reach:0,  pcma:40,jj:32,pocso:8, sops:12,vuln_m:0,  vuln_f:0,  adol_groups:0,oos_girls:0, oos_boys:0, cp_m:0, cp_f:0, cp_g:0, cp_b:0, pcwpc:"yes",vuln_map:"no", ch1098:"yes",pol112:"yes",wh181:"yes"},
+  {district:"Patna",    block:"Dinapur",        partner:"PRATHAM",                    month:"Jun 2026",cm_prevented:0, sbc_reach:0,  pcma:0, jj:0, pocso:0, sops:0, vuln_m:0,  vuln_f:0,  adol_groups:0,oos_girls:0, oos_boys:0, cp_m:0, cp_f:0, cp_g:0, cp_b:0, pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
+  {district:"Patna",    block:"Bikram",         partner:"PRATHAM",                    month:"Jun 2026",cm_prevented:1, sbc_reach:10, pcma:0, jj:0, pocso:0, sops:0, vuln_m:20, vuln_f:25, adol_groups:0,oos_girls:10,oos_boys:5,  cp_m:10,cp_f:10,cp_g:10,cp_b:10,pcwpc:"no", vuln_map:"yes",ch1098:"no", pol112:"no", wh181:"no"},
+  {district:"Patna",    block:"Bikram",         partner:"PRATHAM",                    month:"Jun 2026",cm_prevented:1, sbc_reach:10, pcma:0, jj:0, pocso:0, sops:0, vuln_m:20, vuln_f:25, adol_groups:0,oos_girls:10,oos_boys:5,  cp_m:10,cp_f:10,cp_g:10,cp_b:10,pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
+  {district:"Patna",    block:"Bihta",          partner:"BAL MITRA",                  month:"Jun 2026",cm_prevented:1, sbc_reach:0,  pcma:0, jj:0, pocso:0, sops:0, vuln_m:0,  vuln_f:0,  adol_groups:0,oos_girls:4, oos_boys:0,  cp_m:0, cp_f:0, cp_g:0, cp_b:0, pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
+  {district:"Patna",    block:"Paliganj",       partner:"PRATHAM",                    month:"Jun 2026",cm_prevented:0, sbc_reach:0,  pcma:0, jj:0, pocso:0, sops:0, vuln_m:0,  vuln_f:0,  adol_groups:0,oos_girls:0, oos_boys:0,  cp_m:0, cp_f:0, cp_g:0, cp_b:0, pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
+  {district:"Patna",    block:"Phulwarisharif", partner:"SRI KRISHNA MISSION SOCIETY",month:"Jun 2026",cm_prevented:0, sbc_reach:0,  pcma:0, jj:0, pocso:0, sops:0, vuln_m:0,  vuln_f:0,  adol_groups:0,oos_girls:0, oos_boys:0,  cp_m:0, cp_f:0, cp_g:0, cp_b:0, pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
+  {district:"Sitamarhi",block:"Parihar",        partner:"ADITHI (BAT)",               month:"Jun 2026",cm_prevented:4, sbc_reach:5,  pcma:3, jj:0, pocso:0, sops:0, vuln_m:60, vuln_f:68, adol_groups:5,oos_girls:10,oos_boys:7,  cp_m:5, cp_f:5, cp_g:5, cp_b:5, pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
+  {district:"Sitamarhi",block:"Parihar",        partner:"ADITHI (BAT)",               month:"Jun 2026",cm_prevented:4, sbc_reach:5,  pcma:3, jj:0, pocso:0, sops:0, vuln_m:60, vuln_f:68, adol_groups:5,oos_girls:10,oos_boys:7,  cp_m:5, cp_f:5, cp_g:5, cp_b:5, pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
+  {district:"Sitamarhi",block:"Parihar",        partner:"ADITHI (BAT)",               month:"Jun 2026",cm_prevented:4, sbc_reach:5,  pcma:3, jj:0, pocso:0, sops:0, vuln_m:60, vuln_f:68, adol_groups:5,oos_girls:10,oos_boys:7,  cp_m:5, cp_f:5, cp_g:5, cp_b:5, pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
+  {district:"Sitamarhi",block:"Parihar",        partner:"ADITHI (BAT)",               month:"Jun 2026",cm_prevented:3, sbc_reach:5,  pcma:3, jj:0, pocso:0, sops:0, vuln_m:60, vuln_f:68, adol_groups:4,oos_girls:10,oos_boys:7,  cp_m:5, cp_f:5, cp_g:5, cp_b:5, pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
+  {district:"Sitamarhi",block:"Parihar",        partner:"ADITHI (BAT)",               month:"Jun 2026",cm_prevented:4, sbc_reach:5,  pcma:3, jj:0, pocso:0, sops:0, vuln_m:60, vuln_f:68, adol_groups:5,oos_girls:10,oos_boys:7,  cp_m:5, cp_f:5, cp_g:5, cp_b:5, pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
+  {district:"Sitamarhi",block:"Parihar",        partner:"ADITHI (BAT)",               month:"Jun 2026",cm_prevented:4, sbc_reach:5,  pcma:3, jj:0, pocso:0, sops:0, vuln_m:60, vuln_f:68, adol_groups:5,oos_girls:10,oos_boys:7,  cp_m:5, cp_f:5, cp_g:5, cp_b:5, pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
+  {district:"Sitamarhi",block:"Parihar",        partner:"ADITHI (BAT)",               month:"Jun 2026",cm_prevented:4, sbc_reach:5,  pcma:3, jj:0, pocso:0, sops:0, vuln_m:60, vuln_f:68, adol_groups:5,oos_girls:10,oos_boys:7,  cp_m:5, cp_f:5, cp_g:5, cp_b:5, pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
+  {district:"Sitamarhi",block:"Parihar",        partner:"ADITHI (BAT)",               month:"Jun 2026",cm_prevented:6, sbc_reach:7,  pcma:3, jj:0, pocso:0, sops:0, vuln_m:60, vuln_f:68, adol_groups:8,oos_girls:10,oos_boys:7,  cp_m:9, cp_f:11,cp_g:11,cp_b:11,pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
+  {district:"Saran",    block:"Maker",          partner:"UNFPA",                      month:"Jun 2026",cm_prevented:0, sbc_reach:0,  pcma:0, jj:0, pocso:0, sops:0, vuln_m:0,  vuln_f:0,  adol_groups:0,oos_girls:0, oos_boys:0,  cp_m:0, cp_f:0, cp_g:0, cp_b:0, pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
+  {district:"Katihar",  block:"Falka",          partner:"PRATHAM",                    month:"Jun 2026",cm_prevented:8, sbc_reach:0,  pcma:0, jj:0, pocso:0, sops:0, vuln_m:0,  vuln_f:0,  adol_groups:0,oos_girls:10,oos_boys:5,  cp_m:0, cp_f:0, cp_g:0, cp_b:0, pcwpc:"no", vuln_map:"no", ch1098:"no", pol112:"no", wh181:"no"},
 ];
 
 const PAL=["#7C3AED","#0D9488","#EA580C","#DB2777","#2563EB","#16A34A","#CA8A04"];
@@ -359,14 +341,14 @@ let DATA=[...RAW];
 // INDICATOR DEFINITIONS
 // ═══════════════════════════════════════════
 let KPI_DEFS=[
-  {id:"total",    label:"Total Submissions",        icon:"📋", color:PURPLE, fn:(d)=>d.length,                          sub:"Gram Panchayats",        visible:true},
-  {id:"cm",       label:"Child Marriages Prevented",icon:"🛡️",color:PINK,   fn:(d)=>sum(d,"cm_prevented"),              sub:"Reported cases stopped", visible:true},
-  {id:"vuln",     label:"Vulnerable Children",      icon:"👧", color:ORANGE, fn:(d)=>sum(d,"vuln_m")+sum(d,"vuln_f"),   sub:"Identified across GPs",  visible:true},
-  {id:"adol",     label:"Adolescent Groups",        icon:"👥", color:TEAL,   fn:(d)=>sum(d,"adol_groups"),               sub:"Functional groups",       visible:true},
-  {id:"pcwpc",    label:"PCWPC Formed",             icon:"🏛️",color:BLUE,   fn:(d)=>cnt(d,"pcwpc","yes"),               sub:"of total GPs",            visible:true},
-  {id:"vulnmap",  label:"Vulnerability Mapping",    icon:"🗺️",color:GREEN,  fn:(d)=>cnt(d,"vuln_map","yes"),            sub:"GPs conducted",           visible:true},
-  {id:"sbc",      label:"SBC Campaign Reach",       icon:"📣", color:GOLD,   fn:(d)=>sum(d,"sbc_reach"),                 sub:"People reached",          visible:true},
-  {id:"oos",      label:"Out-of-School Children",   icon:"🏫", color:PURPLE, fn:(d)=>sum(d,"oos_girls")+sum(d,"oos_boys"),sub:"Identified",             visible:true},
+  {id:"total",   label:"Total Submissions",        icon:"📋",color:PURPLE,fn:(d)=>d.length,                         sub:"Gram Panchayats",        visible:true},
+  {id:"cm",      label:"Child Marriages Prevented",icon:"🛡️",color:PINK,  fn:(d)=>sum(d,"cm_prevented"),             sub:"Reported cases stopped", visible:true},
+  {id:"vuln",    label:"Vulnerable Children",      icon:"👧",color:ORANGE, fn:(d)=>sum(d,"vuln_m")+sum(d,"vuln_f"), sub:"Identified across GPs",  visible:true},
+  {id:"adol",    label:"Adolescent Groups",        icon:"👥",color:TEAL,   fn:(d)=>sum(d,"adol_groups"),             sub:"Functional groups",       visible:true},
+  {id:"pcwpc",   label:"PCWPC Formed",             icon:"🏛️",color:BLUE,   fn:(d)=>cnt(d,"pcwpc","yes"),             sub:"of total GPs",            visible:true},
+  {id:"vulnmap", label:"Vulnerability Mapping",    icon:"🗺️",color:GREEN,  fn:(d)=>cnt(d,"vuln_map","yes"),          sub:"GPs conducted",           visible:true},
+  {id:"sbc",     label:"SBC Campaign Reach",       icon:"📣",color:GOLD,   fn:(d)=>sum(d,"sbc_reach"),               sub:"People reached",          visible:true},
+  {id:"oos",     label:"Out-of-School Children",   icon:"🏫",color:PURPLE, fn:(d)=>sum(d,"oos_girls")+sum(d,"oos_boys"),sub:"Identified",           visible:true},
 ];
 
 let CHART_DEFS=[
@@ -383,428 +365,507 @@ let CHART_DEFS=[
 // ═══════════════════════════════════════════
 // PANEL TOGGLE
 // ═══════════════════════════════════════════
-const PANELS=['panel-guide','panel-csv','panel-ind','panel-live'];
+const PANELS=["panel-guide","panel-csv","panel-ind","panel-live"];
 function togglePanel(id){
-  PANELS.forEach(p=>{
-    const el=document.getElementById(p);
+  PANELS.forEach(function(p){
+    var el=document.getElementById(p);
     if(!el)return;
-    el.style.display=(p===id&&el.style.display==='none')?'block':'none';
+    el.style.display=(p===id&&el.style.display==="none")?"block":"none";
   });
-  if(id==='panel-ind') buildIndicatorUI();
+  if(id==="panel-ind")buildIndicatorUI();
 }
 
 // ═══════════════════════════════════════════
 // TOOLTIP
 // ═══════════════════════════════════════════
-const tt=document.getElementById("tt");
+var tt=document.getElementById("tt");
 function showTT(e,title,rows){
   tt.className="tooltip show";
   document.getElementById("tt-title").textContent=title;
-  document.getElementById("tt-body").innerHTML=rows.map(r=>`<div class="tooltip-row"><span style="width:8px;height:8px;border-radius:50%;background:${r.color||"#374151"};display:inline-block;flex-shrink:0"></span>${r.label}: <strong>${r.val}</strong></div>`).join("");
-  tt.style.left=(e.clientX+14)+"px";tt.style.top=(e.clientY-10)+"px";
+  document.getElementById("tt-body").innerHTML=rows.map(function(r){
+    return '<div class="tooltip-row"><span style="width:8px;height:8px;border-radius:50%;background:'+(r.color||"#374151")+';display:inline-block;flex-shrink:0"></span>'+r.label+': <strong>'+r.val+'</strong></div>';
+  }).join("");
+  tt.style.left=(e.clientX+14)+"px";
+  tt.style.top=(e.clientY-10)+"px";
 }
 function hideTT(){tt.className="tooltip";}
-document.addEventListener("mousemove",e=>{if(tt.classList.contains("show")){tt.style.left=(e.clientX+14)+"px";tt.style.top=(e.clientY-10)+"px";}});
+document.addEventListener("mousemove",function(e){
+  if(tt.classList.contains("show")){
+    tt.style.left=(e.clientX+14)+"px";
+    tt.style.top=(e.clientY-10)+"px";
+  }
+});
 
 // ═══════════════════════════════════════════
 // FILTERS
 // ═══════════════════════════════════════════
-function uniq(arr){return["All",...Array.from(new Set(arr.filter(Boolean))).sort()];}
+function uniq(arr){return["All"].concat(Array.from(new Set(arr.filter(Boolean))).sort());}
 function populateSelect(id,vals){
-  const s=document.getElementById(id); while(s.options.length)s.remove(0);
-  vals.forEach(v=>{const o=document.createElement("option");o.value=o.textContent=v;s.appendChild(o);});
+  var s=document.getElementById(id);
+  while(s.options.length)s.remove(0);
+  vals.forEach(function(v){var o=document.createElement("option");o.value=o.textContent=v;s.appendChild(o);});
 }
 function rebuildFilters(){
-  populateSelect("f-district",uniq(RAW.map(r=>r.district)));
-  populateSelect("f-partner", uniq(RAW.map(r=>r.partner)));
-  populateSelect("f-block",   uniq(RAW.map(r=>r.block)));
+  populateSelect("f-district",uniq(RAW.map(function(r){return r.district;})));
+  populateSelect("f-partner", uniq(RAW.map(function(r){return r.partner;})));
+  populateSelect("f-block",   uniq(RAW.map(function(r){return r.block;})));
 }
 function applyFilters(){
-  const d=document.getElementById("f-district").value;
-  const p=document.getElementById("f-partner").value;
-  const b=document.getElementById("f-block").value;
-  DATA=RAW.filter(r=>(d==="All"||r.district===d)&&(p==="All"||r.partner===p)&&(b==="All"||r.block===b));
+  var d=document.getElementById("f-district").value;
+  var p=document.getElementById("f-partner").value;
+  var b=document.getElementById("f-block").value;
+  DATA=RAW.filter(function(r){return(d==="All"||r.district===d)&&(p==="All"||r.partner===p)&&(b==="All"||r.block===b);});
   renderAll();
 }
-rebuildFilters();
 
 // ═══════════════════════════════════════════
 // AGGREGATION HELPERS
 // ═══════════════════════════════════════════
-const sum=(arr,k)=>arr.reduce((s,r)=>s+(Number(r[k])||0),0);
-const cnt=(arr,k,v)=>arr.filter(r=>(String(r[k]||"").toLowerCase())===String(v).toLowerCase()).length;
+function sum(arr,k){return arr.reduce(function(s,r){return s+(Number(r[k])||0);},0);}
+function cnt(arr,k,v){return arr.filter(function(r){return(String(r[k]||"").toLowerCase())===String(v).toLowerCase();}).length;}
 
 // ═══════════════════════════════════════════
 // CHART RENDERERS
 // ═══════════════════════════════════════════
-function barChart(el,data,keyLabel,series,opts={}){
-  if(!el||!data.length){if(el)el.innerHTML=`<div style="height:140px;display:flex;align-items:center;justify-content:center;color:#9CA3AF;font-size:13px">No data</div>`;return;}
-  const maxVal=Math.max(1,...data.flatMap(d=>series.map(s=>Number(d[s.key])||0)));
-  const H=180;
-  el.innerHTML=`<div class="bar-chart"><div class="bar-group">${
-    data.map((d,di)=>`<div class="bar-col">${
-      series.map((s,si)=>{const v=Number(d[s.key])||0;const h=Math.max(2,Math.round((v/maxVal)*(H-20)));
-        return`<div class="bar-rect" style="height:${h}px;background:${s.color||PAL[(di+si)%PAL.length]};width:${series.length>1?'44%':'80%'};display:inline-block;margin:0 1px"
-          onmouseenter="showTT(event,'${d[keyLabel]}',[{label:'${s.label||s.key}',val:${v},color:'${s.color||PAL[(di+si)%PAL.length]}'}])" onmouseleave="hideTT()"></div>`;
-      }).join("")}
-      <div class="bar-val">${series.length===1?(Number(d[series[0].key])||0):""}</div>
-      <div class="bar-label" style="font-size:${data.length>6?8:10}px">${d[keyLabel]}</div>
-    </div>`).join("")}
-  </div>${opts.legend&&series.length>1?`<div style="display:flex;gap:14px;justify-content:center;margin-top:8px;flex-wrap:wrap">${series.map(s=>`<span style="font-size:11px;display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:3px;background:${s.color};display:inline-block"></span>${s.label}</span>`).join("")}</div>`:""}
-  </div>`;
+function barChart(el,data,keyLabel,series,opts){
+  opts=opts||{};
+  if(!el||!data.length){if(el)el.innerHTML='<div style="height:140px;display:flex;align-items:center;justify-content:center;color:#9CA3AF;font-size:13px">No data</div>';return;}
+  var maxVal=Math.max.apply(null,[1].concat(data.map(function(d){return Math.max.apply(null,series.map(function(s){return Number(d[s.key])||0;}));})));
+  var H=180;
+  var cols=data.map(function(d,di){
+    var bars=series.map(function(s,si){
+      var v=Number(d[s.key])||0;
+      var h=Math.max(2,Math.round((v/maxVal)*(H-20)));
+      var color=s.color||PAL[(di+si)%PAL.length];
+      var w=series.length>1?"44%":"80%";
+      return '<div class="bar-rect" style="height:'+h+'px;background:'+color+';width:'+w+';display:inline-block;margin:0 1px" onmouseenter="showTT(event,\''+d[keyLabel]+'\',[{label:\''+( s.label||s.key)+'\',val:'+v+',color:\''+color+'\'}])" onmouseleave="hideTT()"></div>';
+    }).join("");
+    var valLabel=series.length===1?(Number(d[series[0].key])||0):"";
+    var fs=data.length>6?8:10;
+    return '<div class="bar-col">'+bars+'<div class="bar-val">'+valLabel+'</div><div class="bar-label" style="font-size:'+fs+'px">'+d[keyLabel]+'</div></div>';
+  }).join("");
+  var legendHtml="";
+  if(opts.legend&&series.length>1){
+    legendHtml='<div style="display:flex;gap:14px;justify-content:center;margin-top:8px;flex-wrap:wrap">'+series.map(function(s){return '<span style="font-size:11px;display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:3px;background:'+s.color+';display:inline-block"></span>'+s.label+'</span>';}).join("")+'</div>';
+  }
+  el.innerHTML='<div class="bar-chart"><div class="bar-group">'+cols+'</div>'+legendHtml+'</div>';
 }
 
 function lineChart(el,data,xKey,yKey){
   if(!el)return;
-  if(!data.length){el.innerHTML=`<div style="height:140px;display:flex;align-items:center;justify-content:center;color:#9CA3AF;font-size:13px">No data</div>`;return;}
-  const W=500,H=160,PAD={t:10,r:20,b:30,l:32};
-  const iW=W-PAD.l-PAD.r,iH=H-PAD.t-PAD.b;
-  const maxY=Math.max(1,...data.map(d=>d[yKey]));
-  const xs=data.map((_,i)=>PAD.l+(i/Math.max(data.length-1,1))*iW);
-  const ys=data.map(d=>PAD.t+iH-(d[yKey]/maxY)*iH);
-  const pts=xs.map((x,i)=>`${x},${ys[i]}`).join(" ");
-  const fill=pts+` ${xs[xs.length-1]},${PAD.t+iH} ${xs[0]},${PAD.t+iH}`;
-  const yticks=[0,Math.ceil(maxY/2),maxY];
-  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;overflow:visible">
-    <defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${PURPLE}" stop-opacity=".18"/><stop offset="100%" stop-color="${PURPLE}" stop-opacity="0"/></linearGradient></defs>
-    ${yticks.map(v=>{const y=PAD.t+iH-(v/maxY)*iH;return`<line x1="${PAD.l}" y1="${y}" x2="${PAD.l+iW}" y2="${y}" stroke="#F3F4F6" stroke-width="1.5"/>
-    <text x="${PAD.l-4}" y="${y+4}" font-size="10" fill="#9CA3AF" text-anchor="end">${v}</text>`;}).join("")}
-    <polygon points="${fill}" fill="url(#lg)"/>
-    <polyline points="${pts}" fill="none" stroke="${PURPLE}" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-    ${data.map((d,i)=>`<circle cx="${xs[i]}" cy="${ys[i]}" r="5" fill="${PURPLE}" stroke="#fff" stroke-width="2"
-      onmouseenter="showTT(event,'${d[xKey]}',[{label:'Submissions',val:${d[yKey]},color:'${PURPLE}'}])" onmouseleave="hideTT()" style="cursor:pointer"/>
-      <text x="${xs[i]}" y="${H-4}" font-size="10" fill="#6B7280" text-anchor="middle">${d[xKey]}</text>`).join("")}
-  </svg>`;
+  if(!data.length){el.innerHTML='<div style="height:140px;display:flex;align-items:center;justify-content:center;color:#9CA3AF;font-size:13px">No data</div>';return;}
+  var W=500,H=160,PAD={t:10,r:20,b:30,l:32};
+  var iW=W-PAD.l-PAD.r,iH=H-PAD.t-PAD.b;
+  var maxY=Math.max.apply(null,[1].concat(data.map(function(d){return d[yKey];})));
+  var xs=data.map(function(_,i){return PAD.l+(i/Math.max(data.length-1,1))*iW;});
+  var ys=data.map(function(d){return PAD.t+iH-(d[yKey]/maxY)*iH;});
+  var pts=xs.map(function(x,i){return x+","+ys[i];}).join(" ");
+  var fill=pts+" "+xs[xs.length-1]+","+(PAD.t+iH)+" "+xs[0]+","+(PAD.t+iH);
+  var yticks=[0,Math.ceil(maxY/2),maxY];
+  var tickLines=yticks.map(function(v){
+    var y=PAD.t+iH-(v/maxY)*iH;
+    return '<line x1="'+PAD.l+'" y1="'+y+'" x2="'+(PAD.l+iW)+'" y2="'+y+'" stroke="#F3F4F6" stroke-width="1.5"/><text x="'+(PAD.l-4)+'" y="'+(y+4)+'" font-size="10" fill="#9CA3AF" text-anchor="end">'+v+'</text>';
+  }).join("");
+  var dots=data.map(function(d,i){
+    return '<circle cx="'+xs[i]+'" cy="'+ys[i]+'" r="5" fill="'+PURPLE+'" stroke="#fff" stroke-width="2" onmouseenter="showTT(event,\''+d[xKey]+'\',[{label:\'Submissions\',val:'+d[yKey]+',color:\''+PURPLE+'\'}])" onmouseleave="hideTT()" style="cursor:pointer"/><text x="'+xs[i]+'" y="'+(H-4)+'" font-size="10" fill="#6B7280" text-anchor="middle">'+d[xKey]+'</text>';
+  }).join("");
+  el.innerHTML='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;overflow:visible"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="'+PURPLE+'" stop-opacity=".18"/><stop offset="100%" stop-color="'+PURPLE+'" stop-opacity="0"/></linearGradient></defs>'+tickLines+'<polygon points="'+fill+'" fill="url(#lg)"/><polyline points="'+pts+'" fill="none" stroke="'+PURPLE+'" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>'+dots+'</svg>';
 }
 
 function pieChart(el,data,colors){
   if(!el)return;
-  const total=data.reduce((s,d)=>s+d.value,0)||1;
-  const R=70,r=42,CX=90,CY=90;
-  let ang=-Math.PI/2;
-  const slices=data.map((d,i)=>{
-    const a=(d.value/total)*2*Math.PI;
-    const x1=CX+R*Math.cos(ang),y1=CY+R*Math.sin(ang);ang+=a;
-    const x2=CX+R*Math.cos(ang),y2=CY+R*Math.sin(ang);
-    const xi=CX+r*Math.cos(ang-a),yi=CY+r*Math.sin(ang-a);
-    const xj=CX+r*Math.cos(ang),yj=CY+r*Math.sin(ang);
-    const large=a>Math.PI?1:0;
-    return{d:`M${xi},${yi} A${r},${r} 0 ${large} 1 ${xj},${yj} L${x2},${y2} A${R},${R} 0 ${large} 0 ${x1},${y1} Z`,color:colors[i],name:d.name,val:d.value};
+  var total=data.reduce(function(s,d){return s+d.value;},0)||1;
+  var R=70,r=42,CX=90,CY=90;
+  var ang=-Math.PI/2;
+  var slices=data.map(function(d,i){
+    var a=(d.value/total)*2*Math.PI;
+    var x1=CX+R*Math.cos(ang),y1=CY+R*Math.sin(ang);ang+=a;
+    var x2=CX+R*Math.cos(ang),y2=CY+R*Math.sin(ang);
+    var xi=CX+r*Math.cos(ang-a),yi=CY+r*Math.sin(ang-a);
+    var xj=CX+r*Math.cos(ang),yj=CY+r*Math.sin(ang);
+    var large=a>Math.PI?1:0;
+    return {d:"M"+xi+","+yi+" A"+r+","+r+" 0 "+large+" 1 "+xj+","+yj+" L"+x2+","+y2+" A"+R+","+R+" 0 "+large+" 0 "+x1+","+y1+" Z",color:colors[i],name:d.name,val:d.value};
   });
-  el.innerHTML=`<div class="pie-wrap">
-    <svg viewBox="0 0 180 180" width="160" height="160">${slices.map(s=>`<path d="${s.d}" fill="${s.color}" opacity=".9"
-      onmouseenter="showTT(event,'${s.name}',[{label:'Count',val:${s.val},color:'${s.color}'}])" onmouseleave="hideTT()" style="cursor:pointer"/>`).join("")}</svg>
-    <div class="pie-legend">${data.map((d,i)=>`<div class="pie-legend-item"><span class="pie-dot" style="background:${colors[i]}"></span><span class="pie-name">${d.name}</span><span class="pie-num">${d.value}</span></div>`).join("")}</div>
-  </div>`;
+  var paths=slices.map(function(s){return '<path d="'+s.d+'" fill="'+s.color+'" opacity=".9" onmouseenter="showTT(event,\''+s.name+'\',[{label:\'Count\',val:'+s.val+',color:\''+s.color+'\'}])" onmouseleave="hideTT()" style="cursor:pointer"/>';}).join("");
+  var legend=data.map(function(d,i){return '<div class="pie-legend-item"><span class="pie-dot" style="background:'+colors[i]+'"></span><span class="pie-name">'+d.name+'</span><span class="pie-num">'+d.value+'</span></div>';}).join("");
+  el.innerHTML='<div class="pie-wrap"><svg viewBox="0 0 180 180" width="160" height="160">'+paths+'</svg><div class="pie-legend">'+legend+'</div></div>';
 }
 
 function progressChart(el,data,total,colors){
   if(!el)return;
-  el.innerHTML=`<div class="prog-list">${data.map((d,i)=>{
-    const pct=total>0?Math.round((d.painted/total)*100):0;
-    return`<div><div class="prog-head"><span class="prog-label">${d.name}</span><span class="prog-stat">${d.painted}/${total} GPs (${pct}%)</span></div>
-    <div class="prog-track"><div class="prog-fill" style="width:${pct}%;background:${colors[i]||PAL[i]}"></div></div></div>`;
-  }).join("")}</div>`;
+  el.innerHTML='<div class="prog-list">'+data.map(function(d,i){
+    var pct=total>0?Math.round((d.painted/total)*100):0;
+    return '<div><div class="prog-head"><span class="prog-label">'+d.name+'</span><span class="prog-stat">'+d.painted+'/'+total+' GPs ('+pct+'%)</span></div><div class="prog-track"><div class="prog-fill" style="width:'+pct+'%;background:'+(colors[i]||PAL[i])+'"></div></div></div>';
+  }).join("")+'</div>';
 }
 
 // ═══════════════════════════════════════════
 // RENDER ALL
 // ═══════════════════════════════════════════
 function renderAll(){
-  const d=DATA, n=d.length;
-  document.getElementById("sub-badge").textContent=`${n} Submissions`;
+  var d=DATA,n=d.length;
+  document.getElementById("sub-badge").textContent=n+" Submissions";
 
   // KPIs
-  const visKPIs=KPI_DEFS.filter(k=>k.visible);
-  document.getElementById("kpi-grid").innerHTML=visKPIs.map(k=>`
-    <div class="kpi">
-      <div class="kpi-icon" style="background:${k.color}22">${k.icon}</div>
-      <div style="flex:1">
-        <div class="kpi-val">${k.fn(d)}</div>
-        <div class="kpi-lbl">${k.label}</div>
-        <div class="kpi-sub">${typeof k.sub==='function'?k.sub(d):k.sub}</div>
-      </div>
-    </div>`).join("");
+  var visKPIs=KPI_DEFS.filter(function(k){return k.visible;});
+  document.getElementById("kpi-grid").innerHTML=visKPIs.map(function(k){
+    return '<div class="kpi"><div class="kpi-icon" style="background:'+k.color+'22">'+k.icon+'</div><div style="flex:1"><div class="kpi-val">'+k.fn(d)+'</div><div class="kpi-lbl">'+k.label+'</div><div class="kpi-sub">'+(typeof k.sub==="function"?k.sub(d):k.sub)+'</div></div></div>';
+  }).join("");
 
-  // Charts
-  const cc=document.getElementById("charts-container");
+  var cc=document.getElementById("charts-container");
   cc.innerHTML="";
 
-  function makeCard(chartId,title){
-    const row=document.createElement("div"); row.style.marginBottom="18px";
-    const card=document.createElement("div"); card.className="chart-card";
-    card.innerHTML=`<h2>${title}</h2><div id="cc-${chartId}"></div>`;
-    row.appendChild(card); cc.appendChild(row);
-    return document.getElementById("cc-"+chartId);
-  }
-  function makeRow(...items){
-    const row=document.createElement("div"); row.className="chart-row"; row.style.marginBottom="18px";
-    items.forEach(c=>row.appendChild(c)); cc.appendChild(row);
+  function makeRow(){
+    var items=Array.prototype.slice.call(arguments);
+    var row=document.createElement("div");
+    row.className="chart-row";
+    row.style.marginBottom="18px";
+    items.forEach(function(c){row.appendChild(c);});
+    cc.appendChild(row);
   }
   function makeCol(chartId,title){
-    const card=document.createElement("div"); card.className="chart-card";
-    card.innerHTML=`<h2>${title}</h2><div id="cc-${chartId}"></div>`;
-    return {card, el:()=>document.getElementById("cc-"+chartId)};
+    var card=document.createElement("div");
+    card.className="chart-card";
+    card.innerHTML='<h2>'+title+'</h2><div id="cc-'+chartId+'"></div>';
+    return card;
   }
-
-  const vis=id=>CHART_DEFS.find(c=>c.id===id)?.visible;
+  function elOf(chartId){return document.getElementById("cc-"+chartId);}
+  function vis(id){var c=CHART_DEFS.find(function(x){return x.id===id;});return c?c.visible:false;}
 
   // Row 1
-  const r1=[];
-  if(vis("line")){const c=makeCol("line","Submissions Over Time");r1.push(c.card);setTimeout(()=>{const mMap={};d.forEach(r=>{mMap[r.month]=(mMap[r.month]||0)+1;});lineChart(c.el(),Object.entries(mMap).sort().map(([month,count])=>({month,count})),"month","count");},0);}
-  if(vis("cm-dist")){const c=makeCol("cm-dist","Child Marriages Prevented by District");r1.push(c.card);setTimeout(()=>{const m={};d.forEach(r=>{if(!m[r.district])m[r.district]={district:r.district,cm_prevented:0};m[r.district].cm_prevented+=Number(r.cm_prevented)||0;});barChart(c.el(),Object.values(m).sort((a,b)=>b.cm_prevented-a.cm_prevented),"district",[{key:"cm_prevented",label:"CM Prevented",color:PINK}]);},0);}
-  if(r1.length){makeRow(...r1);}
+  var r1=[];
+  if(vis("line")){r1.push(makeCol("line","Submissions Over Time"));}
+  if(vis("cm-dist")){r1.push(makeCol("cm-dist","Child Marriages Prevented by District"));}
+  if(r1.length){makeRow.apply(null,r1);}
+  if(vis("line")){
+    var mMap={};
+    d.forEach(function(r){mMap[r.month]=(mMap[r.month]||0)+1;});
+    lineChart(elOf("line"),Object.entries(mMap).sort().map(function(e){return{month:e[0],count:e[1]};}), "month","count");
+  }
+  if(vis("cm-dist")){
+    var m={};
+    d.forEach(function(r){if(!m[r.district])m[r.district]={district:r.district,cm_prevented:0};m[r.district].cm_prevented+=Number(r.cm_prevented)||0;});
+    barChart(elOf("cm-dist"),Object.values(m).sort(function(a,b){return b.cm_prevented-a.cm_prevented;}),"district",[{key:"cm_prevented",label:"CM Prevented",color:PINK}]);
+  }
 
   // Row 2
-  const r2=[];
-  if(vis("training")){const c=makeCol("training","Training Participants by Programme");r2.push(c.card);setTimeout(()=>{barChart(c.el(),[{name:"PCMA",participants:sum(d,"pcma")},{name:"JJ Act",participants:sum(d,"jj")},{name:"POCSO",participants:sum(d,"pocso")},{name:"SOPs",participants:sum(d,"sops")}],"name",[{key:"participants",label:"Participants",color:PURPLE}]);},0);}
-  if(vis("community")){const c=makeCol("community","Community Dialogue Participants");r2.push(c.card);setTimeout(()=>{pieChart(c.el(),[{name:"Men",value:sum(d,"cp_m")},{name:"Women",value:sum(d,"cp_f")},{name:"Girls",value:sum(d,"cp_g")},{name:"Boys",value:sum(d,"cp_b")}],[PURPLE,TEAL,ORANGE,PINK]);},0);}
-  if(r2.length){makeRow(...r2);}
+  var r2=[];
+  if(vis("training")){r2.push(makeCol("training","Training Participants by Programme"));}
+  if(vis("community")){r2.push(makeCol("community","Community Dialogue Participants"));}
+  if(r2.length){makeRow.apply(null,r2);}
+  if(vis("training")){
+    barChart(elOf("training"),[{name:"PCMA",participants:sum(d,"pcma")},{name:"JJ Act",participants:sum(d,"jj")},{name:"POCSO",participants:sum(d,"pocso")},{name:"SOPs",participants:sum(d,"sops")}],"name",[{key:"participants",label:"Participants",color:PURPLE}]);
+  }
+  if(vis("community")){
+    pieChart(elOf("community"),[{name:"Men",value:sum(d,"cp_m")},{name:"Women",value:sum(d,"cp_f")},{name:"Girls",value:sum(d,"cp_g")},{name:"Boys",value:sum(d,"cp_b")}],[PURPLE,TEAL,ORANGE,PINK]);
+  }
 
   // Row 3
-  const r3=[];
-  if(vis("vuln-dist")){const c=makeCol("vuln-dist","Vulnerable Children by District");r3.push(c.card);setTimeout(()=>{const m={};d.forEach(r=>{if(!m[r.district])m[r.district]={district:r.district,male:0,female:0};m[r.district].male+=Number(r.vuln_m)||0;m[r.district].female+=Number(r.vuln_f)||0;});barChart(c.el(),Object.values(m),"district",[{key:"male",label:"Boys",color:BLUE},{key:"female",label:"Girls",color:PINK}],{legend:true});},0);}
-  if(vis("oos-block")){const c=makeCol("oos-block","Out-of-School Children by Block");r3.push(c.card);setTimeout(()=>{const m={};d.forEach(r=>{if(!m[r.block])m[r.block]={block:r.block,girls:0,boys:0};m[r.block].girls+=Number(r.oos_girls)||0;m[r.block].boys+=Number(r.oos_boys)||0;});const od=Object.values(m).filter(x=>x.girls>0||x.boys>0);if(od.length)barChart(c.el(),od,"block",[{key:"girls",label:"Girls",color:PINK},{key:"boys",label:"Boys",color:TEAL}],{legend:true});else c.el().innerHTML=`<div style="height:140px;display:flex;align-items:center;justify-content:center;color:#9CA3AF;font-size:13px">No data for current filter</div>`;},0);}
-  if(r3.length){makeRow(...r3);}
+  var r3=[];
+  if(vis("vuln-dist")){r3.push(makeCol("vuln-dist","Vulnerable Children by District"));}
+  if(vis("oos-block")){r3.push(makeCol("oos-block","Out-of-School Children by Block"));}
+  if(r3.length){makeRow.apply(null,r3);}
+  if(vis("vuln-dist")){
+    var mv={};
+    d.forEach(function(r){if(!mv[r.district])mv[r.district]={district:r.district,male:0,female:0};mv[r.district].male+=Number(r.vuln_m)||0;mv[r.district].female+=Number(r.vuln_f)||0;});
+    barChart(elOf("vuln-dist"),Object.values(mv),"district",[{key:"male",label:"Boys",color:BLUE},{key:"female",label:"Girls",color:PINK}],{legend:true});
+  }
+  if(vis("oos-block")){
+    var mo={};
+    d.forEach(function(r){if(!mo[r.block])mo[r.block]={block:r.block,girls:0,boys:0};mo[r.block].girls+=Number(r.oos_girls)||0;mo[r.block].boys+=Number(r.oos_boys)||0;});
+    var od=Object.values(mo).filter(function(x){return x.girls>0||x.boys>0;});
+    if(od.length)barChart(elOf("oos-block"),od,"block",[{key:"girls",label:"Girls",color:PINK},{key:"boys",label:"Boys",color:TEAL}],{legend:true});
+    else elOf("oos-block").innerHTML='<div style="height:140px;display:flex;align-items:center;justify-content:center;color:#9CA3AF;font-size:13px">No data for current filter</div>';
+  }
 
   // Row 4
-  const r4=[];
-  if(vis("helplines")){const c=makeCol("helplines","Helpline Numbers Painted in Public Spaces");r4.push(c.card);setTimeout(()=>{progressChart(c.el(),[{name:"Childhelp 1098",painted:cnt(d,"ch1098","yes")},{name:"Police 112",painted:cnt(d,"pol112","yes")},{name:"Women HL 181",painted:cnt(d,"wh181","yes")}],n,[PURPLE,ORANGE,PINK]);},0);}
-  if(vis("sbc-dist")){const c=makeCol("sbc-dist","SBC Campaign Reach by District");r4.push(c.card);setTimeout(()=>{const m={};d.forEach(r=>{if(!m[r.district])m[r.district]={district:r.district,sbc_reach:0};m[r.district].sbc_reach+=Number(r.sbc_reach)||0;});barChart(c.el(),Object.values(m),"district",[{key:"sbc_reach",label:"People Reached",color:TEAL}]);},0);}
-  if(r4.length){makeRow(...r4);}
+  var r4=[];
+  if(vis("helplines")){r4.push(makeCol("helplines","Helpline Numbers Painted in Public Spaces"));}
+  if(vis("sbc-dist")){r4.push(makeCol("sbc-dist","SBC Campaign Reach by District"));}
+  if(r4.length){makeRow.apply(null,r4);}
+  if(vis("helplines")){
+    progressChart(elOf("helplines"),[{name:"Childhelp 1098",painted:cnt(d,"ch1098","yes")},{name:"Police 112",painted:cnt(d,"pol112","yes")},{name:"Women HL 181",painted:cnt(d,"wh181","yes")}],n,[PURPLE,ORANGE,PINK]);
+  }
+  if(vis("sbc-dist")){
+    var ms={};
+    d.forEach(function(r){if(!ms[r.district])ms[r.district]={district:r.district,sbc_reach:0};ms[r.district].sbc_reach+=Number(r.sbc_reach)||0;});
+    barChart(elOf("sbc-dist"),Object.values(ms),"district",[{key:"sbc_reach",label:"People Reached",color:TEAL}]);
+  }
 }
 
 // ═══════════════════════════════════════════
 // INDICATOR MANAGER UI
 // ═══════════════════════════════════════════
 function buildIndicatorUI(){
-  // KPI list
-  document.getElementById("kpi-toggle-list").innerHTML=KPI_DEFS.map(k=>`
-    <div class="ind-item">
-      <input type="checkbox" id="kpi-chk-${k.id}" ${k.visible?"checked":""}>
-      <span class="ind-item-label">${k.icon} ${k.label}</span>
-      ${k.custom?`<button onclick="removeCustomKPI('${k.id}')" style="background:none;border:none;color:#DC2626;cursor:pointer;font-size:13px">✕</button>`:''}
-    </div>`).join("");
-  // Chart list
-  document.getElementById("chart-toggle-list").innerHTML=CHART_DEFS.map(c=>`
-    <div class="ind-item">
-      <input type="checkbox" id="chart-chk-${c.id}" ${c.visible?"checked":""}>
-      <span class="ind-item-label">📊 ${c.label}</span>
-    </div>`).join("");
+  document.getElementById("kpi-toggle-list").innerHTML=KPI_DEFS.map(function(k){
+    return '<div class="ind-item"><input type="checkbox" id="kpi-chk-'+k.id+'" '+(k.visible?"checked":"")+"><span class=\"ind-item-label\">"+k.icon+" "+k.label+"</span>"+(k.custom?'<button onclick="removeCustomKPI(\''+k.id+'\')" style="background:none;border:none;color:#DC2626;cursor:pointer;font-size:13px">✕</button>':"")+"</div>";
+  }).join("");
+  document.getElementById("chart-toggle-list").innerHTML=CHART_DEFS.map(function(c){
+    return '<div class="ind-item"><input type="checkbox" id="chart-chk-'+c.id+'" '+(c.visible?"checked":"")+"><span class=\"ind-item-label\">📊 "+c.label+"</span></div>";
+  }).join("");
 }
 
 function applyIndicators(){
-  KPI_DEFS.forEach(k=>{const el=document.getElementById("kpi-chk-"+k.id);if(el)k.visible=el.checked;});
-  CHART_DEFS.forEach(c=>{const el=document.getElementById("chart-chk-"+c.id);if(el)c.visible=el.checked;});
+  KPI_DEFS.forEach(function(k){var el=document.getElementById("kpi-chk-"+k.id);if(el)k.visible=el.checked;});
+  CHART_DEFS.forEach(function(c){var el=document.getElementById("chart-chk-"+c.id);if(el)c.visible=el.checked;});
   renderAll();
   showIndAlert("ok","✓ Indicators updated. Dashboard has been refreshed.");
 }
 
 function resetIndicators(){
-  KPI_DEFS.forEach(k=>k.visible=true);
-  CHART_DEFS.forEach(c=>c.visible=true);
+  KPI_DEFS.forEach(function(k){k.visible=true;});
+  CHART_DEFS.forEach(function(c){c.visible=true;});
   buildIndicatorUI();
   renderAll();
   showIndAlert("ok","✓ All indicators restored to default.");
 }
 
 function addCustomKPI(){
-  const label=document.getElementById("custom-label").value.trim();
-  const key=document.getElementById("custom-key").value.trim();
-  const icon=document.getElementById("custom-icon").value.trim()||"📊";
+  var label=document.getElementById("custom-label").value.trim();
+  var key=document.getElementById("custom-key").value.trim();
+  var icon=document.getElementById("custom-icon").value.trim()||"📊";
   if(!label||!key){showIndAlert("warn","Enter both a display label and a CSV column name.");return;}
-  if(KPI_DEFS.find(k=>k.id===key)){showIndAlert("warn","An indicator with this column name already exists.");return;}
-  KPI_DEFS.push({id:key,label,icon,color:PAL[KPI_DEFS.length%PAL.length],fn:(d)=>sum(d,key),sub:"From CSV column: "+key,visible:true,custom:true});
+  if(KPI_DEFS.find(function(k){return k.id===key;})){showIndAlert("warn","An indicator with this column name already exists.");return;}
+  KPI_DEFS.push({id:key,label:label,icon:icon,color:PAL[KPI_DEFS.length%PAL.length],fn:function(d){return sum(d,key);},sub:"From CSV column: "+key,visible:true,custom:true});
   document.getElementById("custom-label").value="";
   document.getElementById("custom-key").value="";
   document.getElementById("custom-icon").value="";
   buildIndicatorUI();
   renderAll();
-  showIndAlert("ok",`✓ Added custom KPI "${label}" (column: ${key})`);
+  showIndAlert("ok","✓ Added custom KPI \""+label+"\" (column: "+key+")");
 }
 
 function removeCustomKPI(id){
-  const idx=KPI_DEFS.findIndex(k=>k.id===id);
+  var idx=KPI_DEFS.findIndex(function(k){return k.id===id;});
   if(idx>-1&&KPI_DEFS[idx].custom){KPI_DEFS.splice(idx,1);buildIndicatorUI();renderAll();}
 }
 
 function showIndAlert(type,msg){
-  document.getElementById("ind-alert").innerHTML=`<div class="alert-box alert-${type}">${msg}</div>`;
-  setTimeout(()=>{const el=document.getElementById("ind-alert");if(el)el.innerHTML="";},4000);
+  var el=document.getElementById("ind-alert");
+  if(el)el.innerHTML='<div class="alert-box alert-'+type+'">'+msg+'</div>';
+  setTimeout(function(){var el2=document.getElementById("ind-alert");if(el2)el2.innerHTML="";},4000);
 }
 
 // ═══════════════════════════════════════════
 // CSV LOADER
 // ═══════════════════════════════════════════
 function csvAlert(type,msg){
-  const el=document.getElementById("csv-alert");
-  el.innerHTML=type?`<div class="alert-box alert-${type}">${msg}</div>`:"";
+  var el=document.getElementById("csv-alert");
+  el.innerHTML=type?'<div class="alert-box alert-'+type+'">'+msg+'</div>':"";
 }
 
 function parseCSVText(text){
-  const lines=text.split("\n").map(l=>l.trim()).filter(Boolean);
+  var lines=text.split("\n").map(function(l){return l.trim();}).filter(Boolean);
   if(lines.length<2)return null;
-  const headers=lines[0].split(",").map(h=>h.replace(/"/g,"").trim().toLowerCase());
-  return lines.slice(1).map(line=>{
-    const vals=line.split(",").map(v=>v.replace(/"/g,"").trim());
-    const obj={};
-    headers.forEach((h,i)=>obj[h]=vals[i]||"");
+  var headers=lines[0].split(",").map(function(h){return h.replace(/"/g,"").trim().toLowerCase();});
+  return lines.slice(1).map(function(line){
+    var vals=line.split(",").map(function(v){return v.replace(/"/g,"").trim();});
+    var obj={};
+    headers.forEach(function(h,i){obj[h]=vals[i]||"";});
     return obj;
   });
 }
 
 function applyCSVRows(rows){
-  // Map rows — use column names as-is, add defaults for known fields
-  const normalise=r=>{
-    const n={...r};
-    // numeric fields
-    ["cm_prevented","sbc_reach","pcma","jj","pocso","sops","vuln_m","vuln_f","adol_groups","oos_girls","oos_boys","cp_m","cp_f","cp_g","cp_b"].forEach(k=>{n[k]=Number(n[k])||0;});
-    // yes/no fields
-    ["pcwpc","vuln_map","ch1098","pol112","wh181"].forEach(k=>{n[k]=(String(n[k]||"").toLowerCase()==="yes"||n[k]==="1")?"yes":"no";});
-    if(!n.month&&n.submission_time){try{const dt=new Date(n.submission_time);n.month=dt.toLocaleDateString("en-IN",{month:"short",year:"numeric"});}catch(e){n.month="Unknown";}}
+  function normalise(r){
+    var n=Object.assign({},r);
+    ["cm_prevented","sbc_reach","pcma","jj","pocso","sops","vuln_m","vuln_f","adol_groups","oos_girls","oos_boys","cp_m","cp_f","cp_g","cp_b"].forEach(function(k){n[k]=Number(n[k])||0;});
+    ["pcwpc","vuln_map","ch1098","pol112","wh181"].forEach(function(k){n[k]=(String(n[k]||"").toLowerCase()==="yes"||n[k]==="1")?"yes":"no";});
+    if(!n.month&&n.submission_time){try{var dt=new Date(n.submission_time);n.month=dt.toLocaleDateString("en-IN",{month:"short",year:"numeric"});}catch(e){n.month="Unknown";}}
     if(!n.month)n.month="Unknown";
     if(!n.district)n.district="Unknown";
     if(!n.block)n.block="Unknown";
     if(!n.partner)n.partner="Unknown";
     return n;
-  };
-  RAW=[...rows.map(normalise)];
-  DATA=[...RAW];
+  }
+  RAW=rows.map(normalise);
+  DATA=RAW.slice();
   rebuildFilters();
   document.getElementById("f-district").value="All";
   document.getElementById("f-partner").value="All";
   document.getElementById("f-block").value="All";
   renderAll();
-  const now=new Date().toLocaleTimeString("en-IN");
-  document.getElementById("footer-txt").textContent=`Data source: CSV upload · Bihar · ${RAW.length} records · Loaded at ${now}`;
+  var now=new Date().toLocaleTimeString("en-IN");
+  document.getElementById("footer-txt").textContent="Data source: CSV upload · Bihar · "+RAW.length+" records · Loaded at "+now;
   document.getElementById("hdr-date").textContent=new Date().toLocaleDateString("en-IN",{month:"long",year:"numeric"});
   setStatus("live","CSV · "+RAW.length+" rows");
 }
 
 function loadCSV(){
-  const text=document.getElementById("csv-paste").value.trim();
+  var text=document.getElementById("csv-paste").value.trim();
   if(!text){csvAlert("warn","Paste your CSV text first.");return;}
-  const rows=parseCSVText(text);
+  var rows=parseCSVText(text);
   if(!rows||!rows.length){csvAlert("err","Could not parse CSV. Check the format.");return;}
   applyCSVRows(rows);
-  csvAlert("ok",`✓ Loaded ${rows.length} rows successfully. Dashboard updated.`);
+  csvAlert("ok","✓ Loaded "+rows.length+" rows successfully. Dashboard updated.");
 }
 
 function uploadCSV(input){
-  const file=input.files[0];if(!file)return;
-  const reader=new FileReader();
-  reader.onload=e=>{
-    const text=e.target.result;
-    const rows=parseCSVText(text);
+  var file=input.files[0];if(!file)return;
+  var reader=new FileReader();
+  reader.onload=function(e){
+    var text=e.target.result;
+    var rows=parseCSVText(text);
     if(!rows||!rows.length){csvAlert("err","Could not read file. Ensure it is a valid CSV.");return;}
     document.getElementById("csv-paste").value=text;
     applyCSVRows(rows);
-    csvAlert("ok",`✓ Loaded ${rows.length} rows from "${file.name}". Dashboard updated.`);
+    csvAlert("ok","✓ Loaded "+rows.length+" rows from \""+file.name+"\". Dashboard updated.");
   };
   reader.readAsText(file);
 }
 
 // ═══════════════════════════════════════════
-// LIVE KOBO FETCH ENGINE
+// STATUS INDICATOR
 // ═══════════════════════════════════════════
-let liveTimer=null;
-
 function setStatus(state,msg){
-  const dot=document.getElementById("live-dot"),txt=document.getElementById("live-txt");
+  var dot=document.getElementById("live-dot");
+  var txt=document.getElementById("live-txt");
   txt.textContent=msg;
   dot.style.background=state==="live"?"#16A34A":state==="fetching"?"#CA8A04":state==="error"?"#DC2626":"#D1D5DB";
 }
+
 function cfgAlert(type,msg){
-  const c={ok:"alert-ok",warn:"alert-warn",err:"alert-err"}[type]||"alert-warn";
-  document.getElementById("cfg-alert").innerHTML=`<div class="alert-box ${c}">${msg}</div>`;
+  var c={ok:"alert-ok",warn:"alert-warn",err:"alert-err"}[type]||"alert-warn";
+  document.getElementById("cfg-alert").innerHTML='<div class="alert-box '+c+'">'+msg+'</div>';
 }
-const res = await fetch("https://corsproxy.io/?https://kf.kobotoolbox.org/api/v2/assets/adcLjEuy3acFyeBF45CKbT/data/?format=json");
-const FIELD_MAP={
-  district: ["district", "gp_demographics/district"],
-  block: ["block", "gp_demographics/block"],
-  partner: ["partner_org", "gp_demographics/partner_org"],
-  month: ["reporting_period", "gp_demographics/reporting_period"],
-  cm_prevented: ["cm_prevented", "tracking_verification/cm_prevented"],
-  sbc_reach: ["sbc_reach_tot", "SBC_Counselling/sbc_reach_tot"],
-  pcma: ["pcma_sessions", "capacity_building/pcma_sessions"],
-  jj: ["jj_sessions", "capacity_building/jj_sessions"],
-  pocso: ["pocso_sessions", "capacity_building/pocso_sessions"],
-  sops: ["sops_sessions", "capacity_building/sops_sessions"],
-  vuln_m: ["vul_male_no", "public_helplines/vul_male_no"],
-  vuln_f: ["vul_female_no", "public_helplines/vul_female_no"],
-  adol_groups: ["adolescent_groups", "adolescent_groups/adolescent_groups"],
-  oos_girls: ["oosc_total_g", "linkage_out_of_school_children/oosc_total_g"],
-  oos_boys: ["oosc_total_b", "linkage_out_of_school_children/oosc_total_b"],
-  cp_m: ["community_part_m", "community_program/total_participants_group/community_part_m"],
-  cp_f: ["community_part_f", "community_program/total_participants_group/community_part_f"],
-  cp_g: ["community_part_g", "community_program/total_participants_group/community_part_g"],
-  cp_b: ["community_part_b", "community_program/total_participants_group/community_part_b"],
-  pcwpc: ["pcwpc_formed", "gp_demographics/pcwpc_formed"],
-  vuln_map: ["vulnerability_mapping", "public_helplines/vulnerability_mapping"],
-  ch1098: ["helpline_1098", "public_helplines/helpline_1098"],
-  pol112: ["helpline_112", "public_helplines/helpline_112"],
-  wh181: ["helpline_181", "public_helplines/helpline_181"]
+
+// ═══════════════════════════════════════════
+// KOBO FIELD MAP
+// ═══════════════════════════════════════════
+var FIELD_MAP={
+  district:["district","gp_demographics/district"],
+  block:["block","gp_demographics/block"],
+  partner:["partner_org","gp_demographics/partner_org"],
+  month:["reporting_period","gp_demographics/reporting_period"],
+  cm_prevented:["cm_prevented","tracking_verification/cm_prevented"],
+  sbc_reach:["sbc_reach_tot","SBC_Counselling/sbc_reach_tot"],
+  pcma:["pcma_sessions","capacity_building/pcma_sessions"],
+  jj:["jj_sessions","capacity_building/jj_sessions"],
+  pocso:["pocso_sessions","capacity_building/pocso_sessions"],
+  sops:["sops_sessions","capacity_building/sops_sessions"],
+  vuln_m:["vul_male_no","public_helplines/vul_male_no"],
+  vuln_f:["vul_female_no","public_helplines/vul_female_no"],
+  adol_groups:["adolescent_groups","adolescent_groups/adolescent_groups"],
+  oos_girls:["oosc_total_g","linkage_out_of_school_children/oosc_total_g"],
+  oos_boys:["oosc_total_b","linkage_out_of_school_children/oosc_total_b"],
+  cp_m:["community_part_m","community_program/total_participants_group/community_part_m"],
+  cp_f:["community_part_f","community_program/total_participants_group/community_part_f"],
+  cp_g:["community_part_g","community_program/total_participants_group/community_part_g"],
+  cp_b:["community_part_b","community_program/total_participants_group/community_part_b"],
+  pcwpc:["pcwpc_formed","gp_demographics/pcwpc_formed"],
+  vuln_map:["vulnerability_mapping","public_helplines/vulnerability_mapping"],
+  ch1098:["helpline_1098","public_helplines/helpline_1098"],
+  pol112:["helpline_112","public_helplines/helpline_112"],
+  wh181:["helpline_181","public_helplines/helpline_181"]
 };
-function getF(row,cands){for(const c of cands){if(row[c]!==undefined&&row[c]!==null&&row[c]!=="")return row[c];}return null;}
-function fmtM(v){if(!v)return"Unknown";try{const d=new Date(v);return d.toLocaleDateString("en-IN",{month:"short",year:"numeric"});}catch(e){return String(v).slice(0,8);}}
+
+function getF(row,cands){
+  for(var i=0;i<cands.length;i++){if(row[cands[i]]!==undefined&&row[cands[i]]!==null&&row[cands[i]]!=="")return row[cands[i]];}
+  return null;
+}
+
+function fmtM(v){
+  if(!v)return"Unknown";
+  try{var dt=new Date(v);return dt.toLocaleDateString("en-IN",{month:"short",year:"numeric"});}
+  catch(e){return String(v).slice(0,8);}
+}
+
 function mapKoboRow(raw){
   return{
-    district:getF(raw,FIELD_MAP.district)||"Unknown",block:getF(raw,FIELD_MAP.block)||"Unknown",
-    partner:getF(raw,FIELD_MAP.partner)||"Unknown",month:fmtM(getF(raw,FIELD_MAP.month)),
-    cm_prevented:Number(getF(raw,FIELD_MAP.cm_prevented))||0,sbc_reach:Number(getF(raw,FIELD_MAP.sbc_reach))||0,
-    pcma:Number(getF(raw,FIELD_MAP.pcma))||0,jj:Number(getF(raw,FIELD_MAP.jj))||0,
-    pocso:Number(getF(raw,FIELD_MAP.pocso))||0,sops:Number(getF(raw,FIELD_MAP.sops))||0,
-    vuln_m:Number(getF(raw,FIELD_MAP.vuln_m))||0,vuln_f:Number(getF(raw,FIELD_MAP.vuln_f))||0,
+    district:getF(raw,FIELD_MAP.district)||"Unknown",
+    block:getF(raw,FIELD_MAP.block)||"Unknown",
+    partner:getF(raw,FIELD_MAP.partner)||"Unknown",
+    month:fmtM(getF(raw,FIELD_MAP.month)),
+    cm_prevented:Number(getF(raw,FIELD_MAP.cm_prevented))||0,
+    sbc_reach:Number(getF(raw,FIELD_MAP.sbc_reach))||0,
+    pcma:Number(getF(raw,FIELD_MAP.pcma))||0,
+    jj:Number(getF(raw,FIELD_MAP.jj))||0,
+    pocso:Number(getF(raw,FIELD_MAP.pocso))||0,
+    sops:Number(getF(raw,FIELD_MAP.sops))||0,
+    vuln_m:Number(getF(raw,FIELD_MAP.vuln_m))||0,
+    vuln_f:Number(getF(raw,FIELD_MAP.vuln_f))||0,
     adol_groups:Number(getF(raw,FIELD_MAP.adol_groups))||0,
-    oos_girls:Number(getF(raw,FIELD_MAP.oos_girls))||0,oos_boys:Number(getF(raw,FIELD_MAP.oos_boys))||0,
-    cp_m:Number(getF(raw,FIELD_MAP.cp_m))||0,cp_f:Number(getF(raw,FIELD_MAP.cp_f))||0,
-    cp_g:Number(getF(raw,FIELD_MAP.cp_g))||0,cp_b:Number(getF(raw,FIELD_MAP.cp_b))||0,
+    oos_girls:Number(getF(raw,FIELD_MAP.oos_girls))||0,
+    oos_boys:Number(getF(raw,FIELD_MAP.oos_boys))||0,
+    cp_m:Number(getF(raw,FIELD_MAP.cp_m))||0,
+    cp_f:Number(getF(raw,FIELD_MAP.cp_f))||0,
+    cp_g:Number(getF(raw,FIELD_MAP.cp_g))||0,
+    cp_b:Number(getF(raw,FIELD_MAP.cp_b))||0,
     pcwpc:(String(getF(raw,FIELD_MAP.pcwpc)||"").toLowerCase()==="yes")?"yes":"no",
     vuln_map:(String(getF(raw,FIELD_MAP.vuln_map)||"").toLowerCase()==="yes")?"yes":"no",
     ch1098:(String(getF(raw,FIELD_MAP.ch1098)||"").toLowerCase()==="yes")?"yes":"no",
     pol112:(String(getF(raw,FIELD_MAP.pol112)||"").toLowerCase()==="yes")?"yes":"no",
-    wh181:(String(getF(raw,FIELD_MAP.wh181)||"").toLowerCase()==="yes")?"yes":"no",
+    wh181:(String(getF(raw,FIELD_MAP.wh181)||"").toLowerCase()==="yes")?"yes":"no"
   };
 }
-const PUBLIC_URL = "https://corsproxy.io/?https://kf.kobotoolbox.org/api/v2/assets/adcLjEuy3acFyeBF45CKbT/data/?format=json";
 
-async function fetchFromKobo(){
+// ═══════════════════════════════════════════
+// LIVE KOBO ENGINE
+// ═══════════════════════════════════════════
+var liveTimer=null;
+
+async function fetchFromKobo(token,uid,server){
+  var url="https://corsproxy.io/?https://"+server+"/api/v2/assets/"+uid+"/data/?format=json";
+  setStatus("fetching","Fetching…");
   try{
-    const res = await fetch(PUBLIC_URL);
-    if(!res.ok) throw new Error("HTTP " + res.status);
-    const json = await res.json();
-    RAW = json.results.map(mapKoboRow);
-    DATA = [...RAW];
+    var res=await fetch(url,{headers:{"Authorization":"Token "+token}});
+    if(!res.ok)throw new Error("HTTP "+res.status);
+    var json=await res.json();
+    if(!json.results||!Array.isArray(json.results))throw new Error("Unexpected response format");
+    RAW=json.results.map(mapKoboRow);
+    DATA=RAW.slice();
     rebuildFilters();
     renderAll();
-    document.getElementById("sub-badge").textContent = RAW.length + " Submissions";
-    document.getElementById("status-txt").textContent = "Live · " + new Date().toLocaleTimeString();
-  } catch(e){
-    console.error("Fetch failed:", e);
+    document.getElementById("sub-badge").textContent=RAW.length+" Submissions";
+    document.getElementById("footer-txt").textContent="Data source: KoboToolbox Live · Bihar · "+RAW.length+" records · "+new Date().toLocaleTimeString("en-IN");
+    setStatus("live","Live · "+new Date().toLocaleTimeString("en-IN"));
+    cfgAlert("ok","✓ Loaded "+RAW.length+" submissions from KoboToolbox.");
+  }catch(e){
+    setStatus("error","Error: "+e.message);
+    cfgAlert("err","✗ Fetch failed: "+e.message+". Check your token, UID and server, or try again.");
   }
 }
 
+function startLive(){
+  var token=document.getElementById("cfg-token").value.trim();
+  var uid=document.getElementById("cfg-uid").value.trim();
+  var server=document.getElementById("cfg-server").value.trim()||"kf.kobotoolbox.org";
+  var interval=parseInt(document.getElementById("cfg-interval").value)||0;
+  if(!token){cfgAlert("warn","Paste your KoboToolbox API token first.");return;}
+  if(!uid){cfgAlert("warn","Enter the Asset UID of your form.");return;}
+  if(liveTimer){clearInterval(liveTimer);liveTimer=null;}
+  document.getElementById("refresh-btn").style.display="inline-flex";
+  fetchFromKobo(token,uid,server);
+  if(interval>0){
+    liveTimer=setInterval(function(){fetchFromKobo(token,uid,server);},interval*1000);
+    cfgAlert("ok","Connected — auto-refreshing every "+interval+" seconds.");
+  }
+}
+
+function stopLive(){
+  if(liveTimer){clearInterval(liveTimer);liveTimer=null;}
+  setStatus("","Built-in data");
+  document.getElementById("refresh-btn").style.display="none";
+  cfgAlert("warn","Live connection stopped. Showing built-in data.");
+  RAW=BUILTIN.slice();
+  DATA=RAW.slice();
+  rebuildFilters();
+  renderAll();
+}
+
+function manualRefresh(){
+  var token=document.getElementById("cfg-token").value.trim();
+  var uid=document.getElementById("cfg-uid").value.trim();
+  var server=document.getElementById("cfg-server").value.trim()||"kf.kobotoolbox.org";
+  if(!token||!uid){cfgAlert("warn","Open Live API panel and connect first.");return;}
+  fetchFromKobo(token,uid,server);
+}
+
 // ═══════════════════════════════════════════
-// AUTOMATIC INITIALIZATION
+// INIT
 // ═══════════════════════════════════════════
-window.onload = function() {
-    // 1. Initial data fetch
-    fetchFromKobo();
-    
-    // 2. Set the auto-refresh timer (5 minutes)
-    setInterval(fetchFromKobo, 300000); 
-    
-    // 3. Automatically show the dashboard
-    setTimeout(() => {
-        const buttons = document.getElementsByTagName('button');
-        for(let i = 0; i < buttons.length; i++) {
-            if(buttons[i].innerText.includes('Indicators')) {
-                buttons[i].click();
-                break;
-            }
-        }
-    }, 1000);
-};
+rebuildFilters();
+renderAll();
 </script>
 </body>
 </html>
