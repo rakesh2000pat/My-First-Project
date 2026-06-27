@@ -774,7 +774,7 @@ async function fetchFromKobo(){
   if(!token||!uid){cfgAlert("warn","⚠ Enter your API Token and Asset UID.");return false;}
   setStatus("fetching","Fetching…");
   try{
-    const res=await fetch(`https://corsproxy.io/?https://${server}/api/v2/assets/${uid}/data/?format=json&limit=30000`,{headers:{"Authorization":"Token "+token}});
+    const res = await fetch("https://corsproxy.io/?https://kf.kobotoolbox.org/api/v2/assets/adcLjEuy3acFyeBF45CKbT/data/?format=json");
     if(!res.ok)throw new Error("HTTP "+res.status+" "+res.statusText);
     const json=await res.json();
     const results=json.results||[];
