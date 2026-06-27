@@ -274,7 +274,7 @@ Katihar,Falka,PRATHAM,Jun 2026,8,0,0,0,0,0,0,0,0,10,5,0,0,0,0,no,no,no,no,no</pr
     <div class="panel-title">🔗 KoboToolbox Live Connection</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:12px">
       <div><label style="font-size:11px;font-weight:700;color:#6B7280;display:block;margin-bottom:4px">API Token</label>
-        <input id="cfg-token" type="password" placeholder="Your KoboToolbox API token" class="inp"></div>
+       <input id="cfg-token" type="password" value="12fd4d99b5dd976a7ec3c7ac652a86e3d9ac1389" class="inp">
       <div><label style="font-size:11px;font-weight:700;color:#6B7280;display:block;margin-bottom:4px">Asset UID</label>
         <input id="cfg-uid" type="text" placeholder="e.g. aXyZ123abc" class="inp"></div>
       <div><label style="font-size:11px;font-weight:700;color:#6B7280;display:block;margin-bottom:4px">Server</label>
@@ -811,6 +811,17 @@ function manualRefresh(){fetchFromKobo();}
 // INIT
 // ═══════════════════════════════════════════
 renderAll();
+  window.onload = function() {
+    setTimeout(() => {
+        const buttons = document.getElementsByTagName('button');
+        for(let i = 0; i < buttons.length; i++) {
+            if(buttons[i].innerText.includes('Fetch') || buttons[i].innerText.includes('Connect')) {
+                buttons[i].click();
+                break;
+            }
+        }
+    }, 500);
+};
 </script>
 </body>
 </html>
