@@ -814,12 +814,25 @@ renderAll();
   window.onload = function() {
     setTimeout(() => {
         const buttons = document.getElementsByTagName('button');
+        
+        // 1. Automatically click the Fetch button
         for(let i = 0; i < buttons.length; i++) {
             if(buttons[i].innerText.includes('Fetch') || buttons[i].innerText.includes('Connect')) {
                 buttons[i].click();
                 break;
             }
         }
+        
+        // 2. Automatically switch to the "Indicators" tab so the dashboard is visible
+        setTimeout(() => {
+            for(let i = 0; i < buttons.length; i++) {
+                if(buttons[i].innerText.includes('Indicators') || buttons[i].innerText === 'Indicators') {
+                    buttons[i].click();
+                    break;
+                }
+            }
+        }, 300); // Waits a fraction of a second for data to load before switching tabs
+
     }, 500);
 };
 </script>
