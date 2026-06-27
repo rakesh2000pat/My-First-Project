@@ -720,20 +720,20 @@ function cfgAlert(type,msg){
 }
 
 const FIELD_MAP={
-  district:    ["district","District","group_district/district","group_location/district"],
-  block:       ["block","Block","group_location/block"],
-  partner:     ["partner","Partner","partner_organisation","group_info/partner"],
-  month:       ["month","Month","_submission_time","submission_time"],
-  cm_prevented:["cm_prevented","child_marriages_prevented","CM_Prevented"],
-  sbc_reach:   ["sbc_reach","SBC_reach","sbc_campaign_reach"],
-  pcma:["pcma","PCMA"],jj:["jj","JJ"],pocso:["pocso","POCSO"],sops:["sops","SOPs"],
-  vuln_m:["vuln_m","vulnerable_male"],vuln_f:["vuln_f","vulnerable_female"],
-  adol_groups:["adol_groups","adolescent_groups"],
-  oos_girls:["oos_girls","out_of_school_girls"],oos_boys:["oos_boys","out_of_school_boys"],
-  cp_m:["cp_m","community_dialogue_men"],cp_f:["cp_f","community_dialogue_women"],
-  cp_g:["cp_g","community_dialogue_girls"],cp_b:["cp_b","community_dialogue_boys"],
-  pcwpc:["pcwpc","PCWPC","pcwpc_formed"],vuln_map:["vuln_map","vulnerability_mapping"],
-  ch1098:["ch1098","childhelp_1098"],pol112:["pol112","police_112"],wh181:["wh181","women_helpline_181"],
+  district: ["district"],
+  block: ["block"],
+  partner: ["partner_org"],
+  month: ["reporting_period"],
+  cm_prevented: ["cm_prevented"],
+  sbc_reach: ["sbc_reach_tot"],
+  pcma: ["pcma_sessions"], jj: ["jj_sessions"], pocso: ["pocso_sessions"], sops: ["sops_sessions"],
+  vuln_m: ["vul_male_no"], vuln_f: ["vul_female_no"],
+  adol_groups: ["adolescent_groups"],
+  oos_girls: ["oosc_total_g"], oos_boys: ["oosc_total_b"],
+  cp_m: ["community_part_m"], cp_f: ["community_part_f"],
+  cp_g: ["community_part_g"], cp_b: ["community_part_b"],
+  pcwpc: ["pcwpc_formed"], vuln_map: ["vulnerability_mapping"],
+  ch1098: ["helpline_1098"], pol112: ["helpline_112"], wh181: ["helpline_181"]
 };
 function getF(row,cands){for(const c of cands){if(row[c]!==undefined&&row[c]!==null&&row[c]!=="")return row[c];}return null;}
 function fmtM(v){if(!v)return"Unknown";try{const d=new Date(v);return d.toLocaleDateString("en-IN",{month:"short",year:"numeric"});}catch(e){return String(v).slice(0,8);}}
