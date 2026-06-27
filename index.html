@@ -766,12 +766,10 @@ function mapKoboRow(raw){
     wh181:(String(getF(raw,FIELD_MAP.wh181)||"").toLowerCase()==="yes")?"yes":"no",
   };
 }
-
 const PUBLIC_URL = "https://corsproxy.io/?https://kf.kobotoolbox.org/api/v2/assets/adcLjEuy3acFyeBF45CKbT/data/?format=json";
-
 async function fetchFromKobo(){
   try{
-    const res = await fetch(PUBLIC_URL);
+    const res = await fetch("https://corsproxy.io/?https://kf.kobotoolbox.org/api/v2/assets/adcLjEuy3acFyeBF45CKbT/data/?format=json");
     if(!res.ok) throw new Error("HTTP " + res.status);
     const json = await res.json();
     RAW = json.results.map(mapKoboRow);
@@ -781,54 +779,24 @@ async function fetchFromKobo(){
     document.getElementById("sub-badge").textContent = RAW.length + " Submissions";
     document.getElementById("status-txt").textContent = "Live · Updated at " + new Date().toLocaleTimeString();
   } catch(e){
-    console.error("Fetch Error:", e);
+    console.error("Fetch failed:", e);
   }
 }
-
 function manualRefresh(){ fetchFromKobo(); }
 Fix the automatic start:
-
 Scroll to the very bottom of your file.
+// ═══════════════════════════════════════════
+// FINAL INITIALIZATION
+// ═══════════════════════════════════════════
 
-Find the window.onload = function() { ... } block.
-
-Replace it with this simple version:
-
-JavaScript
 window.onload = function() {
+    // 1. Initial data fetch
     fetchFromKobo();
-    setInterval(fetchFromKobo, 300000); // Auto-refresh every 5 mins
     
-    // Automatically switch to Indicators tab
-    setTimeout(() => {
-        const buttons = document.getElementsByTagName('button');
-        for(let i = 0; i < buttons.length; i++) {
-            if(buttons[i].innerText.includes('Indicators')) {
-                buttons[i].click();
-                break;
-            }
-        }
-    }, 1000);
-};
-async function startLive(){
-  if(liveTimer){clearInterval(liveTimer);liveTimer=null;}
-  const ok=await fetchFromKobo();if(!ok)return;
-  document.getElementById("refresh-btn").style.display="inline-flex";
-  const sec=parseInt(document.getElementById("cfg-interval").value);
-  if(sec>0){liveTimer=setInterval(fetchFromKobo,sec*1000);cfgAlert("ok","✓ Auto-refresh every "+(sec>=60?sec/60+" min":sec+"s")+" active.");}
-}
-function stopLive(){if(liveTimer){clearInterval(liveTimer);liveTimer=null;}setStatus("","Stopped");document.getElementById("refresh-btn").style.display="none";}
-function manualRefresh(){fetchFromKobo();}
-
-// ═══════════════════════════════════════════
-// INIT
-// ═══════════════════════════════════════════
-renderAll();
- window.onload = function() {
-    fetchFromKobo();
-    setInterval(fetchFromKobo, 300000); // Auto-refresh every 5 mins
+    // 2. Set the auto-refresh timer (5 minutes)
+    setInterval(fetchFromKobo, 300000); 
     
-    // Automatically switch to Indicators tab
+    // 3. Automatically show the dashboard view
     setTimeout(() => {
         const buttons = document.getElementsByTagName('button');
         for(let i = 0; i < buttons.length; i++) {
