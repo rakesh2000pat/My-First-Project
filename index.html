@@ -3,572 +3,627 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Child Marriage Prevention Dashboard · Bihar 2026</title>
+<title>Child Marriage Prevention · Bihar 2026</title>
 <style>
+:root{--purple:#7C3AED;--teal:#0D9488;--orange:#EA580C;--pink:#DB2777;--blue:#2563EB;--green:#16A34A;--gold:#CA8A04;--bg:#F3F4F6;--card:#fff;--border:#E5E7EB;--text:#1F2937;--muted:#6B7280;--light:#9CA3AF}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Segoe UI',Arial,sans-serif;background:#F3F4F6;color:#1F2937;min-height:100vh}
-h1{font-size:20px;font-weight:800;color:#111827}
-h2{font-size:13px;font-weight:700;color:#374151;margin-bottom:14px;display:flex;align-items:center;gap:8px}
-h2::before{content:'';display:inline-block;width:4px;height:18px;border-radius:4px;background:#7C3AED;flex-shrink:0}
-.header{background:#fff;border-bottom:1px solid #E5E7EB;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;position:sticky;top:0;z-index:100;box-shadow:0 1px 4px rgba(0,0,0,.07)}
-.badge{background:#EDE9FE;color:#7C3AED;font-size:12px;font-weight:700;padding:5px 14px;border-radius:999px}
-.page{max-width:1200px;margin:0 auto;padding:20px;display:flex;flex-direction:column;gap:20px}
-.card{background:#fff;border-radius:16px;border:1px solid #E5E7EB;box-shadow:0 1px 3px rgba(0,0,0,.06);padding:20px}
-.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
-.kpi{background:#fff;border-radius:14px;border:1px solid #E5E7EB;box-shadow:0 1px 3px rgba(0,0,0,.06);padding:16px;display:flex;align-items:flex-start;gap:12px}
-.kpi-icon{border-radius:12px;padding:10px;font-size:20px;flex-shrink:0;line-height:1}
-.kpi-val{font-size:26px;font-weight:800;color:#111827;line-height:1.1}
-.kpi-lbl{font-size:12px;font-weight:600;color:#374151;margin-top:3px}
-.kpi-sub{font-size:11px;color:#9CA3AF;margin-top:3px}
-.chart-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
-.chart-card{background:#fff;border-radius:16px;border:1px solid #E5E7EB;box-shadow:0 1px 3px rgba(0,0,0,.06);padding:20px}
-.filters{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
-.filter-wrap label{display:block;font-size:11px;font-weight:700;color:#6B7280;text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px}
-.filter-wrap select{width:100%;font-size:13px;border:1px solid #D1D5DB;border-radius:9px;padding:8px 12px;background:#fff;color:#374151;cursor:pointer}
-.bar-chart{width:100%;overflow:hidden}
-.bar-group{display:flex;align-items:flex-end;gap:6px;height:180px;padding:0 4px;border-left:2px solid #E5E7EB;border-bottom:2px solid #E5E7EB}
-.bar-col{display:flex;flex-direction:column;align-items:center;flex:1;gap:3px;height:100%;justify-content:flex-end}
-.bar-rect{width:100%;border-radius:5px 5px 0 0;min-height:2px;cursor:pointer;transition:opacity .2s}
+body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+/* HEADER */
+.hdr{background:#fff;border-bottom:2px solid var(--purple);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(124,58,237,.10)}
+.hdr-left h1{font-size:18px;font-weight:800;color:#111;letter-spacing:-.3px}
+.hdr-left p{font-size:11px;color:var(--light);margin-top:2px}
+.hdr-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pill{display:flex;align-items:center;gap:5px;background:#F5F3FF;border:1px solid #DDD6FE;border-radius:999px;padding:4px 12px;font-size:11px;font-weight:700;color:var(--purple)}
+.dot{width:8px;height:8px;border-radius:50%;background:#D1D5DB;flex-shrink:0;transition:background .4s}
+.dot.live{background:var(--green);box-shadow:0 0 0 3px rgba(22,163,74,.2);animation:pulse 2s infinite}
+.dot.err{background:#DC2626}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(22,163,74,.2)}50%{box-shadow:0 0 0 6px rgba(22,163,74,.05)}}
+.badge{background:#EDE9FE;color:var(--purple);font-size:12px;font-weight:800;padding:5px 14px;border-radius:999px;border:1px solid #C4B5FD}
+/* BANNER */
+#banner{padding:10px 20px;font-size:12px;font-weight:600;text-align:center;display:none}
+#banner.info{background:#EDE9FE;color:#4C1D95;display:block}
+#banner.warn{background:#FEF3C7;color:#92400E;display:block}
+#banner.err{background:#FEE2E2;color:#7F1D1D;display:block}
+/* LAYOUT */
+.page{max-width:1240px;margin:0 auto;padding:18px 16px;display:flex;flex-direction:column;gap:18px}
+/* FILTERS */
+.filter-card{background:#fff;border-radius:14px;border:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,.05);padding:16px 20px}
+.filter-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.fw label{display:block;font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.fw select{width:100%;font-size:13px;border:1.5px solid var(--border);border-radius:8px;padding:7px 10px;background:#fff;color:var(--text);cursor:pointer;transition:border-color .2s}
+.fw select:focus{outline:none;border-color:var(--purple)}
+/* SECTION TITLE */
+.sec-title{font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.sec-title::after{content:'';flex:1;height:1px;background:var(--border)}
+/* KPI GRID */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.kpi{background:#fff;border-radius:14px;border:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,.06);padding:16px;display:flex;align-items:flex-start;gap:12px;transition:transform .15s,box-shadow .15s}
+.kpi:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.1)}
+.kpi-ico{border-radius:12px;padding:10px;font-size:22px;flex-shrink:0;line-height:1}
+.kpi-val{font-size:30px;font-weight:900;line-height:1;margin-bottom:4px}
+.kpi-lbl{font-size:12px;font-weight:700;color:#374151}
+.kpi-sub{font-size:11px;color:var(--light);margin-top:2px}
+/* CHART GRID */
+.chart-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.chart-card{background:#fff;border-radius:14px;border:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,.06);padding:18px}
+.chart-title{font-size:12px;font-weight:800;color:#374151;margin-bottom:14px;display:flex;align-items:center;gap:6px}
+.chart-title::before{content:'';display:inline-block;width:4px;height:16px;border-radius:3px;background:var(--purple);flex-shrink:0}
+/* BAR */
+.bar-wrap{width:100%;overflow:hidden}
+.bar-group{display:flex;align-items:flex-end;gap:5px;height:170px;padding:0 2px;border-left:2px solid var(--border);border-bottom:2px solid var(--border)}
+.bar-col{display:flex;flex-direction:column;align-items:center;flex:1;gap:2px;height:100%;justify-content:flex-end}
+.bar-rect{width:100%;border-radius:5px 5px 0 0;min-height:2px;cursor:pointer;transition:opacity .15s}
 .bar-rect:hover{opacity:.75}
-.bar-label{font-size:10px;color:#6B7280;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%}
-.bar-val{font-size:10px;font-weight:700;color:#374151;text-align:center}
-.pie-wrap{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
-.pie-legend{display:flex;flex-direction:column;gap:10px}
-.pie-legend-item{display:flex;align-items:center;gap:8px;font-size:13px}
-.pie-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
-.pie-name{color:#6B7280}
-.pie-num{font-weight:700;color:#111827;margin-left:auto;padding-left:16px}
-.prog-list{display:flex;flex-direction:column;gap:16px;margin-top:10px}
-.prog-head{display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px}
-.prog-label{font-weight:600;color:#4B5563}
-.prog-stat{font-weight:700;color:#111827}
-.prog-track{background:#F3F4F6;border-radius:999px;height:12px;overflow:hidden}
-.prog-fill{height:12px;border-radius:999px}
-.tooltip{position:fixed;background:#fff;border:1px solid #E5E7EB;border-radius:10px;box-shadow:0 4px 16px rgba(0,0,0,.12);padding:10px 14px;font-size:12px;pointer-events:none;z-index:9999;display:none;max-width:220px}
-.tooltip.show{display:block}
-.tooltip-title{font-weight:700;color:#374151;margin-bottom:5px}
-.tooltip-row{display:flex;align-items:center;gap:6px;color:#374151;margin-bottom:2px}
-.footer{text-align:center;font-size:11px;color:#9CA3AF;padding:10px 0 20px}
-/* Loading overlay */
-#loading{position:fixed;inset:0;background:rgba(255,255,255,.95);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;gap:16px}
-.spinner{width:44px;height:44px;border:4px solid #EDE9FE;border-top-color:#7C3AED;border-radius:50%;animation:spin 0.8s linear infinite}
+.bar-lbl{font-size:9px;color:var(--muted);text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:100%}
+.bar-val{font-size:9px;font-weight:700;color:#374151;text-align:center}
+/* PIE */
+.pie-wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.pie-legend{display:flex;flex-direction:column;gap:9px}
+.pie-item{display:flex;align-items:center;gap:8px;font-size:12px}
+.pie-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0}
+.pie-nm{color:var(--muted)}
+.pie-n{font-weight:800;color:#111;margin-left:auto;padding-left:14px}
+/* PROGRESS */
+.prog-list{display:flex;flex-direction:column;gap:14px}
+.prog-hd{display:flex;justify-content:space-between;margin-bottom:5px;font-size:12px}
+.prog-lbl{font-weight:700;color:#4B5563}
+.prog-val{font-weight:800;color:#111}
+.prog-track{background:#F3F4F6;border-radius:999px;height:13px;overflow:hidden}
+.prog-fill{height:100%;border-radius:999px;transition:width .5s ease}
+/* TOOLTIP */
+.tt{position:fixed;background:#fff;border:1px solid var(--border);border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,.13);padding:10px 14px;font-size:12px;pointer-events:none;z-index:9999;display:none;max-width:220px}
+.tt.on{display:block}
+.tt-title{font-weight:800;color:#374151;margin-bottom:5px;font-size:13px}
+.tt-row{display:flex;align-items:center;gap:6px;color:#374151;margin-bottom:2px}
+/* DATA TABLE */
+.tbl-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{background:#F5F3FF;color:var(--purple);font-weight:800;padding:9px 12px;text-align:left;border-bottom:2px solid #DDD6FE;white-space:nowrap}
+td{padding:8px 12px;border-bottom:1px solid var(--border);color:#374151}
+tr:last-child td{border:none}
+tr:nth-child(even) td{background:#FAFAFA}
+/* LEGEND BAR */
+.leg{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.leg-item{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--muted)}
+.leg-sq{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+/* FOOTER */
+.footer{text-align:center;font-size:11px;color:var(--light);padding:6px 0 20px}
+/* LOADING */
+#loader{position:fixed;inset:0;background:rgba(255,255,255,.97);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;gap:16px}
+.spinner{width:46px;height:46px;border:4px solid #EDE9FE;border-top-color:var(--purple);border-radius:50%;animation:spin .75s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-#load-msg{font-size:14px;color:#6B7280;font-weight:600}
-/* Error banner */
-#error-banner{display:none;background:#FEF3C7;border:1px solid #FCD34D;border-radius:10px;padding:12px 18px;font-size:12px;color:#92400E;margin:12px 20px;max-width:1160px;margin-left:auto;margin-right:auto}
+#load-msg{font-size:14px;color:var(--muted);font-weight:700}
+#load-sub{font-size:12px;color:var(--light);margin-top:-8px}
 </style>
 </head>
 <body>
 
-<!-- Loading overlay -->
-<div id="loading">
+<div id="loader">
+  <div style="font-size:36px">🛡️</div>
   <div class="spinner"></div>
   <div id="load-msg">Connecting to KoboToolbox…</div>
+  <div id="load-sub">Loading live data</div>
 </div>
 
-<!-- Error banner (shown if fetch fails) -->
-<div id="error-banner"></div>
+<div id="banner"></div>
 
-<!-- HEADER -->
-<div class="header">
-  <div>
-    <h1>Child Marriage Prevention Dashboard</h1>
-    <div style="font-size:12px;color:#9CA3AF;margin-top:3px">Bihar Field Monitoring · <span id="hdr-date"></span></div>
+<div class="hdr">
+  <div class="hdr-left">
+    <h1>🛡️ Child Marriage Prevention Dashboard</h1>
+    <p>Bihar Field Monitoring · UNFPA Programme · <span id="hdr-date">2026</span></p>
   </div>
-  <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-    <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:#6B7280;background:#F3F4F6;border-radius:999px;padding:5px 12px">
-      <span id="live-dot" style="width:8px;height:8px;border-radius:50%;background:#D1D5DB;flex-shrink:0"></span>
-      <span id="live-txt">Loading…</span>
-    </div>
-    <span class="badge" id="sub-badge">— Submissions</span>
+  <div class="hdr-right">
+    <div class="pill"><span class="dot" id="dot"></span><span id="dot-txt">Loading…</span></div>
+    <div class="badge" id="sub-badge">— Submissions</div>
   </div>
 </div>
 
-<!-- MAIN PAGE -->
 <div class="page">
 
-  <!-- Filters -->
-  <div class="card">
-    <div style="font-size:11px;font-weight:700;color:#6B7280;text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px">🔍 Filter Data</div>
-    <div class="filters">
-      <div class="filter-wrap"><label>District</label><select id="f-district" onchange="applyFilters()"></select></div>
-      <div class="filter-wrap"><label>Partner Organisation</label><select id="f-partner" onchange="applyFilters()"></select></div>
-      <div class="filter-wrap"><label>Block</label><select id="f-block" onchange="applyFilters()"></select></div>
+  <!-- FILTERS -->
+  <div class="filter-card">
+    <div class="sec-title">🔍 Filter Data</div>
+    <div class="filter-row">
+      <div class="fw"><label>District</label><select id="f-dist" onchange="applyFilters()"></select></div>
+      <div class="fw"><label>Partner</label><select id="f-part" onchange="applyFilters()"></select></div>
+      <div class="fw"><label>Block</label><select id="f-block" onchange="applyFilters()"></select></div>
+      <div class="fw"><label>Month</label><select id="f-month" onchange="applyFilters()"></select></div>
     </div>
   </div>
 
   <!-- KPIs -->
   <div>
-    <h2>Key Performance Indicators</h2>
+    <div class="sec-title">📊 Key Performance Indicators</div>
     <div class="kpi-grid" id="kpi-grid"></div>
   </div>
 
-  <!-- Charts -->
-  <div id="charts-container"></div>
+  <!-- CHARTS ROW 1 -->
+  <div class="chart-row" id="row1"></div>
+  <!-- CHARTS ROW 2 -->
+  <div class="chart-row" id="row2"></div>
+  <!-- CHARTS ROW 3 -->
+  <div class="chart-row" id="row3"></div>
+  <!-- CHARTS ROW 4 -->
+  <div class="chart-row" id="row4"></div>
 
-  <div class="footer" id="footer-txt"></div>
+  <!-- DATA TABLE -->
+  <div>
+    <div class="sec-title">📋 Submission Records</div>
+    <div class="tbl-wrap"><table id="data-table"></table></div>
+  </div>
+
+  <div class="footer" id="footer"></div>
 </div>
 
-<!-- Tooltip -->
-<div class="tooltip" id="tt"><div class="tooltip-title" id="tt-title"></div><div id="tt-body"></div></div>
+<div class="tt" id="tt"><div class="tt-title" id="tt-t"></div><div id="tt-b"></div></div>
 
 <script>
-// ─── CONFIG ──────────────────────────────────────────────────────────────────
-// Your KoboToolbox credentials — already embedded, no user input needed
-var KOBO_TOKEN  = "12fd4d99b5dd976a7ec3c7ac652a86e3d9ac1389";
-var KOBO_UID    = "adcLjEuy3acFyeBF45CKbT";
-var KOBO_SERVER = "kf.kobotoolbox.org";
-var REFRESH_MS  = 300000; // auto-refresh every 5 minutes
+// ════════════════════════════════════════════════════════════
+// CONFIG — YOUR CREDENTIALS EMBEDDED
+// ════════════════════════════════════════════════════════════
+var TOKEN  = "12fd4d99b5dd976a7ec3c7ac652a86e3d9ac1389";
+var UID    = "adcLjEuy3acFyeBF45CKbT";
+var SERVER = "kf.kobotoolbox.org";
 
-// CORS proxies tried in order — if one fails the next is used automatically
+// 4 CORS proxies tried in order — if all fail, built-in data is shown
 var PROXIES = [
-  "https://corsproxy.io/?",
-  "https://api.allorigins.win/raw?url=",
-  "https://thingproxy.freeboard.io/fetch/"
+  function(u){ return "https://corsproxy.io/?"+encodeURIComponent(u); },
+  function(u){ return "https://api.allorigins.win/raw?url="+encodeURIComponent(u); },
+  function(u){ return "https://api.codetabs.com/v1/proxy?quest="+encodeURIComponent(u); },
+  function(u){ return "https://thingproxy.freeboard.io/fetch/"+u; }
 ];
 
-// ─── PALETTE ─────────────────────────────────────────────────────────────────
-var PAL    = ["#7C3AED","#0D9488","#EA580C","#DB2777","#2563EB","#16A34A","#CA8A04"];
-var PURPLE = "#7C3AED", TEAL = "#0D9488", ORANGE = "#EA580C";
-var PINK   = "#DB2777", BLUE = "#2563EB", GREEN  = "#16A34A", GOLD = "#CA8A04";
+// ════════════════════════════════════════════════════════════
+// BUILT-IN FALLBACK DATA (your 17 real submissions)
+// ════════════════════════════════════════════════════════════
+var FALLBACK=[
+  {district:"Patna",block:"Danapur",partner:"PRATHAM",month:"Jun 2026",cm_prevented:0,sbc_reach:0,pcma:40,jj:32,pocso:8,sops:12,vuln_m:0,vuln_f:0,adol_groups:0,oos_girls:0,oos_boys:0,cp_m:0,cp_f:0,cp_g:0,cp_b:0,pcwpc:"yes",vuln_map:"no",ch1098:"yes",pol112:"yes",wh181:"yes"},
+  {district:"Patna",block:"Dinapur",partner:"PRATHAM",month:"Jun 2026",cm_prevented:0,sbc_reach:0,pcma:0,jj:0,pocso:0,sops:0,vuln_m:0,vuln_f:0,adol_groups:0,oos_girls:0,oos_boys:0,cp_m:0,cp_f:0,cp_g:0,cp_b:0,pcwpc:"no",vuln_map:"no",ch1098:"no",pol112:"no",wh181:"no"},
+  {district:"Patna",block:"Bikram",partner:"PRATHAM",month:"Jun 2026",cm_prevented:1,sbc_reach:10,pcma:0,jj:0,pocso:0,sops:0,vuln_m:20,vuln_f:25,adol_groups:0,oos_girls:10,oos_boys:5,cp_m:10,cp_f:10,cp_g:10,cp_b:10,pcwpc:"no",vuln_map:"yes",ch1098:"no",pol112:"no",wh181:"no"},
+  {district:"Patna",block:"Bikram",partner:"PRATHAM",month:"Jun 2026",cm_prevented:1,sbc_reach:10,pcma:0,jj:0,pocso:0,sops:0,vuln_m:20,vuln_f:25,adol_groups:0,oos_girls:10,oos_boys:5,cp_m:10,cp_f:10,cp_g:10,cp_b:10,pcwpc:"no",vuln_map:"no",ch1098:"no",pol112:"no",wh181:"no"},
+  {district:"Patna",block:"Bihta",partner:"BAL MITRA",month:"Jun 2026",cm_prevented:1,sbc_reach:0,pcma:0,jj:0,pocso:0,sops:0,vuln_m:0,vuln_f:0,adol_groups:0,oos_girls:4,oos_boys:0,cp_m:0,cp_f:0,cp_g:0,cp_b:0,pcwpc:"no",vuln_map:"no",ch1098:"no",pol112:"no",wh181:"no"},
+  {district:"Patna",block:"Paliganj",partner:"PRATHAM",month:"Jun 2026",cm_prevented:0,sbc_reach:0,pcma:0,jj:0,pocso:0,sops:0,vuln_m:0,vuln_f:0,adol_groups:0,oos_girls:0,oos_boys:0,cp_m:0,cp_f:0,cp_g:0,cp_b:0,pcwpc:"no",vuln_map:"no",ch1098:"no",pol112:"no",wh181:"no"},
+  {district:"Patna",block:"Phulwarisharif",partner:"SRI KRISHNA MISSION",month:"Jun 2026",cm_prevented:0,sbc_reach:0,pcma:0,jj:0,pocso:0,sops:0,vuln_m:0,vuln_f:0,adol_groups:0,oos_girls:0,oos_boys:0,cp_m:0,cp_f:0,cp_g:0,cp_b:0,pcwpc:"no",vuln_map:"no",ch1098:"no",pol112:"no",wh181:"no"},
+  {district:"Sitamarhi",block:"Parihar",partner:"ADITHI",month:"Jun 2026",cm_prevented:4,sbc_reach:5,pcma:3,jj:0,pocso:0,sops:0,vuln_m:60,vuln_f:68,adol_groups:5,oos_girls:10,oos_boys:7,cp_m:5,cp_f:5,cp_g:5,cp_b:5,pcwpc:"no",vuln_map:"no",ch1098:"no",pol112:"no",wh181:"no"},
+  {district:"Sitamarhi",block:"Parihar",partner:"ADITHI",month:"Jun 2026",cm_prevented:4,sbc_reach:5,pcma:3,jj:0,pocso:0,sops:0,vuln_m:60,vuln_f:68,adol_groups:5,oos_girls:10,oos_boys:7,cp_m:5,cp_f:5,cp_g:5,cp_b:5,pcwpc:"no",vuln_map:"no",ch1098:"no",pol112:"no",wh181:"no"},
+  {district:"Sitamarhi",block:"Parihar",partner:"ADITHI",month:"Jun 2026",cm_prevented:4,sbc_reach:5,pcma:3,jj:0,pocso:0,sops:0,vuln_m:60,vuln_f:68,adol_groups:5,oos_girls:10,oos_boys:7,cp_m:5,cp_f:5,cp_g:5,cp_b:5,pcwpc:"no",vuln_map:"no",ch1098:"no",pol112:"no",wh181:"no"},
+  {district:"Sitamarhi",block:"Parihar",partner:"ADITHI",month:"Jun 2026",cm_prevented:3,sbc_reach:5,pcma:3,jj:0,pocso:0,sops:0,vuln_m:60,vuln_f:68,adol_groups:4,oos_girls:10,oos_boys:7,cp_m:5,cp_f:5,cp_g:5,cp_b:5,pcwpc:"no",vuln_map:"no",ch1098:"no",pol112:"no",wh181:"no"},
+  {district:"Sitamarhi",block:"Parihar",partner:"ADITHI",month:"Jun 2026",cm_prevented:4,sbc_reach:5,pcma:3,jj:0,pocso:0,sops:0,vuln_m:60,vuln_f:68,adol_groups:5,oos_girls:10,oos_boys:7,cp_m:5,cp_f:5,cp_g:5,cp_b:5,pcwpc:"no",vuln_map:"no",ch1098:"no",pol112:"no",wh181:"no"},
+  {district:"Sitamarhi",block:"Parihar",partner:"ADITHI",month:"Jun 2026",cm_prevented:4,sbc_reach:5,pcma:3,jj:0,pocso:0,sops:0,vuln_m:60,vuln_f:68,adol_groups:5,oos_girls:10,oos_boys:7,cp_m:5,cp_f:5,cp_g:5,cp_b:5,pcwpc:"no",vuln_map:"no",ch1098:"no",pol112:"no",wh181:"no"},
+  {district:"Sitamarhi",block:"Parihar",partner:"ADITHI",month:"Jun 2026",cm_prevented:4,sbc_reach:5,pcma:3,jj:0,pocso:0,sops:0,vuln_m:60,vuln_f:68,adol_groups:5,oos_girls:10,oos_boys:7,cp_m:5,cp_f:5,cp_g:5,cp_b:5,pcwpc:"no",vuln_map:"no",ch1098:"no",pol112:"no",wh181:"no"},
+  {district:"Sitamarhi",block:"Parihar",partner:"ADITHI",month:"Jun 2026",cm_prevented:6,sbc_reach:7,pcma:3,jj:0,pocso:0,sops:0,vuln_m:60,vuln_f:68,adol_groups:8,oos_girls:10,oos_boys:7,cp_m:9,cp_f:11,cp_g:11,cp_b:11,pcwpc:"no",vuln_map:"no",ch1098:"no",pol112:"no",wh181:"no"},
+  {district:"Saran",block:"Maker",partner:"UNFPA",month:"Jun 2026",cm_prevented:0,sbc_reach:0,pcma:0,jj:0,pocso:0,sops:0,vuln_m:0,vuln_f:0,adol_groups:0,oos_girls:0,oos_boys:0,cp_m:0,cp_f:0,cp_g:0,cp_b:0,pcwpc:"no",vuln_map:"no",ch1098:"no",pol112:"no",wh181:"no"},
+  {district:"Katihar",block:"Falka",partner:"PRATHAM",month:"Jun 2026",cm_prevented:8,sbc_reach:0,pcma:0,jj:0,pocso:0,sops:0,vuln_m:0,vuln_f:0,adol_groups:0,oos_girls:10,oos_boys:5,cp_m:0,cp_f:0,cp_g:0,cp_b:0,pcwpc:"no",vuln_map:"no",ch1098:"no",pol112:"no",wh181:"no"}
+];
 
-// ─── STATE ───────────────────────────────────────────────────────────────────
-var RAW  = [];
-var DATA = [];
+// ════════════════════════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════════════════════════
+var RAW=[], DATA=[], isLive=false;
+var P=["#7C3AED","#0D9488","#EA580C","#DB2777","#2563EB","#16A34A","#CA8A04","#9333EA","#0891B2"];
 
-// ─── FIELD MAP (KoboToolbox group/field paths) ────────────────────────────────
-var FM = {
-  district    : ["district","gp_demographics/district","District"],
-  block       : ["block","gp_demographics/block","Block"],
-  partner     : ["partner_org","partner","gp_demographics/partner_org","Partner"],
-  month       : ["reporting_period","gp_demographics/reporting_period","_submission_time","start"],
-  cm_prevented: ["cm_prevented","tracking_verification/cm_prevented"],
-  sbc_reach   : ["sbc_reach_tot","SBC_Counselling/sbc_reach_tot","sbc_reach"],
-  pcma        : ["pcma_sessions","capacity_building/pcma_sessions"],
-  jj          : ["jj_sessions","capacity_building/jj_sessions"],
-  pocso       : ["pocso_sessions","capacity_building/pocso_sessions"],
-  sops        : ["sops_sessions","capacity_building/sops_sessions"],
-  vuln_m      : ["vul_male_no","public_helplines/vul_male_no","vuln_m"],
-  vuln_f      : ["vul_female_no","public_helplines/vul_female_no","vuln_f"],
-  adol_groups : ["adolescent_groups","adolescent_groups/adolescent_groups"],
-  oos_girls   : ["oosc_total_g","linkage_out_of_school_children/oosc_total_g"],
-  oos_boys    : ["oosc_total_b","linkage_out_of_school_children/oosc_total_b"],
-  cp_m        : ["community_part_m","community_program/total_participants_group/community_part_m"],
-  cp_f        : ["community_part_f","community_program/total_participants_group/community_part_f"],
-  cp_g        : ["community_part_g","community_program/total_participants_group/community_part_g"],
-  cp_b        : ["community_part_b","community_program/total_participants_group/community_part_b"],
-  pcwpc       : ["pcwpc_formed","gp_demographics/pcwpc_formed"],
-  vuln_map    : ["vulnerability_mapping","public_helplines/vulnerability_mapping"],
-  ch1098      : ["helpline_1098","public_helplines/helpline_1098"],
-  pol112      : ["helpline_112","public_helplines/helpline_112"],
-  wh181       : ["helpline_181","public_helplines/helpline_181"]
+// ════════════════════════════════════════════════════════════
+// KOBO FIELD MAPPING — tries many possible field name formats
+// ════════════════════════════════════════════════════════════
+var FM={
+  district:    ["district","District","gp_demographics/district","gp_info/district"],
+  block:       ["block","Block","gp_demographics/block","gp_info/block"],
+  partner:     ["partner","partner_org","Partner","gp_demographics/partner_org","partner_organisation"],
+  month:       ["reporting_period","month","Reporting_Period","gp_demographics/reporting_period","_submission_time","start"],
+  cm_prevented:["cm_prevented","CM_Prevented","tracking_verification/cm_prevented","no_cm_prevented"],
+  sbc_reach:   ["sbc_reach_tot","sbc_reach","SBC_Counselling/sbc_reach_tot","total_sbc_reach"],
+  pcma:        ["pcma_sessions","pcma","capacity_building/pcma_sessions","pcma_participants"],
+  jj:          ["jj_sessions","jj","capacity_building/jj_sessions","jj_participants"],
+  pocso:       ["pocso_sessions","pocso","capacity_building/pocso_sessions","pocso_participants"],
+  sops:        ["sops_sessions","sops","capacity_building/sops_sessions","sops_participants"],
+  vuln_m:      ["vul_male_no","vuln_m","public_helplines/vul_male_no","vulnerable_boys","vuln_boys"],
+  vuln_f:      ["vul_female_no","vuln_f","public_helplines/vul_female_no","vulnerable_girls","vuln_girls"],
+  adol_groups: ["adolescent_groups","adol_groups","adolescent_groups/adolescent_groups","no_adolescent_groups"],
+  oos_girls:   ["oosc_total_g","oos_girls","linkage_out_of_school_children/oosc_total_g","oos_g"],
+  oos_boys:    ["oosc_total_b","oos_boys","linkage_out_of_school_children/oosc_total_b","oos_b"],
+  cp_m:        ["community_part_m","cp_m","community_program/total_participants_group/community_part_m"],
+  cp_f:        ["community_part_f","cp_f","community_program/total_participants_group/community_part_f"],
+  cp_g:        ["community_part_g","cp_g","community_program/total_participants_group/community_part_g"],
+  cp_b:        ["community_part_b","cp_b","community_program/total_participants_group/community_part_b"],
+  pcwpc:       ["pcwpc_formed","pcwpc","gp_demographics/pcwpc_formed"],
+  vuln_map:    ["vulnerability_mapping","vuln_map","public_helplines/vulnerability_mapping"],
+  ch1098:      ["helpline_1098","ch1098","public_helplines/helpline_1098","1098_painted"],
+  pol112:      ["helpline_112","pol112","public_helplines/helpline_112","112_painted"],
+  wh181:       ["helpline_181","wh181","public_helplines/helpline_181","181_painted"]
 };
 
-function getF(row, cands) {
-  for (var i = 0; i < cands.length; i++) {
-    var v = row[cands[i]];
-    if (v !== undefined && v !== null && v !== "") return v;
+function gf(row,keys){
+  // Also try scanning ALL keys for partial matches
+  for(var i=0;i<keys.length;i++){var v=row[keys[i]];if(v!==undefined&&v!==null&&v!=="")return v;}
+  // partial scan
+  var rk=Object.keys(row);
+  for(var i=0;i<keys.length;i++){
+    var needle=keys[i].split("/").pop().toLowerCase();
+    for(var j=0;j<rk.length;j++){
+      if(rk[j].toLowerCase().indexOf(needle)>-1){var v=row[rk[j]];if(v!==undefined&&v!==null&&v!=="")return v;}
+    }
   }
   return null;
 }
 
-function fmtMonth(v) {
-  if (!v) return "Unknown";
-  try {
-    var d = new Date(v);
-    if (isNaN(d)) return String(v).slice(0, 10);
-    return d.toLocaleDateString("en-IN", {month:"short", year:"numeric"});
-  } catch(e) { return String(v).slice(0, 10); }
+function yn(v){var s=String(v||"").toLowerCase().trim();return(s==="yes"||s==="1"||s==="true")?"yes":"no";}
+function num(v){return Number(v)||0;}
+function fmtM(v){
+  if(!v)return"Unknown";
+  try{var d=new Date(v);if(isNaN(d.getTime()))return String(v).slice(0,10);
+    return d.toLocaleDateString("en-IN",{month:"short",year:"numeric"});}
+  catch(e){return String(v).slice(0,10);}
 }
 
-function yesNo(v) {
-  var s = String(v || "").toLowerCase().trim();
-  return (s === "yes" || s === "1" || s === "true") ? "yes" : "no";
-}
-
-function mapRow(raw) {
-  return {
-    district    : getF(raw, FM.district)    || "Unknown",
-    block       : getF(raw, FM.block)       || "Unknown",
-    partner     : getF(raw, FM.partner)     || "Unknown",
-    month       : fmtMonth(getF(raw, FM.month)),
-    cm_prevented: Number(getF(raw, FM.cm_prevented))  || 0,
-    sbc_reach   : Number(getF(raw, FM.sbc_reach))     || 0,
-    pcma        : Number(getF(raw, FM.pcma))           || 0,
-    jj          : Number(getF(raw, FM.jj))             || 0,
-    pocso       : Number(getF(raw, FM.pocso))          || 0,
-    sops        : Number(getF(raw, FM.sops))           || 0,
-    vuln_m      : Number(getF(raw, FM.vuln_m))         || 0,
-    vuln_f      : Number(getF(raw, FM.vuln_f))         || 0,
-    adol_groups : Number(getF(raw, FM.adol_groups))    || 0,
-    oos_girls   : Number(getF(raw, FM.oos_girls))      || 0,
-    oos_boys    : Number(getF(raw, FM.oos_boys))       || 0,
-    cp_m        : Number(getF(raw, FM.cp_m))           || 0,
-    cp_f        : Number(getF(raw, FM.cp_f))           || 0,
-    cp_g        : Number(getF(raw, FM.cp_g))           || 0,
-    cp_b        : Number(getF(raw, FM.cp_b))           || 0,
-    pcwpc       : yesNo(getF(raw, FM.pcwpc)),
-    vuln_map    : yesNo(getF(raw, FM.vuln_map)),
-    ch1098      : yesNo(getF(raw, FM.ch1098)),
-    pol112      : yesNo(getF(raw, FM.pol112)),
-    wh181       : yesNo(getF(raw, FM.wh181))
+function mapRow(raw){
+  return{
+    _raw:raw,
+    district:gf(raw,FM.district)||"Unknown",
+    block:gf(raw,FM.block)||"Unknown",
+    partner:gf(raw,FM.partner)||"Unknown",
+    month:fmtM(gf(raw,FM.month)),
+    cm_prevented:num(gf(raw,FM.cm_prevented)),
+    sbc_reach:num(gf(raw,FM.sbc_reach)),
+    pcma:num(gf(raw,FM.pcma)),
+    jj:num(gf(raw,FM.jj)),
+    pocso:num(gf(raw,FM.pocso)),
+    sops:num(gf(raw,FM.sops)),
+    vuln_m:num(gf(raw,FM.vuln_m)),
+    vuln_f:num(gf(raw,FM.vuln_f)),
+    adol_groups:num(gf(raw,FM.adol_groups)),
+    oos_girls:num(gf(raw,FM.oos_girls)),
+    oos_boys:num(gf(raw,FM.oos_boys)),
+    cp_m:num(gf(raw,FM.cp_m)),
+    cp_f:num(gf(raw,FM.cp_f)),
+    cp_g:num(gf(raw,FM.cp_g)),
+    cp_b:num(gf(raw,FM.cp_b)),
+    pcwpc:yn(gf(raw,FM.pcwpc)),
+    vuln_map:yn(gf(raw,FM.vuln_map)),
+    ch1098:yn(gf(raw,FM.ch1098)),
+    pol112:yn(gf(raw,FM.pol112)),
+    wh181:yn(gf(raw,FM.wh181))
   };
 }
 
-// ─── FETCH WITH PROXY FALLBACK ────────────────────────────────────────────────
-async function fetchWithProxies(targetUrl, headers) {
-  var lastErr;
-  for (var i = 0; i < PROXIES.length; i++) {
-    try {
-      var proxyUrl = PROXIES[i] + encodeURIComponent(targetUrl);
-      var opts = { headers: headers || {} };
-      var res = await fetch(proxyUrl, opts);
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      var json = await res.json();
+// ════════════════════════════════════════════════════════════
+// FETCH — 4 PROXY FALLBACKS + FALLBACK DATA
+// ════════════════════════════════════════════════════════════
+async function tryFetch(url, hdrs){
+  var last;
+  for(var i=0;i<PROXIES.length;i++){
+    try{
+      var purl=PROXIES[i](url);
+      var res=await fetch(purl,{headers:hdrs,mode:"cors"});
+      if(!res.ok) throw new Error("HTTP "+res.status);
+      var ct=res.headers.get("content-type")||"";
+      var text=await res.text();
+      // strip any HTML wrapper from proxy
+      var json;
+      try{json=JSON.parse(text);}
+      catch(e){
+        // allorigins wraps in {contents:"..."}
+        try{var wrap=JSON.parse(text);json=JSON.parse(wrap.contents);}
+        catch(e2){throw new Error("Invalid JSON from proxy "+i);}
+      }
       return json;
-    } catch(e) {
-      lastErr = e;
-    }
+    }catch(e){last=e;}
   }
-  throw lastErr || new Error("All proxies failed");
+  throw last||new Error("All proxies failed");
 }
 
-// Fetch ALL pages (KoboToolbox paginates at 30 000 by default but we force limit)
-async function fetchAllSubmissions() {
-  var baseUrl = "https://" + KOBO_SERVER + "/api/v2/assets/" + KOBO_UID + "/data/?format=json&limit=30000";
-  var hdrs = { "Authorization": "Token " + KOBO_TOKEN };
-  var json = await fetchWithProxies(baseUrl, hdrs);
-  var results = json.results || [];
-  // If there are more pages, fetch them
-  var next = json.next;
-  while (next) {
-    var more = await fetchWithProxies(next, hdrs);
-    results = results.concat(more.results || []);
-    next = more.next || null;
-  }
+async function fetchKobo(){
+  var url="https://"+SERVER+"/api/v2/assets/"+UID+"/data/?format=json&limit=30000";
+  var hdrs={"Authorization":"Token "+TOKEN};
+  var json=await tryFetch(url,hdrs);
+  var results=json.results||[];
+  // paginate
+  var next=json.next;
+  while(next){var more=await tryFetch(next,hdrs);results=results.concat(more.results||[]);next=more.next||null;}
   return results;
 }
 
-// ─── LOAD & RENDER ────────────────────────────────────────────────────────────
-async function loadData() {
-  setMsg("Connecting to KoboToolbox…");
-  try {
-    var rows = await fetchAllSubmissions();
-    RAW  = rows.map(mapRow);
-    DATA = RAW.slice();
-    rebuildFilters();
-    renderAll();
-    setStatus("live", "Live · " + new Date().toLocaleTimeString("en-IN"));
-    hideLoading();
-    document.getElementById("footer-txt").textContent =
-      "Source: KoboToolbox Live · Bihar · " + RAW.length + " submissions · Last updated " + new Date().toLocaleString("en-IN");
-    document.getElementById("hdr-date").textContent =
-      new Date().toLocaleDateString("en-IN", {month:"long", year:"numeric"});
-    document.getElementById("sub-badge").textContent = RAW.length + " Submissions";
-    hideError();
-  } catch(e) {
-    hideLoading();
-    showError("Could not load live data: " + e.message + ". The page will retry in 30 seconds.");
-    setStatus("error", "Connection error");
-    setTimeout(loadData, 30000);
+async function loadData(silent){
+  if(!silent){lm("Connecting to KoboToolbox…","Trying live API…");}
+  try{
+    var rows=await fetchKobo();
+    if(!rows.length) throw new Error("0 submissions returned");
+    RAW=rows.map(mapRow);
+    isLive=true;
+    setBanner("","");
+    setDot("live","🟢 Live KoboToolbox");
+    showToast("✅ Loaded "+RAW.length+" live submissions");
+  }catch(e){
+    if(!isLive){
+      // first load failed — use fallback
+      RAW=FALLBACK.slice();
+      setDot("err","⚠ Offline — showing built-in data");
+      setBanner("warn","⚠ Could not reach KoboToolbox ("+e.message+"). Showing built-in data. Will auto-retry every 60 s.");
+    }
+    // keep existing data if already live
+    setTimeout(function(){loadData(true);},60000);
   }
+  DATA=RAW.slice();
+  rebuildFilters();
+  renderAll();
+  hideLoader();
+  updFooter();
+  document.getElementById("sub-badge").textContent=RAW.length+" Submissions";
+  document.getElementById("hdr-date").textContent=new Date().toLocaleDateString("en-IN",{month:"long",year:"numeric"});
 }
 
-// ─── STATUS ──────────────────────────────────────────────────────────────────
-function setStatus(state, msg) {
-  document.getElementById("live-txt").textContent = msg;
-  document.getElementById("live-dot").style.background =
-    state === "live" ? "#16A34A" : state === "error" ? "#DC2626" : "#CA8A04";
-}
-function setMsg(m) { document.getElementById("load-msg").textContent = m; }
-function hideLoading() { document.getElementById("loading").style.display = "none"; }
-function showError(m) {
-  var el = document.getElementById("error-banner");
-  el.style.display = "block";
-  el.textContent = "⚠ " + m;
-}
-function hideError() { document.getElementById("error-banner").style.display = "none"; }
+// auto-refresh silently every 5 min when live
+setInterval(function(){if(isLive)loadData(true);},300000);
 
-// ─── FILTERS ─────────────────────────────────────────────────────────────────
-function uniq(arr) {
-  return ["All"].concat(Array.from(new Set(arr.filter(Boolean))).sort());
+// ════════════════════════════════════════════════════════════
+// UI HELPERS
+// ════════════════════════════════════════════════════════════
+function hideLoader(){document.getElementById("loader").style.display="none";}
+function lm(a,b){document.getElementById("load-msg").textContent=a;document.getElementById("load-sub").textContent=b||"";}
+function setDot(state,txt){
+  var d=document.getElementById("dot"),t=document.getElementById("dot-txt");
+  d.className="dot"+(state==="live"?" live":state==="err"?" err":"");
+  t.textContent=txt;
 }
-function populateSel(id, vals) {
-  var s = document.getElementById(id);
-  while (s.options.length) s.remove(0);
-  vals.forEach(function(v) { var o = document.createElement("option"); o.value = o.textContent = v; s.appendChild(o); });
+function setBanner(type,msg){
+  var b=document.getElementById("banner");
+  b.className=type?type:"";b.textContent=msg;b.style.display=type?"block":"none";
 }
-function rebuildFilters() {
-  populateSel("f-district", uniq(RAW.map(function(r){return r.district;})));
-  populateSel("f-partner",  uniq(RAW.map(function(r){return r.partner;})));
-  populateSel("f-block",    uniq(RAW.map(function(r){return r.block;})));
+function updFooter(){
+  document.getElementById("footer").textContent=
+    (isLive?"🟢 Live KoboToolbox":"⚠ Built-in data")+" · Bihar · "+RAW.length+" total submissions · Last updated "+new Date().toLocaleString("en-IN");
 }
-function applyFilters() {
-  var d = document.getElementById("f-district").value;
-  var p = document.getElementById("f-partner").value;
-  var b = document.getElementById("f-block").value;
-  DATA = RAW.filter(function(r){
-    return (d==="All"||r.district===d) && (p==="All"||r.partner===p) && (b==="All"||r.block===b);
+
+var toastT;
+function showToast(msg){
+  var b=document.getElementById("banner");b.className="info";b.textContent=msg;b.style.display="block";
+  clearTimeout(toastT);toastT=setTimeout(function(){b.style.display="none";},5000);
+}
+
+// ════════════════════════════════════════════════════════════
+// FILTERS
+// ════════════════════════════════════════════════════════════
+function uniq(arr){return["All"].concat(Array.from(new Set(arr.filter(Boolean))).sort());}
+function pop(id,vals){
+  var s=document.getElementById(id),prev=s.value;
+  while(s.options.length)s.remove(0);
+  vals.forEach(function(v){var o=document.createElement("option");o.value=o.textContent=v;s.appendChild(o);});
+  if(vals.indexOf(prev)>-1)s.value=prev;
+}
+function rebuildFilters(){
+  pop("f-dist", uniq(RAW.map(function(r){return r.district;})));
+  pop("f-part", uniq(RAW.map(function(r){return r.partner;})));
+  pop("f-block",uniq(RAW.map(function(r){return r.block;})));
+  pop("f-month",uniq(RAW.map(function(r){return r.month;})));
+}
+function applyFilters(){
+  var d=document.getElementById("f-dist").value;
+  var p=document.getElementById("f-part").value;
+  var b=document.getElementById("f-block").value;
+  var m=document.getElementById("f-month").value;
+  DATA=RAW.filter(function(r){
+    return(d==="All"||r.district===d)&&(p==="All"||r.partner===p)&&(b==="All"||r.block===b)&&(m==="All"||r.month===m);
   });
   renderAll();
 }
 
-// ─── HELPERS ─────────────────────────────────────────────────────────────────
-function sum(arr, k) { return arr.reduce(function(s,r){return s+(Number(r[k])||0);}, 0); }
-function cnt(arr, k, v) { return arr.filter(function(r){return String(r[k]||"").toLowerCase()===v;}).length; }
-
-// ─── TOOLTIP ─────────────────────────────────────────────────────────────────
-var tt = document.getElementById("tt");
-function showTT(e, title, rows) {
-  tt.className = "tooltip show";
-  document.getElementById("tt-title").textContent = title;
-  document.getElementById("tt-body").innerHTML = rows.map(function(r){
-    return '<div class="tooltip-row"><span style="width:8px;height:8px;border-radius:50%;background:'+(r.color||"#374151")+';display:inline-block;flex-shrink:0"></span> '+r.label+': <strong>'+r.val+'</strong></div>';
-  }).join("");
-  tt.style.left = (e.clientX+14)+"px"; tt.style.top = (e.clientY-10)+"px";
+// ════════════════════════════════════════════════════════════
+// AGGREGATION
+// ════════════════════════════════════════════════════════════
+function sum(a,k){return a.reduce(function(s,r){return s+num(r[k]);},0);}
+function cnt(a,k,v){return a.filter(function(r){return String(r[k]||"").toLowerCase()===v;}).length;}
+function grp(a,key,fn){
+  var m={};
+  a.forEach(function(r){var k=r[key]||"Unknown";if(!m[k])m[k]={label:k};fn(m[k],r);});
+  return Object.values(m);
 }
-function hideTT() { tt.className = "tooltip"; }
-document.addEventListener("mousemove", function(e){
-  if (tt.classList.contains("show")){ tt.style.left=(e.clientX+14)+"px"; tt.style.top=(e.clientY-10)+"px"; }
-});
 
-// ─── CHART: BAR ──────────────────────────────────────────────────────────────
-function barChart(el, data, labelKey, series, opts) {
-  opts = opts || {};
-  if (!el || !data.length) {
-    if (el) el.innerHTML = noData(); return;
-  }
-  var maxVal = Math.max.apply(null, [1].concat(data.map(function(d){
-    return Math.max.apply(null, series.map(function(s){return Number(d[s.key])||0;}));
-  })));
-  var H = 180;
-  var cols = data.map(function(d, di) {
-    var bars = series.map(function(s, si) {
-      var v = Number(d[s.key]) || 0;
-      var h = Math.max(2, Math.round((v / maxVal) * (H - 20)));
-      var col = s.color || PAL[(di+si) % PAL.length];
-      var w = series.length > 1 ? "44%" : "80%";
-      // build tooltip data inline-safe
-      var tipLabel = (s.label || s.key).replace(/'/g,"");
-      var tipTitle = String(d[labelKey]).replace(/'/g,"");
-      return '<div class="bar-rect" style="height:'+h+'px;background:'+col+';width:'+w+';display:inline-block;margin:0 1px" '+
-        'onmouseenter="showTT(event,\''+tipTitle+'\',[{label:\''+tipLabel+'\',val:'+v+',color:\''+col+'\'}])" onmouseleave="hideTT()"></div>';
+// ════════════════════════════════════════════════════════════
+// TOOLTIP
+// ════════════════════════════════════════════════════════════
+var tt=document.getElementById("tt");
+function stt(e,title,rows){
+  tt.className="tt on";
+  document.getElementById("tt-t").textContent=title;
+  document.getElementById("tt-b").innerHTML=rows.map(function(r){
+    return'<div class="tt-row"><span style="width:8px;height:8px;border-radius:50%;background:'+(r.c||"#374151")+';display:inline-block;flex-shrink:0"></span> '+(r.l||"")+': <strong>'+(r.v||0)+'</strong></div>';
+  }).join("");
+  tt.style.left=(e.clientX+14)+"px";tt.style.top=(e.clientY-10)+"px";
+}
+function htt(){tt.className="tt";}
+document.addEventListener("mousemove",function(e){if(tt.classList.contains("on")){tt.style.left=(e.clientX+14)+"px";tt.style.top=(e.clientY-10)+"px";}});
+
+// ════════════════════════════════════════════════════════════
+// CHARTS
+// ════════════════════════════════════════════════════════════
+function nd(){return'<div style="height:120px;display:flex;align-items:center;justify-content:center;color:#9CA3AF;font-size:13px">No data for this filter</div>';}
+
+function barChart(el,data,lk,series,opts){
+  opts=opts||{};
+  if(!el||!data.length){if(el)el.innerHTML=nd();return;}
+  var maxV=Math.max.apply(null,[1].concat(data.map(function(d){return Math.max.apply(null,series.map(function(s){return num(d[s.k]);}));})));
+  var H=170;
+  var cols=data.map(function(d,di){
+    var bars=series.map(function(s,si){
+      var v=num(d[s.k]);
+      var h=Math.max(2,Math.round((v/maxV)*(H-20)));
+      var col=s.c||P[(di*3+si)%P.length];
+      var w=series.length>1?"44%":"76%";
+      var ti=String(d[lk]).replace(/['"]/g,"");
+      var sl=String(s.l||s.k).replace(/['"]/g,"");
+      return'<div class="bar-rect" style="height:'+h+'px;background:'+col+';width:'+w+';display:inline-block;margin:0 1px" onmouseenter="stt(event,\''+ti+'\',[{l:\''+sl+'\',v:'+v+',c:\''+col+'\'}])" onmouseleave="htt()"></div>';
     }).join("");
-    var valLbl = series.length === 1 ? (Number(d[series[0].key])||0) : "";
-    var fs = data.length > 6 ? 8 : 10;
-    return '<div class="bar-col">'+bars+'<div class="bar-val">'+valLbl+'</div>'+
-      '<div class="bar-label" style="font-size:'+fs+'px">'+d[labelKey]+'</div></div>';
+    var vl=series.length===1?num(d[series[0].k]):"";
+    var fs=data.length>7?8:10;
+    return'<div class="bar-col">'+bars+'<div class="bar-val">'+vl+'</div><div class="bar-lbl" style="font-size:'+fs+'px">'+d[lk]+'</div></div>';
   }).join("");
-  var legend = "";
-  if (opts.legend && series.length > 1) {
-    legend = '<div style="display:flex;gap:14px;justify-content:center;margin-top:8px;flex-wrap:wrap">'+
-      series.map(function(s){
-        return '<span style="font-size:11px;display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:3px;background:'+s.color+';display:inline-block"></span>'+s.label+'</span>';
-      }).join("")+'</div>';
+  var legend="";
+  if(opts.legend&&series.length>1){
+    legend='<div class="leg">'+series.map(function(s){return'<div class="leg-item"><div class="leg-sq" style="background:'+s.c+'"></div>'+s.l+'</div>';}).join("")+'</div>';
   }
-  el.innerHTML = '<div class="bar-chart"><div class="bar-group">'+cols+'</div>'+legend+'</div>';
+  el.innerHTML='<div class="bar-wrap"><div class="bar-group">'+cols+'</div>'+legend+'</div>';
 }
 
-// ─── CHART: LINE ─────────────────────────────────────────────────────────────
-function lineChart(el, data, xKey, yKey) {
-  if (!el) return;
-  if (!data.length) { el.innerHTML = noData(); return; }
-  var W=500, H=160, PL=32, PT=10, PR=20, PB=30;
-  var iW=W-PL-PR, iH=H-PT-PB;
-  var maxY = Math.max.apply(null, [1].concat(data.map(function(d){return d[yKey];})));
-  var xs = data.map(function(_,i){return PL+(i/Math.max(data.length-1,1))*iW;});
-  var ys = data.map(function(d){return PT+iH-(d[yKey]/maxY)*iH;});
-  var pts = xs.map(function(x,i){return x+","+ys[i];}).join(" ");
-  var fill = pts+" "+xs[xs.length-1]+","+(PT+iH)+" "+xs[0]+","+(PT+iH);
-  var ticks = [0, Math.ceil(maxY/2), maxY].map(function(v){
-    var y = PT+iH-(v/maxY)*iH;
-    return '<line x1="'+PL+'" y1="'+y+'" x2="'+(PL+iW)+'" y2="'+y+'" stroke="#F3F4F6" stroke-width="1.5"/>'+
-      '<text x="'+(PL-4)+'" y="'+(y+4)+'" font-size="10" fill="#9CA3AF" text-anchor="end">'+v+'</text>';
+function lineChart(el,data,xk,yk){
+  if(!el||!data.length){if(el)el.innerHTML=nd();return;}
+  var W=480,H=150,PL=30,PT=8,PR=16,PB=28;
+  var iW=W-PL-PR,iH=H-PT-PB;
+  var maxY=Math.max.apply(null,[1].concat(data.map(function(d){return d[yk];})));
+  var xs=data.map(function(_,i){return PL+(i/Math.max(data.length-1,1))*iW;});
+  var ys=data.map(function(d){return PT+iH-(d[yk]/maxY)*iH;});
+  var pts=xs.map(function(x,i){return x+","+ys[i];}).join(" ");
+  var fill=pts+" "+(PL+iW)+","+(PT+iH)+" "+PL+","+(PT+iH);
+  var ticks=[0,Math.round(maxY/2),maxY].map(function(v){
+    var y=PT+iH-(v/maxY)*iH;
+    return'<line x1="'+PL+'" y1="'+y+'" x2="'+(PL+iW)+'" y2="'+y+'" stroke="#F3F4F6" stroke-width="1"/><text x="'+(PL-3)+'" y="'+(y+4)+'" font-size="9" fill="#9CA3AF" text-anchor="end">'+v+'</text>';
   }).join("");
-  var dots = data.map(function(d,i){
-    var lbl = String(d[xKey]).replace(/'/g,"");
-    return '<circle cx="'+xs[i]+'" cy="'+ys[i]+'" r="5" fill="'+PURPLE+'" stroke="#fff" stroke-width="2" style="cursor:pointer" '+
-      'onmouseenter="showTT(event,\''+lbl+'\',[{label:\'Submissions\',val:'+d[yKey]+',color:\''+PURPLE+'\'}])" onmouseleave="hideTT()"/>'+
-      '<text x="'+xs[i]+'" y="'+(H-4)+'" font-size="10" fill="#6B7280" text-anchor="middle">'+d[xKey]+'</text>';
+  var dots=data.map(function(d,i){
+    var lbl=String(d[xk]).replace(/['"]/g,"");
+    var fsx=data.length>5?8:10;
+    return'<circle cx="'+xs[i]+'" cy="'+ys[i]+'" r="4.5" fill="#7C3AED" stroke="#fff" stroke-width="2" style="cursor:pointer" onmouseenter="stt(event,\''+lbl+'\',[{l:\'Submissions\',v:'+d[yk]+',c:\'#7C3AED\'}])" onmouseleave="htt()"/>'+
+      '<text x="'+xs[i]+'" y="'+(H-3)+'" font-size="'+fsx+'" fill="#9CA3AF" text-anchor="middle">'+d[xk]+'</text>';
   }).join("");
-  el.innerHTML = '<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;overflow:visible">'+
-    '<defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1">'+
-    '<stop offset="0%" stop-color="'+PURPLE+'" stop-opacity=".18"/>'+
-    '<stop offset="100%" stop-color="'+PURPLE+'" stop-opacity="0"/></linearGradient></defs>'+
-    ticks+'<polygon points="'+fill+'" fill="url(#lg)"/>'+
-    '<polyline points="'+pts+'" fill="none" stroke="'+PURPLE+'" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>'+
+  el.innerHTML='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;overflow:visible">'+
+    '<defs><linearGradient id="lg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7C3AED" stop-opacity=".15"/><stop offset="100%" stop-color="#7C3AED" stop-opacity="0"/></linearGradient></defs>'+
+    ticks+'<polygon points="'+fill+'" fill="url(#lg1)"/>'+
+    '<polyline points="'+pts+'" fill="none" stroke="#7C3AED" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>'+
     dots+'</svg>';
 }
 
-// ─── CHART: PIE ──────────────────────────────────────────────────────────────
-function pieChart(el, data, colors) {
-  if (!el) return;
-  var total = data.reduce(function(s,d){return s+d.value;},0) || 1;
-  var R=70, r=42, CX=90, CY=90, ang=-Math.PI/2;
-  var slices = data.map(function(d, i) {
-    var a = (d.value/total)*2*Math.PI;
-    var x1=CX+R*Math.cos(ang), y1=CY+R*Math.sin(ang); ang+=a;
-    var x2=CX+R*Math.cos(ang), y2=CY+R*Math.sin(ang);
-    var xi=CX+r*Math.cos(ang-a), yi=CY+r*Math.sin(ang-a);
-    var xj=CX+r*Math.cos(ang),   yj=CY+r*Math.sin(ang);
-    var lg = a>Math.PI?1:0;
-    return {path:"M"+xi+","+yi+" A"+r+","+r+" 0 "+lg+" 1 "+xj+","+yj+" L"+x2+","+y2+" A"+R+","+R+" 0 "+lg+" 0 "+x1+","+y1+" Z",
-            color:colors[i], name:d.name, val:d.value};
-  });
-  var paths = slices.map(function(s){
-    var n=String(s.name).replace(/'/g,"");
-    return '<path d="'+s.path+'" fill="'+s.color+'" opacity=".9" style="cursor:pointer" '+
-      'onmouseenter="showTT(event,\''+n+'\',[{label:\'Count\',val:'+s.val+',color:\''+s.color+'\'}])" onmouseleave="hideTT()"/>';
+function pieChart(el,data,cols){
+  if(!el)return;
+  var total=data.reduce(function(s,d){return s+d.v;},0)||1;
+  var R=66,r=40,CX=80,CY=80,ang=-Math.PI/2;
+  var slices=data.map(function(d,i){
+    var a=(d.v/total)*2*Math.PI;
+    if(a<0.001){ang+=a;return null;}
+    var x1=CX+R*Math.cos(ang),y1=CY+R*Math.sin(ang);ang+=a;
+    var x2=CX+R*Math.cos(ang),y2=CY+R*Math.sin(ang);
+    var xi=CX+r*Math.cos(ang-a),yi=CY+r*Math.sin(ang-a);
+    var xj=CX+r*Math.cos(ang),yj=CY+r*Math.sin(ang);
+    var lg=a>Math.PI?1:0;
+    var n=String(d.n).replace(/['"]/g,"");
+    return'<path d="M'+xi+','+yi+' A'+r+','+r+' 0 '+lg+' 1 '+xj+','+yj+' L'+x2+','+y2+' A'+R+','+R+' 0 '+lg+' 0 '+x1+','+y1+' Z" fill="'+cols[i]+'" opacity=".92" style="cursor:pointer" onmouseenter="stt(event,\''+n+'\',[{l:\'Count\',v:'+d.v+',c:\''+cols[i]+'\'}])" onmouseleave="htt()"/>';
+  }).filter(Boolean).join("");
+  var legend=data.map(function(d,i){
+    return'<div class="pie-item"><span class="pie-dot" style="background:'+cols[i]+'"></span><span class="pie-nm">'+d.n+'</span><span class="pie-n">'+d.v+'</span></div>';
   }).join("");
-  var legend = data.map(function(d,i){
-    return '<div class="pie-legend-item"><span class="pie-dot" style="background:'+colors[i]+'"></span>'+
-      '<span class="pie-name">'+d.name+'</span><span class="pie-num">'+d.value+'</span></div>';
-  }).join("");
-  el.innerHTML = '<div class="pie-wrap"><svg viewBox="0 0 180 180" width="160" height="160">'+paths+'</svg>'+
-    '<div class="pie-legend">'+legend+'</div></div>';
+  el.innerHTML='<div class="pie-wrap"><svg viewBox="0 0 160 160" width="150" height="150">'+slices+'</svg><div class="pie-legend">'+legend+'</div></div>';
 }
 
-// ─── CHART: PROGRESS ─────────────────────────────────────────────────────────
-function progressChart(el, data, total, colors) {
-  if (!el) return;
-  el.innerHTML = '<div class="prog-list">'+data.map(function(d,i){
-    var pct = total > 0 ? Math.round((d.painted/total)*100) : 0;
-    return '<div><div class="prog-head"><span class="prog-label">'+d.name+'</span>'+
-      '<span class="prog-stat">'+d.painted+'/'+total+' GPs ('+pct+'%)</span></div>'+
-      '<div class="prog-track"><div class="prog-fill" style="width:'+pct+'%;background:'+(colors[i]||PAL[i])+'"></div></div></div>';
+function progChart(el,data,total,cols){
+  if(!el)return;
+  el.innerHTML='<div class="prog-list">'+data.map(function(d,i){
+    var pct=total>0?Math.round((d.painted/total)*100):0;
+    return'<div><div class="prog-hd"><span class="prog-lbl">'+d.n+'</span><span class="prog-val">'+d.painted+'/'+total+' GPs ('+pct+'%)</span></div>'+
+      '<div class="prog-track"><div class="prog-fill" style="width:'+pct+'%;background:'+(cols[i]||P[i])+'"></div></div></div>';
   }).join("")+'</div>';
 }
 
-function noData() {
-  return '<div style="height:140px;display:flex;align-items:center;justify-content:center;color:#9CA3AF;font-size:13px">No data for this filter</div>';
-}
+// ════════════════════════════════════════════════════════════
+// RENDER ALL
+// ════════════════════════════════════════════════════════════
+function renderAll(){
+  var d=DATA, n=d.length;
 
-// ─── RENDER ALL ───────────────────────────────────────────────────────────────
-function renderAll() {
-  var d = DATA, n = d.length;
-
-  // KPIs
-  var kpis = [
-    {label:"Total Submissions",        icon:"📋",color:PURPLE, val:n,                                      sub:"Gram Panchayats"},
-    {label:"Child Marriages Prevented",icon:"🛡️",color:PINK,   val:sum(d,"cm_prevented"),                  sub:"Reported cases stopped"},
-    {label:"Vulnerable Children",      icon:"👧",color:ORANGE, val:sum(d,"vuln_m")+sum(d,"vuln_f"),        sub:"Identified across GPs"},
-    {label:"Adolescent Groups",        icon:"👥",color:TEAL,   val:sum(d,"adol_groups"),                   sub:"Functional groups"},
-    {label:"PCWPC Formed",             icon:"🏛️",color:BLUE,   val:cnt(d,"pcwpc","yes"),                   sub:"of total GPs"},
-    {label:"Vulnerability Mapping",    icon:"🗺️",color:GREEN,  val:cnt(d,"vuln_map","yes"),                sub:"GPs conducted"},
-    {label:"SBC Campaign Reach",       icon:"📣",color:GOLD,   val:sum(d,"sbc_reach"),                     sub:"People reached"},
-    {label:"Out-of-School Children",   icon:"🏫",color:PURPLE, val:sum(d,"oos_girls")+sum(d,"oos_boys"),   sub:"Identified"},
+  // ── KPIs ──
+  var kpis=[
+    {ico:"📋",lbl:"Total Submissions",       val:n,                                    sub:"Gram Panchayats reporting",  col:"#7C3AED"},
+    {ico:"🛡️",lbl:"Child Marriages Prevented",val:sum(d,"cm_prevented"),               sub:"Cases stopped this period",  col:"#DB2777"},
+    {ico:"👧",lbl:"Vulnerable Children",      val:sum(d,"vuln_m")+sum(d,"vuln_f"),     sub:sum(d,"vuln_f")+"F + "+sum(d,"vuln_m")+"M identified",col:"#EA580C"},
+    {ico:"👥",lbl:"Adolescent Groups",         val:sum(d,"adol_groups"),                sub:"Functional groups formed",   col:"#0D9488"},
+    {ico:"🏛️",lbl:"PCWPC Formed",             val:cnt(d,"pcwpc","yes"),                sub:"of "+n+" GPs surveyed",      col:"#2563EB"},
+    {ico:"🗺️",lbl:"Vulnerability Mapping",    val:cnt(d,"vuln_map","yes"),             sub:"GPs completed mapping",      col:"#16A34A"},
+    {ico:"📣",lbl:"SBC Reach",                val:sum(d,"sbc_reach"),                  sub:"People reached by campaigns",col:"#CA8A04"},
+    {ico:"🏫",lbl:"Out-of-School Children",   val:sum(d,"oos_girls")+sum(d,"oos_boys"),sub:sum(d,"oos_girls")+"G + "+sum(d,"oos_boys")+"B identified",col:"#9333EA"},
+    {ico:"📚",lbl:"Training Sessions",        val:sum(d,"pcma")+sum(d,"jj")+sum(d,"pocso")+sum(d,"sops"),sub:"PCMA + JJ + POCSO + SOPs",col:"#0891B2"},
+    {ico:"🤝",lbl:"Community Participants",   val:sum(d,"cp_m")+sum(d,"cp_f")+sum(d,"cp_g")+sum(d,"cp_b"),sub:"Total in community dialogues",col:"#7C3AED"},
   ];
-  document.getElementById("kpi-grid").innerHTML = kpis.map(function(k){
-    return '<div class="kpi"><div class="kpi-icon" style="background:'+k.color+'22">'+k.icon+'</div>'+
-      '<div style="flex:1"><div class="kpi-val">'+k.val+'</div>'+
-      '<div class="kpi-lbl">'+k.label+'</div>'+
+  document.getElementById("kpi-grid").innerHTML=kpis.map(function(k){
+    return'<div class="kpi"><div class="kpi-ico" style="background:'+k.col+'18">'+k.ico+'</div>'+
+      '<div><div class="kpi-val" style="color:'+k.col+'">'+k.val+'</div>'+
+      '<div class="kpi-lbl">'+k.lbl+'</div>'+
       '<div class="kpi-sub">'+k.sub+'</div></div></div>';
   }).join("");
 
-  // Charts
-  var cc = document.getElementById("charts-container");
-  cc.innerHTML = "";
-
-  function row() {
-    var items = Array.prototype.slice.call(arguments);
-    var r = document.createElement("div");
-    r.className = "chart-row"; r.style.marginBottom = "18px";
-    items.forEach(function(c){r.appendChild(c);}); cc.appendChild(r);
+  // helper: build chart card and attach to row element
+  function cc(rowId,id,title){
+    var existing=document.getElementById("cc-"+id);
+    if(existing)return existing;
+    var card=document.createElement("div");card.className="chart-card";
+    card.innerHTML='<div class="chart-title">'+title+'</div><div id="cc-'+id+'"></div>';
+    document.getElementById(rowId).appendChild(card);
+    return document.getElementById("cc-"+id);
   }
-  function col(id, title) {
-    var c = document.createElement("div"); c.className = "chart-card";
-    c.innerHTML = '<h2>'+title+'</h2><div id="cc-'+id+'"></div>';
-    return c;
-  }
-  function el(id){ return document.getElementById("cc-"+id); }
+  // clear rows
+  ["row1","row2","row3","row4"].forEach(function(r){document.getElementById(r).innerHTML="";});
 
-  // Row 1 — line + CM by district
-  var c1 = col("line","Submissions Over Time");
-  var c2 = col("cm","Child Marriages Prevented by District");
-  row(c1, c2);
-  var mMap = {};
-  d.forEach(function(r){ mMap[r.month] = (mMap[r.month]||0)+1; });
-  lineChart(el("line"),
-    Object.entries(mMap).sort().map(function(e){return{month:e[0],count:e[1]};}),
-    "month","count");
-  var distCM = {};
-  d.forEach(function(r){
-    if(!distCM[r.district]) distCM[r.district]={district:r.district,cm_prevented:0};
-    distCM[r.district].cm_prevented += Number(r.cm_prevented)||0;
-  });
-  barChart(el("cm"),
-    Object.values(distCM).sort(function(a,b){return b.cm_prevented-a.cm_prevented;}),
-    "district",[{key:"cm_prevented",label:"CM Prevented",color:PINK}]);
+  // ── ROW 1: Submissions over time + CM by District ──
+  lineChart(cc("row1","line","Submissions Over Time"),
+    (function(){var m={};d.forEach(function(r){m[r.month]=(m[r.month]||0)+1;});
+      return Object.entries(m).sort(function(a,b){return a[0]>b[0]?1:-1;}).map(function(e){return{month:e[0],count:e[1]};});
+    })(),"month","count");
 
-  // Row 2 — training + community
-  var c3 = col("train","Training Participants by Programme");
-  var c4 = col("comm","Community Dialogue Participants");
-  row(c3, c4);
-  barChart(el("train"),
-    [{name:"PCMA",participants:sum(d,"pcma")},{name:"JJ Act",participants:sum(d,"jj")},
-     {name:"POCSO",participants:sum(d,"pocso")},{name:"SOPs",participants:sum(d,"sops")}],
-    "name",[{key:"participants",label:"Participants",color:PURPLE}]);
-  pieChart(el("comm"),
-    [{name:"Men",value:sum(d,"cp_m")},{name:"Women",value:sum(d,"cp_f")},
-     {name:"Girls",value:sum(d,"cp_g")},{name:"Boys",value:sum(d,"cp_b")}],
-    [PURPLE,TEAL,ORANGE,PINK]);
+  barChart(cc("row1","cm-dist","Child Marriages Prevented — by District"),
+    grp(d,"district",function(g,r){g.v=(g.v||0)+num(r.cm_prevented);}).sort(function(a,b){return b.v-a.v;}),
+    "label",[{k:"v",l:"CM Prevented",c:"#DB2777"}]);
 
-  // Row 3 — vulnerable + OOS
-  var c5 = col("vuln","Vulnerable Children by District");
-  var c6 = col("oos","Out-of-School Children by Block");
-  row(c5, c6);
-  var dv = {};
-  d.forEach(function(r){
-    if(!dv[r.district]) dv[r.district]={district:r.district,male:0,female:0};
-    dv[r.district].male   += Number(r.vuln_m)||0;
-    dv[r.district].female += Number(r.vuln_f)||0;
-  });
-  barChart(el("vuln"),Object.values(dv),"district",
-    [{key:"male",label:"Boys",color:BLUE},{key:"female",label:"Girls",color:PINK}],{legend:true});
-  var bo = {};
-  d.forEach(function(r){
-    if(!bo[r.block]) bo[r.block]={block:r.block,girls:0,boys:0};
-    bo[r.block].girls += Number(r.oos_girls)||0;
-    bo[r.block].boys  += Number(r.oos_boys)||0;
-  });
-  var oosData = Object.values(bo).filter(function(x){return x.girls>0||x.boys>0;});
-  if(oosData.length)
-    barChart(el("oos"),oosData,"block",[{key:"girls",label:"Girls",color:PINK},{key:"boys",label:"Boys",color:TEAL}],{legend:true});
-  else
-    el("oos").innerHTML = noData();
+  // ── ROW 2: Training + Community Dialogue ──
+  barChart(cc("row2","training","Training Participants by Programme"),
+    [{label:"PCMA",v:sum(d,"pcma")},{label:"JJ Act",v:sum(d,"jj")},{label:"POCSO",v:sum(d,"pocso")},{label:"SOPs",v:sum(d,"sops")}],
+    "label",[{k:"v",l:"Participants",c:"#7C3AED"}]);
 
-  // Row 4 — helplines + SBC
-  var c7 = col("hlp","Helpline Numbers Painted in Public Spaces");
-  var c8 = col("sbc","SBC Campaign Reach by District");
-  row(c7, c8);
-  progressChart(el("hlp"),
-    [{name:"Childhelp 1098",painted:cnt(d,"ch1098","yes")},
-     {name:"Police 112",   painted:cnt(d,"pol112","yes")},
-     {name:"Women HL 181", painted:cnt(d,"wh181","yes")}],
-    n,[PURPLE,ORANGE,PINK]);
-  var ds = {};
-  d.forEach(function(r){
-    if(!ds[r.district]) ds[r.district]={district:r.district,sbc_reach:0};
-    ds[r.district].sbc_reach += Number(r.sbc_reach)||0;
-  });
-  barChart(el("sbc"),Object.values(ds),"district",[{key:"sbc_reach",label:"People Reached",color:TEAL}]);
+  pieChart(cc("row2","comm","Community Dialogue — by Participant Type"),
+    [{n:"Men",v:sum(d,"cp_m")},{n:"Women",v:sum(d,"cp_f")},{n:"Girls",v:sum(d,"cp_g")},{n:"Boys",v:sum(d,"cp_b")}],
+    ["#7C3AED","#0D9488","#EA580C","#DB2777"]);
+
+  // ── ROW 3: Vulnerable children + OOS ──
+  barChart(cc("row3","vuln","Vulnerable Children — by District"),
+    grp(d,"district",function(g,r){g.male=(g.male||0)+num(r.vuln_m);g.female=(g.female||0)+num(r.vuln_f);}),
+    "label",[{k:"male",l:"Boys",c:"#2563EB"},{k:"female",l:"Girls",c:"#DB2777"}],{legend:true});
+
+  var oosData=grp(d,"block",function(g,r){g.g=(g.g||0)+num(r.oos_girls);g.b=(g.b||0)+num(r.oos_boys);})
+    .filter(function(x){return(x.g||0)+(x.b||0)>0;});
+  var oosEl=cc("row3","oos","Out-of-School Children — by Block");
+  if(oosData.length) barChart(oosEl,oosData,"label",[{k:"g",l:"Girls",c:"#DB2777"},{k:"b",l:"Boys",c:"#0D9488"}],{legend:true});
+  else oosEl.innerHTML=nd();
+
+  // ── ROW 4: Helplines + SBC reach ──
+  progChart(cc("row4","hlp","Helpline Numbers Painted in Public Spaces"),
+    [{n:"Childhelp 1098",painted:cnt(d,"ch1098","yes")},
+     {n:"Police 112",painted:cnt(d,"pol112","yes")},
+     {n:"Women HL 181",painted:cnt(d,"wh181","yes")}],
+    n,["#7C3AED","#EA580C","#DB2777"]);
+
+  barChart(cc("row4","sbc","SBC Campaign Reach — by District"),
+    grp(d,"district",function(g,r){g.v=(g.v||0)+num(r.sbc_reach);}),
+    "label",[{k:"v",l:"People Reached",c:"#0D9488"}]);
+
+  // ── DATA TABLE ──
+  var cols=["district","block","partner","month","cm_prevented","vuln_m","vuln_f","adol_groups","oos_girls","oos_boys","pcwpc","ch1098","pol112","wh181"];
+  var hdrs=["District","Block","Partner","Month","CM Prevented","Vuln Boys","Vuln Girls","Adol Groups","OOS Girls","OOS Boys","PCWPC","1098","112","181"];
+  document.getElementById("data-table").innerHTML=
+    '<thead><tr>'+hdrs.map(function(h){return'<th>'+h+'</th>';}).join("")+'</tr></thead>'+
+    '<tbody>'+d.slice(0,100).map(function(r){
+      return'<tr>'+cols.map(function(c){
+        var v=r[c];
+        if(c==="pcwpc"||c==="ch1098"||c==="pol112"||c==="wh181"){
+          v='<span style="color:'+(v==="yes"?"#16A34A":"#DC2626")+'">'+v+'</span>';
+        }
+        return'<td>'+v+'</td>';
+      }).join("")+'</tr>';
+    }).join("")+(d.length>100?'<tr><td colspan="'+cols.length+'" style="text-align:center;color:#9CA3AF;padding:12px">Showing first 100 of '+d.length+' records</td></tr>':'')+'</tbody>';
+
+  updFooter();
 }
 
-// ─── BOOT ────────────────────────────────────────────────────────────────────
-loadData();
-// Auto-refresh every 5 minutes silently in the background
-setInterval(function(){
-  fetchAllSubmissions().then(function(rows){
-    RAW  = rows.map(mapRow);
-    DATA = RAW.slice();
-    rebuildFilters();
-    renderAll();
-    setStatus("live","Live · "+new Date().toLocaleTimeString("en-IN"));
-    document.getElementById("sub-badge").textContent = RAW.length+" Submissions";
-    document.getElementById("footer-txt").textContent =
-      "Source: KoboToolbox Live · Bihar · "+RAW.length+" submissions · Last updated "+new Date().toLocaleString("en-IN");
-  }).catch(function(){/* silently retry next cycle */});
-}, REFRESH_MS);
+// ════════════════════════════════════════════════════════════
+// BOOT — show fallback instantly, then fetch live
+// ════════════════════════════════════════════════════════════
+// Show built-in data immediately so page is never blank
+RAW=FALLBACK.slice();DATA=RAW.slice();
+rebuildFilters();renderAll();
+// Then fetch live data
+loadData(false);
 </script>
 </body>
 </html>
