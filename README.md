@@ -2,10 +2,13 @@
 
 An open-source, domain-engineered field monitoring framework designed to combat child marriage and optimize tracking for public welfare programs in Bihar, India.
 
-## 📊 Project Overview
-This repository hosts a decentralized, lightweight dashboard framework tailored specifically for resource-constrained, non-commercial public sector environments. Historically, grassroots child protection initiatives lack robust Monitoring and Evaluation (M&E) systems due to strict budget limitations and an absence of independent fund-generating mechanisms. This project bridges that gap by leveraging AI-assisted development to create highly effective, zero-cost analytical templates that public-service operators can deploy immediately.
+🔗 *Live Dashboard Application:* [View the Live Deployment Here](https://github.io)
 
-*   *Development Model:* Domain-driven engineering tailored directly to social work metrics.
+## 📊 Project Overview
+This repository hosts a decentralized, lightweight dashboard framework tailored specifically for resource-constrained, non-commercial public sector environments. This initiative bridges the tech-gap by leveraging AI-assisted development, guided directly by over 23 years of field-level social sector monitoring and evaluation (M&E) experience. It creates highly effective, zero-cost analytical templates that public-service operators can deploy immediately.
+
+*   *Lead Architect Profile:* Master in Social Work (MSW) with 23+ years of expertise in child rights, data tracking, and M&E management.
+*   *Development Model:* Domain-driven engineering translating complex social work metrics into code.
 *   *Current Phase:* Framework prototype built using synthetic dummy data.
 *   *Next Milestone:* Active field data ingestion begins next week.
 *   *System Integration:* Aligned with UNICEF-supported field indicators and CPMIS (Child Protection Management Information System) operational data structures.
