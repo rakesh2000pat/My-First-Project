@@ -2,7 +2,7 @@ name: Fetch KoboToolbox Data
 
 on:
   schedule:
-    - cron: '0 * * * *'   # every hour automatically
+   - cron: '*/15 * * * *'
   workflow_dispatch:        # also allows manual run from GitHub Actions tab
 
 jobs:
