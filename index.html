@@ -401,11 +401,13 @@ async function loadData(){
     setBanner("ok","✅ Live data loaded — "+RAW.length+" submissions");
     setTimeout(function(){document.getElementById("banner").style.display="none";},5000);
     document.getElementById("last-upd").textContent="Updated "+new Date().toLocaleTimeString("en-IN");
-  }catch(e){
-    dataSource="built-in sample data";
-    setDot("","📦 Built-in sample — "+RAW.length+" records");
-    setBanner("warn","ℹ️ Showing built-in sample records. Live data syncs automatically via GitHub Actions every 15 minutes once configured.");
-  }
+  catch(e){
+  RAW=[];
+  DATA=[];
+  dataSource="No live data";
+  setDot("","🔴 No live data — 0 records");
+  setBanner("warn","⚠️ No live data available.");
+}
   updFooter();
   document.getElementById("sub-badge").textContent=RAW.length+" Records";
   document.getElementById("hdr-date").textContent=new Date().toLocaleDateString("en-IN",{month:"long",year:"numeric"});
