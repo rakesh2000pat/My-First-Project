@@ -401,7 +401,7 @@ async function loadData(){
     setBanner("ok","✅ Live data loaded — "+RAW.length+" submissions");
     setTimeout(function(){document.getElementById("banner").style.display="none";},5000);
     document.getElementById("last-upd").textContent="Updated "+new Date().toLocaleTimeString("en-IN");
-  catch(e){
+  } catch(e){
   RAW=[];
   DATA=[];
   dataSource="No live data";
