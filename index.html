@@ -8,54 +8,69 @@
 :root{
   --p:#7C3AED;--t:#0D9488;--o:#EA580C;--pk:#DB2777;
   --b:#2563EB;--g:#16A34A;--gd:#CA8A04;--c2:#9333EA;--c3:#0891B2;
-  --bg:#F0F2F8;--card:#fff;--bdr:#E5E7EB;--txt:#1F2937;--mu:#6B7280;--lt:#9CA3AF;
+  --bg:#EEF0F8;--card:#fff;--bdr:#E5E7EB;--txt:#1F2937;--mu:#6B7280;--lt:#9CA3AF;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:var(--bg);color:var(--txt);min-height:100vh}
-.hdr{background:linear-gradient(135deg,#4C1D95 0%,#7C3AED 60%,#0D9488 100%);
+/* HEADER */
+.hdr{background:linear-gradient(135deg,#3B0764 0%,#7C3AED 55%,#0D9488 100%);
   padding:14px 24px;display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:10px;position:sticky;top:0;z-index:200;box-shadow:0 3px 12px rgba(76,29,149,.35)}
-.hdr-l h1{font-size:17px;font-weight:900;color:#fff;letter-spacing:-.2px}
-.hdr-l p{font-size:11px;color:rgba(255,255,255,.7);margin-top:2px}
+  flex-wrap:wrap;gap:10px;position:sticky;top:0;z-index:300;box-shadow:0 3px 14px rgba(76,29,149,.4)}
+.hdr-l h1{font-size:17px;font-weight:900;color:#fff;letter-spacing:-.3px}
+.hdr-l p{font-size:11px;color:rgba(255,255,255,.72);margin-top:2px}
 .hdr-r{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.pill{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.15);
-  backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.25);
+.pill{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.14);
+  backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.22);
   border-radius:999px;padding:5px 13px;font-size:11px;font-weight:700;color:#fff}
-.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.4);flex-shrink:0;transition:background .4s}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.35);flex-shrink:0;transition:background .4s}
 .dot.live{background:#4ADE80;box-shadow:0 0 0 3px rgba(74,222,128,.3);animation:pulse 2s infinite}
 .dot.err{background:#F87171}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(74,222,128,.25)}50%{box-shadow:0 0 0 7px rgba(74,222,128,.07)}}
-.badge{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);
+@keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(74,222,128,.22)}50%{box-shadow:0 0 0 7px rgba(74,222,128,.06)}}
+.badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);
   color:#fff;font-size:12px;font-weight:800;padding:5px 14px;border-radius:999px}
-.last-upd{font-size:10px;color:rgba(255,255,255,.65);font-weight:600}
-#banner{display:none;padding:9px 20px;font-size:12px;font-weight:600;text-align:center}
+#last-upd{font-size:10px;color:rgba(255,255,255,.62);font-weight:600}
+/* BANNER */
+#banner{display:none;padding:10px 20px;font-size:12px;font-weight:600;text-align:center;z-index:200;position:relative}
 #banner.ok{background:#D1FAE5;color:#065F46;display:block}
 #banner.warn{background:#FEF3C7;color:#78350F;display:block}
 #banner.err{background:#FEE2E2;color:#7F1D1D;display:block}
-.page{max-width:1320px;margin:0 auto;padding:18px 16px;display:flex;flex-direction:column;gap:18px}
-.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px}
-.strip-card{background:linear-gradient(135deg,var(--cl1),var(--cl2));
-  border-radius:14px;padding:14px 16px;color:#fff;position:relative;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.12)}
-.strip-card::after{content:attr(data-ico);position:absolute;right:-4px;bottom:-8px;font-size:48px;opacity:.15;line-height:1}
-.strip-val{font-size:26px;font-weight:900;line-height:1;margin-bottom:4px}
-.strip-lbl{font-size:11px;font-weight:700;opacity:.9}
-.strip-sub{font-size:10px;opacity:.7;margin-top:2px}
-.filter-card{background:#fff;border-radius:14px;border:1px solid var(--bdr);box-shadow:0 1px 4px rgba(0,0,0,.05);padding:14px 18px}
-.filter-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+/* EMPTY STATE */
+#empty-state{display:none;flex-direction:column;align-items:center;justify-content:center;
+  padding:60px 20px;gap:14px;text-align:center}
+#empty-state.show{display:flex}
+#empty-state h2{font-size:20px;color:#374151;font-weight:800}
+#empty-state p{font-size:14px;color:var(--mu);max-width:480px;line-height:1.7}
+/* LAYOUT */
+.page{max-width:1360px;margin:0 auto;padding:18px 16px;display:flex;flex-direction:column;gap:18px}
+/* SUMMARY STRIP */
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.sc{background:linear-gradient(135deg,var(--cl1),var(--cl2));border-radius:14px;
+  padding:14px 16px;color:#fff;position:relative;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.13);cursor:default}
+.sc::after{content:attr(data-ico);position:absolute;right:-4px;bottom:-8px;font-size:50px;opacity:.14;line-height:1}
+.sc-val{font-size:28px;font-weight:900;line-height:1;margin-bottom:4px}
+.sc-lbl{font-size:11px;font-weight:700;opacity:.92}
+.sc-sub{font-size:10px;opacity:.72;margin-top:2px}
+/* FILTER */
+.fcard{background:#fff;border-radius:14px;border:1px solid var(--bdr);box-shadow:0 1px 4px rgba(0,0,0,.05);padding:14px 18px}
+.fr{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
 .fw label{display:block;font-size:10px;font-weight:800;color:var(--mu);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
 .fw select{width:100%;font-size:12px;border:1.5px solid var(--bdr);border-radius:8px;padding:7px 10px;background:#fff;color:var(--txt);cursor:pointer}
 .fw select:focus{outline:none;border-color:var(--p)}
-.filter-count{font-size:11px;color:var(--mu);margin-top:10px;font-weight:600}
-.sec{font-size:11px;font-weight:800;color:var(--mu);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.fcnt{font-size:11px;color:var(--mu);margin-top:10px;font-weight:600}
+/* SECTION */
+.sec{font-size:11px;font-weight:800;color:var(--mu);text-transform:uppercase;letter-spacing:.07em;
+  margin-bottom:10px;display:flex;align-items:center;gap:8px}
 .sec::after{content:'';flex:1;height:1px;background:var(--bdr)}
-.tabbar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px}
+/* TABS */
+.tabbar{display:flex;gap:6px;flex-wrap:wrap}
 .tabbtn{background:#fff;border:1.5px solid var(--bdr);border-radius:999px;padding:7px 16px;
-  font-size:12px;font-weight:700;color:var(--mu);cursor:pointer;transition:.15s}
+  font-size:12px;font-weight:700;color:var(--mu);cursor:pointer;transition:.15s;white-space:nowrap}
 .tabbtn.active{background:var(--p);border-color:var(--p);color:#fff}
 .tabbtn:hover:not(.active){border-color:var(--p);color:var(--p)}
 .tabsec{display:none}
 .tabsec.active{display:flex;flex-direction:column;gap:18px}
-.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:12px}
+/* KPI GRID */
+.kgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:12px}
 .kpi{background:#fff;border-radius:14px;border:1px solid var(--bdr);box-shadow:0 1px 5px rgba(0,0,0,.06);
   padding:15px;display:flex;gap:12px;transition:transform .15s,box-shadow .15s;cursor:default}
 .kpi:hover{transform:translateY(-2px);box-shadow:0 5px 16px rgba(0,0,0,.1)}
@@ -63,11 +78,14 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:var(--bg);colo
 .kpi-val{font-size:26px;font-weight:900;line-height:1;margin-bottom:3px}
 .kpi-lbl{font-size:12px;font-weight:700;color:#374151}
 .kpi-sub{font-size:10px;color:var(--lt);margin-top:2px}
+/* CHART ROWS */
 .crow{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px}
+.crow3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
 .cc{background:#fff;border-radius:14px;border:1px solid var(--bdr);box-shadow:0 1px 5px rgba(0,0,0,.05);padding:18px}
 .ct{font-size:12px;font-weight:800;color:#374151;margin-bottom:14px;display:flex;align-items:center;gap:7px}
 .ct::before{content:'';display:inline-block;width:4px;height:16px;border-radius:3px;background:var(--p);flex-shrink:0}
-.bg{display:flex;align-items:flex-end;gap:6px;height:170px;padding:0 2px;border-left:2px solid var(--bdr);border-bottom:2px solid var(--bdr)}
+/* BAR */
+.bg{display:flex;align-items:flex-end;gap:5px;height:165px;padding:0 2px;border-left:2px solid var(--bdr);border-bottom:2px solid var(--bdr)}
 .bc{display:flex;flex-direction:column;align-items:center;flex:1;gap:2px;height:100%;justify-content:flex-end}
 .br{width:100%;border-radius:5px 5px 0 0;min-height:2px;cursor:pointer;transition:opacity .15s}
 .br:hover{opacity:.72}
@@ -76,53 +94,99 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:var(--bg);colo
 .leg{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:8px}
 .li{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--mu)}
 .ls{width:10px;height:10px;border-radius:3px;flex-shrink:0}
-.pw{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-.pl{display:flex;flex-direction:column;gap:8px;flex:1;min-width:120px}
-.pi{display:flex;align-items:center;gap:8px;font-size:12px}
-.pd{width:11px;height:11px;border-radius:50%;flex-shrink:0}
+/* PIE */
+.pw{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.pl{display:flex;flex-direction:column;gap:7px;flex:1;min-width:110px}
+.pi{display:flex;align-items:center;gap:7px;font-size:11px}
+.pd{width:10px;height:10px;border-radius:50%;flex-shrink:0}
 .pn{color:var(--mu);flex:1}
-.pv{font-weight:800;color:#111;min-width:28px;text-align:right}
-.prg{display:flex;flex-direction:column;gap:13px}
+.pv2{font-weight:800;color:#111;min-width:26px;text-align:right}
+/* PROGRESS */
+.prg{display:flex;flex-direction:column;gap:12px}
 .ph{display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px}
 .plb{font-weight:700;color:#4B5563}
-.pv2{font-weight:800;color:#111}
+.pvl{font-weight:800;color:#111}
 .pt{background:#F3F4F6;border-radius:999px;height:12px;overflow:hidden}
 .pf{height:100%;border-radius:999px;transition:width .6s ease}
-.tw{overflow-x:auto;border-radius:10px;border:1px solid var(--bdr)}
-table{width:100%;border-collapse:collapse;font-size:11px}
-th{background:#F5F3FF;color:var(--p);font-weight:800;padding:8px 10px;text-align:left;border-bottom:2px solid #DDD6FE;white-space:nowrap;position:sticky;top:0}
-td{padding:7px 10px;border-bottom:1px solid var(--bdr);color:#374151;white-space:nowrap}
-tr:hover td{background:#FAFAFA}
-tr:last-child td{border:none}
+/* HBAR (horizontal stacked) */
+.hb-wrap{display:flex;flex-direction:column;gap:9px}
+.hb-row{margin-bottom:0}
+.hb-lbl{display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px}
+.hb-name{font-weight:700;color:#374151}
+.hb-val{color:var(--mu)}
+.hb-track{background:#F3F4F6;border-radius:999px;height:13px;overflow:hidden;display:flex}
+.hb-m{height:100%;background:#2563EB;transition:width .5s}
+.hb-f{height:100%;background:#DB2777;transition:width .5s}
+/* CROSSTAB */
+.xtab-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--bdr)}
+.xtab{width:100%;border-collapse:collapse;font-size:11px}
+.xtab th{background:#F5F3FF;color:var(--p);font-weight:800;padding:8px 10px;
+  text-align:center;border-bottom:2px solid #DDD6FE;border-right:1px solid #DDD6FE;white-space:nowrap}
+.xtab th.row-hdr{text-align:left;background:#F9FAFB;color:#374151}
+.xtab td{padding:7px 10px;border-bottom:1px solid var(--bdr);border-right:1px solid #F3F4F6;
+  text-align:center;color:#374151;font-weight:600}
+.xtab td.row-hdr{text-align:left;font-weight:700;color:#374151;background:#FAFAFA}
+.xtab tr:last-child td{border-bottom:none}
+.xtab tr:hover td{background:#F5F3FF}
+.xtab .tot{background:#EDE9FE;font-weight:800;color:var(--p)}
+.heat-0{background:#fff}
+.heat-1{background:#F0FDF4;color:#166534}
+.heat-2{background:#DCFCE7;color:#166534}
+.heat-3{background:#BBF7D0;color:#166534}
+.heat-4{background:#86EFAC;color:#166534}
+.heat-5{background:#4ADE80;color:#14532D}
+/* DATA TABLE */
+.tw{overflow-x:auto;border-radius:10px;border:1px solid var(--bdr);max-height:480px;overflow-y:auto}
+table.dt{width:100%;border-collapse:collapse;font-size:11px}
+table.dt th{background:#F5F3FF;color:var(--p);font-weight:800;padding:8px 10px;
+  text-align:left;border-bottom:2px solid #DDD6FE;white-space:nowrap;position:sticky;top:0;z-index:2}
+table.dt td{padding:7px 10px;border-bottom:1px solid var(--bdr);color:#374151;white-space:nowrap}
+table.dt tr:hover td{background:#FAFAFA}
+table.dt tr:last-child td{border:none}
 .tag{display:inline-block;padding:2px 8px;border-radius:999px;font-size:10px;font-weight:700}
-.tag-yes{background:#D1FAE5;color:#065F46}
-.tag-no{background:#FEE2E2;color:#991B1B}
-.tt{position:fixed;background:#1F2937;color:#fff;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,.25);
-  padding:10px 14px;font-size:12px;pointer-events:none;z-index:9999;display:none;max-width:220px}
+.tag-y{background:#D1FAE5;color:#065F46}
+.tag-n{background:#FEE2E2;color:#991B1B}
+/* ACHIEVEMENT GAUGE */
+.gauge-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.gauge{background:#fff;border-radius:12px;border:1px solid var(--bdr);padding:14px;text-align:center}
+.gauge-ring{width:80px;height:80px;margin:0 auto 8px;position:relative}
+.gauge-ring svg{transform:rotate(-90deg)}
+.gauge-pct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900}
+.gauge-lbl{font-size:11px;font-weight:700;color:#374151;line-height:1.3}
+.gauge-sub{font-size:10px;color:var(--lt);margin-top:2px}
+/* TOOLTIP */
+.tt{position:fixed;background:#1F2937;color:#fff;border-radius:10px;
+  box-shadow:0 6px 24px rgba(0,0,0,.28);padding:10px 14px;font-size:12px;
+  pointer-events:none;z-index:9999;display:none;max-width:240px}
 .tt.on{display:block}
 .ttt{font-weight:800;margin-bottom:5px;font-size:13px}
 .ttr{display:flex;align-items:center;gap:6px;margin-bottom:2px;opacity:.9}
+/* LOADER */
 #ldr{position:fixed;inset:0;background:rgba(255,255,255,.97);display:flex;flex-direction:column;
   align-items:center;justify-content:center;z-index:9999;gap:14px;transition:opacity .4s}
 .sp{width:44px;height:44px;border:4px solid #EDE9FE;border-top-color:var(--p);border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 #lm{font-size:14px;color:var(--mu);font-weight:700}
-#ls{font-size:12px;color:var(--lt)}
+/* FOOTER */
 .footer{text-align:center;font-size:11px;color:var(--lt);padding:6px 0 22px;line-height:1.8}
-.nd{height:120px;display:flex;align-items:center;justify-content:center;color:var(--lt);font-size:13px;flex-direction:column;gap:6px}
+/* NO DATA */
+.nd{height:110px;display:flex;align-items:center;justify-content:center;color:var(--lt);
+  font-size:13px;flex-direction:column;gap:6px}
+/* SCORECARDS */
+.score-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.score-card{background:#fff;border-radius:14px;border:1px solid var(--bdr);padding:16px;
+  box-shadow:0 1px 5px rgba(0,0,0,.06)}
+.score-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.score-title{font-size:12px;font-weight:800;color:#374151}
+.score-pct{font-size:20px;font-weight:900}
+.score-bar{background:#F3F4F6;border-radius:999px;height:8px;overflow:hidden;margin-bottom:6px}
+.score-fill{height:100%;border-radius:999px}
+.score-detail{font-size:10px;color:var(--lt)}
 </style>
 </head>
 <body>
-
-<div id="ldr">
-  <div style="font-size:40px">🛡️</div>
-  <div class="sp"></div>
-  <div id="lm">Loading dashboard…</div>
-  <div id="ls">Fetching latest data</div>
-</div>
-
+<div id="ldr"><div style="font-size:42px">🛡️</div><div class="sp"></div><div id="lm">Loading dashboard…</div></div>
 <div id="banner"></div>
-
 <div class="hdr">
   <div class="hdr-l">
     <h1>🛡️ Child Marriage Prevention Dashboard</h1>
@@ -131,84 +195,90 @@ tr:last-child td{border:none}
   <div class="hdr-r">
     <div class="pill"><span class="dot" id="dot"></span><span id="dot-txt">Loading…</span></div>
     <div class="badge" id="sub-badge">— Records</div>
-    <div class="last-upd" id="last-upd"></div>
+    <span id="last-upd"></span>
   </div>
 </div>
 
-<div class="page">
+<div id="empty-state">
+  <div style="font-size:56px">📭</div>
+  <h2>No Submissions Yet</h2>
+  <p>No data has been submitted through KoboToolbox yet. Once field teams start submitting reports, this dashboard will populate automatically within 15 minutes.</p>
+  <p style="font-size:12px;color:#9CA3AF">Dashboard auto-refreshes every 15 minutes · Powered by GitHub Actions</p>
+</div>
 
+<div class="page" id="main-page">
   <div class="strip" id="strip"></div>
-
-  <div class="filter-card">
+  <div class="fcard">
     <div class="sec">🔍 Filter Data</div>
-    <div class="filter-row">
+    <div class="fr">
       <div class="fw"><label>District</label><select id="fd" onchange="applyF()"></select></div>
       <div class="fw"><label>Block</label><select id="fb" onchange="applyF()"></select></div>
       <div class="fw"><label>GP / Panchayat</label><select id="fg" onchange="applyF()"></select></div>
       <div class="fw"><label>Partner</label><select id="fp" onchange="applyF()"></select></div>
       <div class="fw"><label>Reporting Month</label><select id="fm" onchange="applyF()"></select></div>
     </div>
-    <div class="filter-count" id="fcnt"></div>
+    <div class="fcnt" id="fcnt"></div>
   </div>
 
   <div class="tabbar">
-    <button class="tabbtn active" data-tab="overview" onclick="showTab('overview')">📊 Overview</button>
-    <button class="tabbtn" data-tab="protection" onclick="showTab('protection')">🛡️ Child Protection</button>
-    <button class="tabbtn" data-tab="adol" onclick="showTab('adol')">👥 Adolescent Groups</button>
-    <button class="tabbtn" data-tab="capacity" onclick="showTab('capacity')">📚 Capacity Building</button>
-    <button class="tabbtn" data-tab="schemes" onclick="showTab('schemes')">🏛️ Scheme Linkages</button>
-    <button class="tabbtn" data-tab="community" onclick="showTab('community')">🤝 Community &amp; Verification</button>
-    <button class="tabbtn" data-tab="table" onclick="showTab('table')">📋 Raw Data</button>
+    <button class="tabbtn active" data-tab="overview"    onclick="showTab('overview')">📊 Overview</button>
+    <button class="tabbtn" data-tab="protection"         onclick="showTab('protection')">🛡️ Child Protection</button>
+    <button class="tabbtn" data-tab="adol"               onclick="showTab('adol')">👥 Adolescent Groups</button>
+    <button class="tabbtn" data-tab="capacity"           onclick="showTab('capacity')">📚 Capacity Building</button>
+    <button class="tabbtn" data-tab="schemes"            onclick="showTab('schemes')">🏛️ Scheme Linkages</button>
+    <button class="tabbtn" data-tab="community"          onclick="showTab('community')">🤝 Community</button>
+    <button class="tabbtn" data-tab="crosstab"           onclick="showTab('crosstab')">📐 Cross-Tab Analysis</button>
+    <button class="tabbtn" data-tab="scorecard"          onclick="showTab('scorecard')">🏆 Scorecard</button>
+    <button class="tabbtn" data-tab="table"              onclick="showTab('table')">📋 Raw Data</button>
   </div>
 
-  <!-- OVERVIEW -->
   <div class="tabsec active" id="tab-overview">
-    <div><div class="sec">Key Performance Indicators</div><div class="kpi-grid" id="kpi-overview"></div></div>
-    <div class="crow" id="r-ov-1"></div>
-    <div class="crow" id="r-ov-2"></div>
+    <div><div class="sec">Key Performance Indicators</div><div class="kgrid" id="kpi-ov"></div></div>
+    <div class="crow" id="r-ov1"></div>
+    <div class="crow" id="r-ov2"></div>
+    <div class="crow3" id="r-ov3"></div>
   </div>
-
-  <!-- CHILD PROTECTION -->
   <div class="tabsec" id="tab-protection">
-    <div><div class="sec">Child Protection Indicators</div><div class="kpi-grid" id="kpi-protection"></div></div>
-    <div class="crow" id="r-pr-1"></div>
-    <div class="crow" id="r-pr-2"></div>
+    <div><div class="sec">Child Protection Indicators</div><div class="kgrid" id="kpi-pr"></div></div>
+    <div class="crow" id="r-pr1"></div>
+    <div class="crow" id="r-pr2"></div>
   </div>
-
-  <!-- ADOLESCENT GROUPS -->
   <div class="tabsec" id="tab-adol">
-    <div><div class="sec">Adolescent Group Formation</div><div class="kpi-grid" id="kpi-adol"></div></div>
-    <div class="crow" id="r-ad-1"></div>
-    <div class="crow" id="r-ad-2"></div>
+    <div><div class="sec">Adolescent Group Formation &amp; CWSN</div><div class="kgrid" id="kpi-ad"></div></div>
+    <div class="crow" id="r-ad1"></div>
+    <div class="crow" id="r-ad2"></div>
+    <div class="crow" id="r-ad3"></div>
   </div>
-
-  <!-- CAPACITY BUILDING -->
   <div class="tabsec" id="tab-capacity">
-    <div><div class="sec">Training &amp; Capacity Building</div><div class="kpi-grid" id="kpi-capacity"></div></div>
-    <div class="crow" id="r-cb-1"></div>
-    <div class="crow" id="r-cb-2"></div>
+    <div><div class="sec">Training &amp; Capacity Building</div><div class="kgrid" id="kpi-cb"></div></div>
+    <div class="crow" id="r-cb1"></div>
+    <div class="crow" id="r-cb2"></div>
   </div>
-
-  <!-- SCHEME LINKAGES -->
   <div class="tabsec" id="tab-schemes">
-    <div><div class="sec">Social Scheme &amp; Skill Linkages</div><div class="kpi-grid" id="kpi-schemes"></div></div>
-    <div class="crow" id="r-sc-1"></div>
-    <div class="crow" id="r-sc-2"></div>
+    <div><div class="sec">Social Scheme &amp; Skill Linkages</div><div class="kgrid" id="kpi-sc"></div></div>
+    <div class="crow" id="r-sc1"></div>
+    <div class="crow" id="r-sc2"></div>
+    <div class="crow" id="r-sc3"></div>
   </div>
-
-  <!-- COMMUNITY & VERIFICATION -->
   <div class="tabsec" id="tab-community">
-    <div><div class="sec">Community Engagement &amp; CM-Free Verification</div><div class="kpi-grid" id="kpi-community"></div></div>
-    <div class="crow" id="r-cm-1"></div>
-    <div class="crow" id="r-cm-2"></div>
+    <div><div class="sec">Community Engagement &amp; Verification</div><div class="kgrid" id="kpi-cm"></div></div>
+    <div class="crow" id="r-cm1"></div>
+    <div class="crow" id="r-cm2"></div>
   </div>
-
-  <!-- TABLE -->
+  <div class="tabsec" id="tab-crosstab">
+    <div class="sec">📐 Cross-Tabulation Analysis</div>
+    <div class="crow" id="r-xt1"></div>
+    <div class="crow" id="r-xt2"></div>
+    <div class="crow" id="r-xt3"></div>
+  </div>
+  <div class="tabsec" id="tab-scorecard">
+    <div class="sec">🏆 GP-Level Scorecard &amp; Achievement Tracking</div>
+    <div id="r-score"></div>
+  </div>
   <div class="tabsec" id="tab-table">
     <div class="sec">📋 Submission Records</div>
-    <div class="tw"><table id="dtable"></table></div>
+    <div class="tw"><table class="dt" id="dtable"></table></div>
   </div>
-
   <div class="footer" id="footer"></div>
 </div>
 
@@ -216,139 +286,102 @@ tr:last-child td{border:none}
 
 <script>
 // ══════════════════════════════════════════════════════════
-//  BUILT-IN FALLBACK (shows instantly while live data loads)
+//  CONFIG
 // ══════════════════════════════════════════════════════════
-var BUILTIN_RAW=[
- {district:"Patna",block:"Danapur",gp_name:"GP-1",partner_org:"PRATHAM",reporting_period:"Jun 2026",
-  cm_prevented:0,cm_prevented_b:0,cm_prevented_g:0,sbc_reach_tot:0,sbc_campaigns:0,
-  pcma_sessions:40,pcma_part_tot:40,jj_sessions:32,jj_part_tot:32,pocso_sessions:8,pocso_part_tot:8,sops_sessions:12,
-  vul_boys_no:0,vul_girls_no:0,vul_boys_cwsn:0,vul_girls_cwsn:0,
-  total_func_groups:0,mahadalit_count:0,meena_count:0,bal_count:0,rksk_count:0,
-  oosc_total_g:0,oosc_total_b:0,oosc_linked_g:0,oosc_linked_b:0,
-  community_part_m:0,community_part_f:0,community_part_g:0,community_part_b:0,community_meetings_no:0,
-  pcwpc_formed:"yes",vulnerability_mapping:"no",helpline_1098:"yes",helpline_112:"yes",helpline_181:"yes",
-  gp_declared_cm_free:"no",quarterly_review:"yes",third_party_conducted:"no"},
- {district:"Sitamarhi",block:"Parihar",gp_name:"GP-2",partner_org:"ADITHI",reporting_period:"Jun 2026",
-  cm_prevented:4,cm_prevented_b:1,cm_prevented_g:3,sbc_reach_tot:5,sbc_campaigns:1,
-  pcma_sessions:3,pcma_part_tot:15,jj_sessions:0,jj_part_tot:0,pocso_sessions:0,pocso_part_tot:0,sops_sessions:0,
-  vul_boys_no:60,vul_girls_no:68,vul_boys_cwsn:2,vul_girls_cwsn:3,
-  total_func_groups:5,mahadalit_count:2,meena_count:1,bal_count:1,rksk_count:1,
-  oosc_total_g:10,oosc_total_b:7,oosc_linked_g:6,oosc_linked_b:4,
-  community_part_m:5,community_part_f:5,community_part_g:5,community_part_b:5,community_meetings_no:2,
-  pcwpc_formed:"no",vulnerability_mapping:"yes",helpline_1098:"no",helpline_112:"no",helpline_181:"no",
-  gp_declared_cm_free:"no",quarterly_review:"no",third_party_conducted:"no"},
- {district:"Katihar",block:"Falka",gp_name:"GP-3",partner_org:"PRATHAM",reporting_period:"Jun 2026",
-  cm_prevented:8,cm_prevented_b:3,cm_prevented_g:5,sbc_reach_tot:0,sbc_campaigns:0,
-  pcma_sessions:0,pcma_part_tot:0,jj_sessions:0,jj_part_tot:0,pocso_sessions:0,pocso_part_tot:0,sops_sessions:0,
-  vul_boys_no:0,vul_girls_no:0,vul_boys_cwsn:0,vul_girls_cwsn:0,
-  total_func_groups:0,mahadalit_count:0,meena_count:0,bal_count:0,rksk_count:0,
-  oosc_total_g:10,oosc_total_b:5,oosc_linked_g:8,oosc_linked_b:3,
-  community_part_m:0,community_part_f:0,community_part_g:0,community_part_b:0,community_meetings_no:0,
-  pcwpc_formed:"no",vulnerability_mapping:"no",helpline_1098:"no",helpline_112:"no",helpline_181:"no",
-  gp_declared_cm_free:"yes",quarterly_review:"yes",third_party_conducted:"yes"}
-];
+var PAL=["#7C3AED","#0D9488","#EA580C","#DB2777","#2563EB","#16A34A","#CA8A04","#9333EA","#0891B2","#BE185D","#0369A1","#B45309"];
+var RAW=[], DATA=[], dataSource="none";
 
 // ══════════════════════════════════════════════════════════
-//  STATE
+//  FIELD MAP — exact names from XLSForm survey sheet
 // ══════════════════════════════════════════════════════════
-var RAW=[], DATA=[], dataSource="built-in";
-var PAL=["#7C3AED","#0D9488","#EA580C","#DB2777","#2563EB","#16A34A","#CA8A04","#9333EA","#0891B2","#BE185D"];
+var GRP={
+  district:"gp_demographics/",block:"gp_demographics/",gp_name:"gp_demographics/",
+  partner_org:"gp_demographics/",reporting_period:"gp_demographics/",
+  gp_resolution:"gp_demographics/",pcwpc_formed:"gp_demographics/",
+  cwpc_meetings:"gp_demographics/",total_wards:"gp_demographics/",
+  wcwpc_formed:"gp_demographics/",wcwpc_meetings:"gp_demographics/",
+  contact_name:"gp_demographics/",designation:"gp_demographics/",
+  helpline_1098:"public_helplines/",helpline_112:"public_helplines/",
+  helpline_181:"public_helplines/",vulnerability_mapping:"public_helplines/",
+  vul_boys_no:"public_helplines/",vul_boys_cwsn:"public_helplines/",
+  vul_girls_no:"public_helplines/",vul_girls_cwsn:"public_helplines/",
+  pcma_sessions:"capacity_building/",pcma_part_m:"capacity_building/",
+  pcma_part_f:"capacity_building/",pcma_part_tot:"capacity_building/",
+  jj_sessions:"capacity_building/",jj_part_m:"capacity_building/",
+  jj_part_f:"capacity_building/",jj_part_tot:"capacity_building/",
+  pocso_sessions:"capacity_building/",pocso_part_m:"capacity_building/",
+  pocso_part_f:"capacity_building/",pocso_part_tot:"capacity_building/",
+  sops_sessions:"capacity_building/",sops_part_m:"capacity_building/",
+  sops_part_f:"capacity_building/",sops_part_tot:"capacity_building/",
+  sbc_campaigns:"SBC_Counselling/",sbc_reach_m:"SBC_Counselling/",
+  sbc_reach_f:"SBC_Counselling/",sbc_reach_tot:"SBC_Counselling/",
+  vul_families_id:"SBC_Counselling/",families_counselled:"SBC_Counselling/",
+  total_func_groups:"adolescent_groups/",mahadalit_count:"adolescent_groups/",
+  mahadalit_g:"adolescent_groups/",mahadalit_b:"adolescent_groups/",
+  mahadalit_cwsn_g:"adolescent_groups/",mahadalit_cwsn_b:"adolescent_groups/",
+  meena_count:"adolescent_groups/",meena_g:"adolescent_groups/",
+  meena_b:"adolescent_groups/",meena_cwsn_g:"adolescent_groups/",meena_cwsn_b:"adolescent_groups/",
+  bal_count:"adolescent_groups/",bal_g:"adolescent_groups/",
+  bal_b:"adolescent_groups/",bal_cwsn_g:"adolescent_groups/",bal_cwsn_b:"adolescent_groups/",
+  rksk_count:"adolescent_groups/",rksk_g:"adolescent_groups/",
+  rksk_b:"adolescent_groups/",rksk_cwsn_g:"adolescent_groups/",rksk_cwsn_b:"adolescent_groups/",
+  oosc_total_g:"linkage_out_of_school_children/",oosc_total_b:"linkage_out_of_school_children/",
+  oosc_linked_g:"linkage_out_of_school_children/",oosc_linked_b:"linkage_out_of_school_children/",
+  community_meetings_no:"community_program/total_participants_group/",
+  community_part_m:"community_program/total_participants_group/",
+  community_part_f:"community_program/total_participants_group/",
+  community_part_g:"community_program/total_participants_group/",
+  community_part_b:"community_program/total_participants_group/",
+  meeting_conducted:"community_program/",
+  vol_identified_m:"volunteers_ident/",vol_identified_f:"volunteers_ident/",
+  quarterly_review:"tracking_verification/",cm_prevented:"tracking_verification/",
+  cm_prevented_b:"tracking_verification/",cm_prevented_g:"tracking_verification/",
+  third_party_conducted:"tracking_verification/",gp_declared_cm_free:"tracking_verification/",
+  annual_reverification:"tracking_verification/",cm_status_continued:"tracking_verification/"
+};
 
-// ══════════════════════════════════════════════════════════
-//  EXACT FIELD NAMES — taken directly from your XLSForm
-//  (survey sheet: type / name / label columns)
-// ══════════════════════════════════════════════════════════
-var FIELD_KEYS=[
-  "district","block","gp_name","partner_org","reporting_period",
-  "gp_resolution","pcwpc_formed","cwpc_meetings","total_wards","wcwpc_formed","wcwpc_meetings",
-  "helpline_1098","helpline_112","helpline_181","vulnerability_mapping",
-  "vul_boys_no","vul_boys_cwsn","vul_girls_no","vul_girls_cwsn",
-  "pcma_sessions","pcma_part_m","pcma_part_f","pcma_part_tot",
-  "jj_sessions","jj_part_m","jj_part_f","jj_part_tot",
-  "pocso_sessions","pocso_part_m","pocso_part_f","pocso_part_tot",
-  "sops_sessions","sops_part_m","sops_part_f","sops_part_tot",
-  "sbc_campaigns","sbc_reach_m","sbc_reach_f","sbc_reach_tot",
-  "vul_families_id","families_counselled",
+var ALLKEYS=Object.keys(GRP).concat([
   "linked_ration_m","linked_ration_f","linked_jeevika_f","linked_shatabdi_m","linked_shatabdi_f",
   "linked_lakshmi_f","linked_disability_m","linked_disability_f","linked_vridjan_m","linked_vridjan_f",
   "linked_bscc_m","linked_bscc_f","linked_manrega_m","linked_manrega_f","linked_bocw_m","linked_bocw_f",
   "linked_pm_surya_ghar_m","linked_pm_surya_ghar_f","linked_pmay_g_m","linked_pmay_g_f",
   "linked_lakhpati_didi_f","linked_pm_svanidhi_m","linked_pm_svanidhi_f","linked_pm_kisan_m","linked_pm_kisan_f",
-  "total_func_groups","mahadalit_count","mahadalit_g","mahadalit_b","meena_count","meena_g","meena_b",
-  "bal_count","bal_g","bal_b","rksk_count","rksk_g","rksk_b",
-  "oosc_total_g","oosc_total_b","oosc_linked_g","oosc_linked_b",
   "linked_ddu_gky_g","linked_ddu_gky_b","linked_pmyva_g","linked_pmyva_b","linked_pmkvy_g","linked_pmkvy_b",
   "linked_kyp_g","linked_kyp_b","linked_jss_g","linked_jss_b","linked_rseti_g","linked_rseti_b",
   "diff_bicycle_g","diff_bicycle_b","diff_scholarship_g","diff_scholarship_b","diff_sponsorship_g","diff_sponsorship_b",
   "diff_mkuy_g","diff_parvarish_g","diff_parvarish_b","diff_disability_g","diff_disability_b",
   "diff_pm_surya_ghar_g","diff_pm_surya_ghar_b","diff_icds_g","diff_icds_b","diff_rksk_g","diff_rksk_b",
-  "diff_cmrf_g","diff_cmrf_b","diff_pm_kisan_g","diff_pm_kisan_b",
-  "meeting_conducted","community_meetings_no","community_part_m","community_part_f","community_part_g","community_part_b",
-  "vol_identified_m","vol_identified_f",
-  "quarterly_review","cm_prevented","cm_prevented_b","cm_prevented_g",
-  "third_party_conducted","gp_declared_cm_free","annual_reverification","cm_status_continued"
-];
+  "diff_cmrf_g","diff_cmrf_b","diff_pm_kisan_g","diff_pm_kisan_b"
+]);
 
-// Possible group-prefixed paths Kobo's API may return instead of bare names
-var GROUP_PREFIX={
-  district:"gp_demographics/",block:"gp_demographics/",gp_name:"gp_demographics/",partner_org:"gp_demographics/",
-  reporting_period:"gp_demographics/",gp_resolution:"gp_demographics/",pcwpc_formed:"gp_demographics/",
-  cwpc_meetings:"gp_demographics/",total_wards:"gp_demographics/",wcwpc_formed:"gp_demographics/",wcwpc_meetings:"gp_demographics/",
-  helpline_1098:"public_helplines/",helpline_112:"public_helplines/",helpline_181:"public_helplines/",
-  vulnerability_mapping:"public_helplines/",vul_boys_no:"public_helplines/",vul_boys_cwsn:"public_helplines/",
-  vul_girls_no:"public_helplines/",vul_girls_cwsn:"public_helplines/",
-  pcma_sessions:"capacity_building/",pcma_part_m:"capacity_building/",pcma_part_f:"capacity_building/",pcma_part_tot:"capacity_building/",
-  jj_sessions:"capacity_building/",jj_part_m:"capacity_building/",jj_part_f:"capacity_building/",jj_part_tot:"capacity_building/",
-  pocso_sessions:"capacity_building/",pocso_part_m:"capacity_building/",pocso_part_f:"capacity_building/",pocso_part_tot:"capacity_building/",
-  sops_sessions:"capacity_building/",
-  sbc_campaigns:"SBC_Counselling/",sbc_reach_m:"SBC_Counselling/",sbc_reach_f:"SBC_Counselling/",sbc_reach_tot:"SBC_Counselling/",
-  vul_families_id:"SBC_Counselling/",families_counselled:"SBC_Counselling/",
-  total_func_groups:"adolescent_groups/",mahadalit_count:"adolescent_groups/",mahadalit_g:"adolescent_groups/",mahadalit_b:"adolescent_groups/",
-  meena_count:"adolescent_groups/",meena_g:"adolescent_groups/",meena_b:"adolescent_groups/",
-  bal_count:"adolescent_groups/",bal_g:"adolescent_groups/",bal_b:"adolescent_groups/",
-  rksk_count:"adolescent_groups/",rksk_g:"adolescent_groups/",rksk_b:"adolescent_groups/",
-  oosc_total_g:"linkage_out_of_school_children/",oosc_total_b:"linkage_out_of_school_children/",
-  oosc_linked_g:"linkage_out_of_school_children/",oosc_linked_b:"linkage_out_of_school_children/",
-  meeting_conducted:"community_program/",community_meetings_no:"community_program/total_participants_group/",
-  community_part_m:"community_program/total_participants_group/",community_part_f:"community_program/total_participants_group/",
-  community_part_g:"community_program/total_participants_group/",community_part_b:"community_program/total_participants_group/",
-  vol_identified_m:"volunteers_ident/",vol_identified_f:"volunteers_ident/",
-  quarterly_review:"tracking_verification/",cm_prevented:"tracking_verification/",cm_prevented_b:"tracking_verification/",
-  cm_prevented_g:"tracking_verification/",third_party_conducted:"tracking_verification/",
-  gp_declared_cm_free:"tracking_verification/",annual_reverification:"tracking_verification/",cm_status_continued:"tracking_verification/"
-};
-
-function gf(row,key){
-  if(row[key]!==undefined&&row[key]!==null&&row[key]!=="")return row[key];
-  var pfx=GROUP_PREFIX[key];
-  if(pfx&&row[pfx+key]!==undefined&&row[pfx+key]!==null&&row[pfx+key]!=="")return row[pfx+key];
-  // fallback: scan all keys for exact suffix match after a slash
+function gf(row,k){
+  if(row[k]!==undefined&&row[k]!==null&&row[k]!=="")return row[k];
+  var pfx=GRP[k];if(pfx){var v=row[pfx+k];if(v!==undefined&&v!==null&&v!=="")return v;}
   var rk=Object.keys(row);
-  for(var i=0;i<rk.length;i++){
-    if(rk[i]===key||rk[i].endsWith("/"+key)){var v=row[rk[i]];if(v!==undefined&&v!==null&&v!=="")return v;}
-  }
+  for(var i=0;i<rk.length;i++){if(rk[i]===k||rk[i].endsWith("/"+k)){var v=row[rk[i]];if(v!==undefined&&v!==null&&v!=="")return v;}}
   return null;
 }
 function yn(v){var s=String(v||"").toLowerCase().trim();return(s==="yes"||s==="1"||s==="true")?"yes":"no";}
-function n(v){return isNaN(Number(v))?0:Number(v);}
+function n(v){var x=Number(v);return isNaN(x)?0:x;}
 function fmtM(v){
   if(!v)return"Unknown";
-  // reporting_period choices are like "2026_06" -> "Jun 2026"
   var m=String(v).match(/^(\d{4})_(\d{2})$/);
   if(m){var d=new Date(Number(m[1]),Number(m[2])-1,1);return d.toLocaleDateString("en-IN",{month:"short",year:"numeric"});}
+  var m2=String(v).match(/^(\d{4})-(\d{2})/);
+  if(m2){var d=new Date(Number(m2[1]),Number(m2[2])-1,1);return d.toLocaleDateString("en-IN",{month:"short",year:"numeric"});}
   try{var dt=new Date(v);if(!isNaN(dt))return dt.toLocaleDateString("en-IN",{month:"short",year:"numeric"});}catch(e){}
   return String(v).slice(0,10);
 }
 
 function mapRow(raw){
   var o={};
-  FIELD_KEYS.forEach(function(k){o[k]=gf(raw,k);});
+  ALLKEYS.forEach(function(k){o[k]=gf(raw,k);});
   o.district=o.district||"Unknown";
   o.block=o.block||"Unknown";
   o.gp_name=o.gp_name||"Unknown";
   o.partner_org=o.partner_org||"Unknown";
-  o.reporting_period=fmtM(o.reporting_period||gf(raw,"_submission_time"));
-  // numeric coercion for all integer-type fields
+  o.reporting_period=fmtM(o.reporting_period||gf(raw,"_submission_time")||gf(raw,"start"));
+  // numeric fields
   ["cwpc_meetings","total_wards","wcwpc_formed","wcwpc_meetings",
    "vul_boys_no","vul_boys_cwsn","vul_girls_no","vul_girls_cwsn",
    "pcma_sessions","pcma_part_m","pcma_part_f","pcma_part_tot",
@@ -361,8 +394,10 @@ function mapRow(raw){
    "linked_bscc_m","linked_bscc_f","linked_manrega_m","linked_manrega_f","linked_bocw_m","linked_bocw_f",
    "linked_pm_surya_ghar_m","linked_pm_surya_ghar_f","linked_pmay_g_m","linked_pmay_g_f",
    "linked_lakhpati_didi_f","linked_pm_svanidhi_m","linked_pm_svanidhi_f","linked_pm_kisan_m","linked_pm_kisan_f",
-   "total_func_groups","mahadalit_count","mahadalit_g","mahadalit_b","meena_count","meena_g","meena_b",
-   "bal_count","bal_g","bal_b","rksk_count","rksk_g","rksk_b",
+   "total_func_groups","mahadalit_count","mahadalit_g","mahadalit_b","mahadalit_cwsn_g","mahadalit_cwsn_b",
+   "meena_count","meena_g","meena_b","meena_cwsn_g","meena_cwsn_b",
+   "bal_count","bal_g","bal_b","bal_cwsn_g","bal_cwsn_b",
+   "rksk_count","rksk_g","rksk_b","rksk_cwsn_g","rksk_cwsn_b",
    "oosc_total_g","oosc_total_b","oosc_linked_g","oosc_linked_b",
    "linked_ddu_gky_g","linked_ddu_gky_b","linked_pmyva_g","linked_pmyva_b","linked_pmkvy_g","linked_pmkvy_b",
    "linked_kyp_g","linked_kyp_b","linked_jss_g","linked_jss_b","linked_rseti_g","linked_rseti_b",
@@ -373,7 +408,6 @@ function mapRow(raw){
    "community_meetings_no","community_part_m","community_part_f","community_part_g","community_part_b",
    "vol_identified_m","vol_identified_f","cm_prevented","cm_prevented_b","cm_prevented_g"
   ].forEach(function(k){o[k]=n(o[k]);});
-  // yes/no coercion
   ["gp_resolution","pcwpc_formed","helpline_1098","helpline_112","helpline_181","vulnerability_mapping",
    "meeting_conducted","quarterly_review","third_party_conducted","gp_declared_cm_free",
    "annual_reverification","cm_status_continued"
@@ -382,50 +416,60 @@ function mapRow(raw){
 }
 
 // ══════════════════════════════════════════════════════════
-//  LOAD DATA — instant built-in render, then data.json
+//  LOAD — NO BUILTIN DATA — only real submissions shown
 // ══════════════════════════════════════════════════════════
 async function loadData(){
-  RAW=BUILTIN_RAW.map(mapRow); DATA=RAW.slice();
-  rebuildF(); renderAll(); hideLoader();
-  setBanner("warn","⏳ Loading latest data from server…");
+  document.getElementById("lm").textContent="Fetching latest submissions…";
   try{
     var r=await fetch("data.json?_="+Date.now(),{cache:"no-store"});
-    if(!r.ok) throw new Error("data.json not found (HTTP "+r.status+")");
+    if(!r.ok) throw new Error("HTTP "+r.status);
     var j=await r.json();
     var rows=Array.isArray(j)?j:(j.results||[]);
-    if(!rows.length) throw new Error("0 rows in data.json");
-    RAW=rows.map(mapRow); DATA=RAW.slice();
-    dataSource="Live KoboToolbox (synced via GitHub Actions)";
-    rebuildF(); renderAll();
-    setDot("live","🟢 Live — "+RAW.length+" submissions");
-    setBanner("ok","✅ Live data loaded — "+RAW.length+" submissions");
-    setTimeout(function(){document.getElementById("banner").style.display="none";},5000);
-    document.getElementById("last-upd").textContent="Updated "+new Date().toLocaleTimeString("en-IN");
-  } catch(e){
-  RAW=[];
-  DATA=[];
-  dataSource="No live data";
-  setDot("","🔴 No live data — 0 records");
-  setBanner("warn","⚠️ No live data available.");
-}
-  updFooter();
+    if(!rows.length){
+      // data.json exists but has 0 results — Kobo deleted all
+      RAW=[]; DATA=[];
+      dataSource="Live KoboToolbox · 0 submissions";
+      setDot("live","🟢 Live · 0 submissions");
+      setBanner("","");
+      showEmpty(true);
+    } else {
+      RAW=rows.map(mapRow); DATA=RAW.slice();
+      dataSource="Live KoboToolbox (GitHub Actions)";
+      setDot("live","🟢 Live · "+RAW.length+" submissions");
+      setBanner("ok","✅ "+RAW.length+" submissions loaded from KoboToolbox");
+      setTimeout(function(){document.getElementById("banner").style.display="none";},5000);
+      document.getElementById("last-upd").textContent="Updated "+new Date().toLocaleTimeString("en-IN");
+      showEmpty(false);
+      rebuildF(); renderAll();
+    }
+  }catch(e){
+    // data.json missing entirely — GitHub Actions not yet run
+    RAW=[]; DATA=[];
+    dataSource="Pending";
+    setDot("err","⏳ Awaiting first sync");
+    setBanner("warn","⏳ Waiting for GitHub Actions to sync data. Auto-retrying every 60 s.");
+    showEmpty(true);
+    setTimeout(function(){loadData();},60000);
+  }
+  hideLoader();
   document.getElementById("sub-badge").textContent=RAW.length+" Records";
   document.getElementById("hdr-date").textContent=new Date().toLocaleDateString("en-IN",{month:"long",year:"numeric"});
+  document.getElementById("fcnt").textContent="Showing "+DATA.length+" of "+RAW.length+" records";
+  document.getElementById("footer").innerHTML="<strong>Source:</strong> "+dataSource+" · Bihar · Last refreshed "+new Date().toLocaleString("en-IN");
 }
-setInterval(loadData,300000);
+setInterval(function(){loadData();},900000); // auto-refresh every 15 min
+
+function showEmpty(show){
+  document.getElementById("empty-state").classList.toggle("show",show);
+  document.getElementById("main-page").style.display=show?"none":"flex";
+}
 
 // ══════════════════════════════════════════════════════════
-//  UI HELPERS
+//  UI
 // ══════════════════════════════════════════════════════════
 function hideLoader(){var l=document.getElementById("ldr");l.style.opacity="0";setTimeout(function(){l.style.display="none";},400);}
 function setDot(cls,txt){var d=document.getElementById("dot"),t=document.getElementById("dot-txt");d.className="dot"+(cls?" "+cls:"");t.textContent=txt;}
-function setBanner(cls,msg){var b=document.getElementById("banner");b.className=cls;b.textContent=msg;b.style.display=msg?"block":"none";}
-function updFooter(){
-  document.getElementById("footer").innerHTML=
-    "<strong>Data:</strong> "+dataSource+" · Bihar · "+RAW.length+" total submissions · Last rendered "+new Date().toLocaleString("en-IN")+"<br>"+
-    (dataSource.indexOf("built-in")>-1?"<strong>⚙ Setup live sync:</strong> Configure GitHub Actions with KOBO_TOKEN &amp; KOBO_UID secrets to auto-fetch real-time data.":"");
-}
-
+function setBanner(cls,msg){var b=document.getElementById("banner");b.className=cls;b.textContent=msg;b.style.display=(cls&&msg)?"block":"none";}
 function showTab(id){
   document.querySelectorAll(".tabbtn").forEach(function(b){b.classList.toggle("active",b.dataset.tab===id);});
   document.querySelectorAll(".tabsec").forEach(function(s){s.classList.toggle("active",s.id==="tab-"+id);});
@@ -461,6 +505,7 @@ function applyF(){
 // ══════════════════════════════════════════════════════════
 function sum(a,k){return a.reduce(function(s,r){return s+n(r[k]);},0);}
 function cnt(a,k,v){return a.filter(function(r){return String(r[k]||"").toLowerCase()===v;}).length;}
+function pct(a,b){return b>0?Math.round((a/b)*100):0;}
 function grp(a,key,fn){var m={};a.forEach(function(r){var k=r[key]||"Unknown";if(!m[k])m[k]={label:k};fn(m[k],r);});return Object.values(m);}
 
 // ══════════════════════════════════════════════════════════
@@ -468,9 +513,10 @@ function grp(a,key,fn){var m={};a.forEach(function(r){var k=r[key]||"Unknown";if
 // ══════════════════════════════════════════════════════════
 var TTel=document.getElementById("tt");
 function stt(e,title,rows){
-  TTel.className="tt on";document.getElementById("tt-t").textContent=title;
+  TTel.className="tt on";
+  document.getElementById("tt-t").textContent=title;
   document.getElementById("tt-b").innerHTML=rows.map(function(r){
-    return'<div class="ttr"><span style="width:8px;height:8px;border-radius:50%;background:'+(r.c||"#fff")+';display:inline-block;flex-shrink:0"></span> '+r.l+': <strong>'+r.v+'</strong></div>';
+    return'<div class="ttr"><span style="width:8px;height:8px;border-radius:50%;background:'+(r.c||"#9CA3AF")+';display:inline-block;flex-shrink:0"></span> '+r.l+': <strong>'+r.v+'</strong></div>';
   }).join("");
   TTel.style.left=(e.clientX+14)+"px";TTel.style.top=(e.clientY-10)+"px";
 }
@@ -479,18 +525,18 @@ document.addEventListener("mousemove",function(e){if(TTel.classList.contains("on
 function esc(s){return String(s||"").replace(/'/g,"&#39;").replace(/"/g,"&quot;");}
 
 // ══════════════════════════════════════════════════════════
-//  CHARTS
+//  CHART ENGINE
 // ══════════════════════════════════════════════════════════
-function noData(msg){return'<div class="nd"><span style="font-size:28px">📭</span>'+(msg||"No data for this filter")+'</div>';}
+function nd(msg){return'<div class="nd"><span style="font-size:26px">📭</span>'+(msg||"No data")+'</div>';}
 
 function barChart(el,data,lk,series,opts){
   opts=opts||{};
-  if(!el||!data.length){if(el)el.innerHTML=noData();return;}
+  if(!el||!data.length){if(el)el.innerHTML=nd();return;}
   var maxV=Math.max.apply(null,[1].concat(data.map(function(d){return Math.max.apply(null,series.map(function(s){return n(d[s.k]);}));})));
-  var H=170;
+  var H=165;
   var html=data.map(function(d,di){
     var bars=series.map(function(s,si){
-      var v=n(d[s.k]),h=Math.max(2,Math.round((v/maxV)*(H-22)));
+      var v=n(d[s.k]),h=Math.max(2,Math.round((v/maxV)*(H-20)));
       var col=s.c||PAL[(di*3+si)%PAL.length],w=series.length>1?"42%":"72%";
       var ti=esc(d[lk]),sl=esc(s.l||s.k);
       return'<div class="br" style="height:'+h+'px;background:'+col+';width:'+w+';display:inline-block;margin:0 1px" onmouseenter="stt(event,\''+ti+'\',[{l:\''+sl+'\',v:'+v+',c:\''+col+'\'}])" onmouseleave="htt()"></div>';
@@ -504,8 +550,8 @@ function barChart(el,data,lk,series,opts){
 
 function lineChart(el,data,xk,yk,col){
   col=col||"#7C3AED";
-  if(!el||!data.length){if(el)el.innerHTML=noData();return;}
-  var W=460,H=145,PL=28,PT=8,PR=14,PB=26;
+  if(!el||!data.length){if(el)el.innerHTML=nd();return;}
+  var W=460,H=140,PL=28,PT=8,PR=14,PB=24;
   var iW=W-PL-PR,iH=H-PT-PB;
   var maxY=Math.max.apply(null,[1].concat(data.map(function(d){return d[yk];})));
   var xs=data.map(function(_,i){return PL+(i/Math.max(data.length-1,1))*iW;});
@@ -518,59 +564,95 @@ function lineChart(el,data,xk,yk,col){
   }).join("");
   var dots=data.map(function(d,i){
     var lbl=esc(d[xk]),fsx=data.length>6?8:10;
-    return'<circle cx="'+xs[i]+'" cy="'+ys[i]+'" r="4.5" fill="'+col+'" stroke="#fff" stroke-width="2" style="cursor:pointer" onmouseenter="stt(event,\''+lbl+'\',[{l:\'Count\',v:'+d[yk]+',c:\''+col+'\'}])" onmouseleave="htt()"/>'+
+    return'<circle cx="'+xs[i]+'" cy="'+ys[i]+'" r="4" fill="'+col+'" stroke="#fff" stroke-width="2" style="cursor:pointer" onmouseenter="stt(event,\''+lbl+'\',[{l:\'Count\',v:'+d[yk]+',c:\''+col+'\'}])" onmouseleave="htt()"/>'+
       '<text x="'+xs[i]+'" y="'+(H-3)+'" font-size="'+fsx+'" fill="#9CA3AF" text-anchor="middle">'+d[xk]+'</text>';
   }).join("");
   el.innerHTML='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;overflow:visible">'+
-    '<defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="'+col+'" stop-opacity=".18"/><stop offset="100%" stop-color="'+col+'" stop-opacity="0"/></linearGradient></defs>'+
+    '<defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="'+col+'" stop-opacity=".16"/><stop offset="100%" stop-color="'+col+'" stop-opacity="0"/></linearGradient></defs>'+
     ticks+'<polygon points="'+fill+'" fill="url(#lg)"/>'+
     '<polyline points="'+pts+'" fill="none" stroke="'+col+'" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>'+dots+'</svg>';
 }
 
 function pieChart(el,data,cols){
   if(!el)return;
-  if(!data.length||!data.some(function(d){return d.v>0;})){el.innerHTML=noData();return;}
+  if(!data.some(function(d){return d.v>0;})){el.innerHTML=nd();return;}
   var total=data.reduce(function(s,d){return s+d.v;},0)||1;
-  var R=64,r=38,CX=76,CY=76,ang=-Math.PI/2;
+  var R=62,r=36,CX=74,CY=74,ang=-Math.PI/2;
   var paths=data.map(function(d,i){
     var a=(d.v/total)*2*Math.PI;if(a<0.005){ang+=a;return"";}
     var x1=CX+R*Math.cos(ang),y1=CY+R*Math.sin(ang);ang+=a;
     var x2=CX+R*Math.cos(ang),y2=CY+R*Math.sin(ang);
     var xi=CX+r*Math.cos(ang-a),yi=CY+r*Math.sin(ang-a);
     var xj=CX+r*Math.cos(ang),yj=CY+r*Math.sin(ang);
-    var lg=a>Math.PI?1:0,nm=esc(d.n);
-    return'<path d="M'+xi+','+yi+' A'+r+','+r+' 0 '+lg+' 1 '+xj+','+yj+' L'+x2+','+y2+' A'+R+','+R+' 0 '+lg+' 0 '+x1+','+y1+' Z" fill="'+cols[i]+'" style="cursor:pointer" onmouseenter="stt(event,\''+nm+'\',[{l:\'Count\',v:'+d.v+',c:\''+cols[i]+'\'}])" onmouseleave="htt()"/>';
+    var lg=a>Math.PI?1:0,nm=esc(d.n),pv=Math.round((d.v/total)*100);
+    return'<path d="M'+xi+','+yi+' A'+r+','+r+' 0 '+lg+' 1 '+xj+','+yj+' L'+x2+','+y2+' A'+R+','+R+' 0 '+lg+' 0 '+x1+','+y1+' Z" fill="'+cols[i]+'" style="cursor:pointer" onmouseenter="stt(event,\''+nm+'\',[{l:\'Count\',v:'+d.v+',c:\''+cols[i]+'\'},{l:\'Share\',v:\''+pv+'%\',c:\''+cols[i]+'\'}])" onmouseleave="htt()"/>';
   }).join("");
-  var legend=data.map(function(d,i){return'<div class="pi"><span class="pd" style="background:'+cols[i]+'"></span><span class="pn">'+d.n+'</span><span class="pv">'+d.v+'</span></div>';}).join("");
-  el.innerHTML='<div class="pw"><svg viewBox="0 0 152 152" width="140" height="140">'+paths+'</svg><div class="pl">'+legend+'</div></div>';
+  var legend=data.map(function(d,i){
+    if(!d.v)return"";
+    return'<div class="pi"><span class="pd" style="background:'+cols[i]+'"></span><span class="pn">'+d.n+'</span><span class="pv2">'+d.v+'</span></div>';
+  }).join("");
+  el.innerHTML='<div class="pw"><svg viewBox="0 0 148 148" width="136" height="136">'+paths+'</svg><div class="pl">'+legend+'</div></div>';
 }
 
 function progChart(el,items,total,cols){
   if(!el)return;
   el.innerHTML='<div class="prg">'+items.map(function(d,i){
-    var pct=total>0?Math.round((d.v/total)*100):0;
-    return'<div><div class="ph"><span class="plb">'+d.n+'</span><span class="pv2">'+d.v+'/'+total+' ('+pct+'%)</span></div>'+
-      '<div class="pt"><div class="pf" style="width:'+pct+'%;background:'+(cols[i]||PAL[i])+'"></div></div></div>';
+    var p=pct(d.v,total);
+    return'<div><div class="ph"><span class="plb">'+d.n+'</span><span class="pvl">'+d.v+'/'+total+' ('+p+'%)</span></div>'+
+      '<div class="pt"><div class="pf" style="width:'+p+'%;background:'+(cols[i]||PAL[i])+'"></div></div></div>';
   }).join("")+'</div>';
 }
 
 function hbarChart(el,data){
-  if(!el||!data.length){if(el)el.innerHTML=noData();return;}
+  if(!el||!data.length){if(el)el.innerHTML=nd();return;}
   var max=Math.max.apply(null,[1].concat(data.map(function(d){return(d.m||0)+(d.f||0);})));
-  el.innerHTML='<div style="display:flex;flex-direction:column;gap:10px">'+
-    data.map(function(d){
-      var tot=(d.m||0)+(d.f||0),pw=Math.round((tot/max)*100);
-      var mp=tot>0?Math.round(((d.m||0)/tot)*100):50,fp=100-mp;
-      return'<div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px">'+
-        '<span style="font-weight:700;color:#374151">'+d.label+'</span><span style="color:#6B7280">👦'+d.m+' · 👧'+d.f+'</span></div>'+
-        '<div style="background:#F3F4F6;border-radius:999px;height:14px;width:'+pw+'%;overflow:hidden;display:flex">'+
-        '<div style="height:100%;width:'+mp+'%;background:#2563EB;border-radius:999px 0 0 999px" onmouseenter="stt(event,\''+d.label+'\',[{l:\'Boys\',v:'+d.m+',c:\'#2563EB\'},{l:\'Girls\',v:'+d.f+',c:\'#DB2777\'}])" onmouseleave="htt()"></div>'+
-        '<div style="height:100%;width:'+fp+'%;background:#DB2777;border-radius:0 999px 999px 0"></div></div></div>';
-    }).join("")+'<div class="leg"><div class="li"><div class="ls" style="background:#2563EB"></div>Boys</div><div class="li"><div class="ls" style="background:#DB2777"></div>Girls</div></div></div>';
+  el.innerHTML='<div class="hb-wrap">'+data.map(function(d){
+    var tot=(d.m||0)+(d.f||0),pw=Math.round((tot/max)*100);
+    var mp=tot>0?Math.round(((d.m||0)/tot)*100):50,fp=100-mp;
+    return'<div class="hb-row"><div class="hb-lbl"><span class="hb-name">'+d.label+'</span><span class="hb-val">♂'+d.m+' ♀'+d.f+'</span></div>'+
+      '<div style="background:#F3F4F6;border-radius:999px;height:13px;width:'+pw+'%;overflow:hidden;display:flex" onmouseenter="stt(event,\''+esc(d.label)+'\',[{l:\'Boys\',v:'+d.m+',c:\'#2563EB\'},{l:\'Girls\',v:'+d.f+',c:\'#DB2777\'}])" onmouseleave="htt()">'+
+      '<div class="hb-m" style="width:'+mp+'%"></div><div class="hb-f" style="width:'+fp+'%"></div></div></div>';
+  }).join("")+'<div class="leg"><div class="li"><div class="ls" style="background:#2563EB"></div>Boys/Male</div><div class="li"><div class="ls" style="background:#DB2777"></div>Girls/Female</div></div></div>';
+}
+
+// ── CROSSTAB ─────────────────────────────────────────────
+function crossTab(el,data,rowKey,colKey,valFn,title){
+  if(!el||!data.length){if(el)el.innerHTML=nd();return;}
+  var rows=Array.from(new Set(data.map(function(r){return r[rowKey]||"Unknown";}))).sort();
+  var cols=Array.from(new Set(data.map(function(r){return r[colKey]||"Unknown";}))).sort();
+  // compute matrix
+  var matrix={};var rowTots={};var colTots={};var grand=0;
+  rows.forEach(function(r){matrix[r]={};rowTots[r]=0;});
+  cols.forEach(function(c){colTots[c]=0;});
+  data.forEach(function(r){
+    var rv=r[rowKey]||"Unknown",cv=r[colKey]||"Unknown";
+    var v=valFn(r);
+    matrix[rv][cv]=(matrix[rv][cv]||0)+v;
+    rowTots[rv]=(rowTots[rv]||0)+v;
+    colTots[cv]=(colTots[cv]||0)+v;
+    grand+=v;
+  });
+  // heat scale: 0-5
+  function heatClass(v,max){if(!v)return"heat-0";var l=Math.ceil((v/max)*5);return"heat-"+Math.min(l,5);}
+  var maxVal=Math.max.apply(null,[1].concat(Object.values(rowTots)));
+  var hdrs='<th class="row-hdr">'+rowKey.replace(/_/g," ")+'</th>'+cols.map(function(c){return'<th>'+c+'</th>';}).join("")+'<th class="tot">Total</th>';
+  var body=rows.map(function(r){
+    var cells=cols.map(function(c){var v=matrix[r][c]||0;return'<td class="'+heatClass(v,maxVal)+'">'+v+'</td>';}).join("");
+    return'<tr><td class="row-hdr">'+r+'</td>'+cells+'<td class="tot">'+rowTots[r]+'</td></tr>';
+  }).join("");
+  var footer='<tr><td class="row-hdr tot">Total</td>'+cols.map(function(c){return'<td class="tot">'+colTots[c]+'</td>';}).join("")+'<td class="tot">'+grand+'</td></tr>';
+  el.innerHTML='<div class="xtab-wrap"><table class="xtab"><thead><tr>'+hdrs+'</tr></thead><tbody>'+body+footer+'</tbody></table></div>';
+}
+
+// ── SCORECARD GAUGE ──────────────────────────────────────
+function gauge(pctVal,col){
+  var r=36,circ=2*Math.PI*r,dash=Math.round((pctVal/100)*circ);
+  return'<svg width="80" height="80"><circle cx="40" cy="40" r="'+r+'" fill="none" stroke="#F3F4F6" stroke-width="8"/>'+
+    '<circle cx="40" cy="40" r="'+r+'" fill="none" stroke="'+col+'" stroke-width="8" stroke-dasharray="'+dash+' '+circ+'" stroke-linecap="round" transform="rotate(-90 40 40)"/></svg>';
 }
 
 // ══════════════════════════════════════════════════════════
-//  RENDER ALL
+//  HELPERS
 // ══════════════════════════════════════════════════════════
 function kpiHTML(arr){
   return arr.map(function(k){
@@ -585,223 +667,350 @@ function cc(rowId,id,title){
   document.getElementById(rowId).appendChild(card);
   return document.getElementById("cc-"+id);
 }
+function clearRows(ids){ids.forEach(function(id){var el=document.getElementById(id);if(el)el.innerHTML="";});}
 
+// ══════════════════════════════════════════════════════════
+//  RENDER ALL
+// ══════════════════════════════════════════════════════════
 function renderAll(){
   var d=DATA, nt=d.length;
-  if(!nt){ // graceful empty state
-    ["r-ov-1","r-ov-2","r-pr-1","r-pr-2","r-ad-1","r-ad-2","r-cb-1","r-cb-2","r-sc-1","r-sc-2","r-cm-1","r-cm-2"].forEach(function(r){
-      document.getElementById(r).innerHTML='<div class="cc">'+noData("No submissions match these filters")+'</div>';
-    });
-    ["kpi-overview","kpi-protection","kpi-adol","kpi-capacity","kpi-schemes","kpi-community"].forEach(function(k){document.getElementById(k).innerHTML="";});
-    document.getElementById("dtable").innerHTML="";
-    return;
-  }
+  if(!nt) return;
 
-  // ── SUMMARY STRIP ──
+  // ── SUMMARY STRIP ──────────────────────────────────────
   var strips=[
-    {ico:"🛡️",lbl:"CM Prevented",val:sum(d,"cm_prevented"),sub:"Cases stopped",cl1:"#7C3AED",cl2:"#5B21B6"},
-    {ico:"👧",lbl:"Vulnerable Children",val:sum(d,"vul_boys_no")+sum(d,"vul_girls_no"),sub:"Identified",cl1:"#DB2777",cl2:"#9D174D"},
+    {ico:"🛡️",lbl:"CM Prevented",val:sum(d,"cm_prevented"),sub:sum(d,"cm_prevented_g")+"G + "+sum(d,"cm_prevented_b")+"B",cl1:"#6D28D9",cl2:"#4C1D95"},
+    {ico:"👧",lbl:"Vulnerable Children",val:sum(d,"vul_boys_no")+sum(d,"vul_girls_no"),sub:sum(d,"vul_girls_cwsn")+sum(d,"vul_boys_cwsn")+" CWSN",cl1:"#BE185D",cl2:"#9D174D"},
     {ico:"👥",lbl:"Adol. Groups",val:sum(d,"total_func_groups"),sub:"Functional groups",cl1:"#0D9488",cl2:"#065F46"},
-    {ico:"📣",lbl:"SBC Reach",val:sum(d,"sbc_reach_tot"),sub:"People reached",cl1:"#CA8A04",cl2:"#78350F"},
-    {ico:"🏫",lbl:"Out-of-School",val:sum(d,"oosc_total_g")+sum(d,"oosc_total_b"),sub:"Children identified",cl1:"#2563EB",cl2:"#1E3A8A"},
-    {ico:"✅",lbl:"GPs Declared CM-Free",val:cnt(d,"gp_declared_cm_free","yes"),sub:"of "+nt+" GPs",cl1:"#16A34A",cl2:"#065F46"},
+    {ico:"📣",lbl:"SBC Reach",val:sum(d,"sbc_reach_tot"),sub:sum(d,"sbc_campaigns")+" campaigns",cl1:"#B45309",cl2:"#78350F"},
+    {ico:"🏫",lbl:"Out-of-School",val:sum(d,"oosc_total_g")+sum(d,"oosc_total_b"),sub:pct(sum(d,"oosc_linked_g")+sum(d,"oosc_linked_b"),sum(d,"oosc_total_g")+sum(d,"oosc_total_b"))+"% linked",cl1:"#1D4ED8",cl2:"#1E3A8A"},
+    {ico:"✅",lbl:"CM-Free GPs",val:cnt(d,"gp_declared_cm_free","yes"),sub:"of "+nt+" reporting GPs",cl1:"#065F46",cl2:"#14532D"},
   ];
   document.getElementById("strip").innerHTML=strips.map(function(s){
-    return'<div class="strip-card" style="--cl1:'+s.cl1+';--cl2:'+s.cl2+'" data-ico="'+s.ico+'"><div class="strip-val">'+s.val+'</div><div class="strip-lbl">'+s.lbl+'</div><div class="strip-sub">'+s.sub+'</div></div>';
+    return'<div class="sc" style="--cl1:'+s.cl1+';--cl2:'+s.cl2+'" data-ico="'+s.ico+'"><div class="sc-val">'+s.val+'</div><div class="sc-lbl">'+s.lbl+'</div><div class="sc-sub">'+s.sub+'</div></div>';
   }).join("");
 
-  // ════════ OVERVIEW TAB ════════
-  document.getElementById("kpi-overview").innerHTML=kpiHTML([
+  // ── OVERVIEW ───────────────────────────────────────────
+  document.getElementById("kpi-ov").innerHTML=kpiHTML([
     {ico:"📋",lbl:"Total Submissions",val:nt,sub:"GPs reporting this period",col:"#7C3AED"},
-    {ico:"🛡️",lbl:"Child Marriages Prevented",val:sum(d,"cm_prevented"),sub:sum(d,"cm_prevented_g")+"G + "+sum(d,"cm_prevented_b")+"B",col:"#DB2777"},
-    {ico:"🏛️",lbl:"PCWPC Formed",val:cnt(d,"pcwpc_formed","yes"),sub:"of "+nt+" GPs",col:"#16A34A"},
-    {ico:"👥",lbl:"Adolescent Groups",val:sum(d,"total_func_groups"),sub:"Functional groups formed",col:"#0D9488"},
-    {ico:"📚",lbl:"Total Training Sessions",val:sum(d,"pcma_sessions")+sum(d,"jj_sessions")+sum(d,"pocso_sessions")+sum(d,"sops_sessions"),sub:"PCMA+JJ+POCSO+SOPs",col:"#2563EB"},
-    {ico:"🤝",lbl:"Community Participants",val:sum(d,"community_part_m")+sum(d,"community_part_f")+sum(d,"community_part_g")+sum(d,"community_part_b"),sub:"All dialogues",col:"#9333EA"},
+    {ico:"🛡️",lbl:"CM Prevented",val:sum(d,"cm_prevented"),sub:sum(d,"cm_prevented_g")+"G · "+sum(d,"cm_prevented_b")+"B",col:"#DB2777"},
+    {ico:"🏛️",lbl:"PCWPC Formed",val:cnt(d,"pcwpc_formed","yes"),sub:"of "+nt+" GPs ("+pct(cnt(d,"pcwpc_formed","yes"),nt)+"%)",col:"#16A34A"},
+    {ico:"👥",lbl:"Adol. Groups Formed",val:sum(d,"total_func_groups"),sub:"Mahadalit+Meena+Bal+RKSK",col:"#0D9488"},
+    {ico:"📚",lbl:"Total Training Sessions",val:sum(d,"pcma_sessions")+sum(d,"jj_sessions")+sum(d,"pocso_sessions")+sum(d,"sops_sessions"),sub:"PCMA·JJ·POCSO·SOPs",col:"#2563EB"},
+    {ico:"🤝",lbl:"Community Participants",val:sum(d,"community_part_m")+sum(d,"community_part_f")+sum(d,"community_part_g")+sum(d,"community_part_b"),sub:sum(d,"community_meetings_no")+" meetings",col:"#9333EA"},
   ]);
-  document.getElementById("r-ov-1").innerHTML="";document.getElementById("r-ov-2").innerHTML="";
+  clearRows(["r-ov1","r-ov2","r-ov3"]);
   var mMap={};d.forEach(function(r){mMap[r.reporting_period]=(mMap[r.reporting_period]||0)+1;});
-  lineChart(cc("r-ov-1","ov-line","📈 Submissions Over Time"),
+  lineChart(cc("r-ov1","ov-line","📈 Submissions Over Time"),
     Object.entries(mMap).sort().map(function(e){return{m:e[0],c:e[1]};}),"m","c","#7C3AED");
-  barChart(cc("r-ov-1","ov-cm","🛡️ Child Marriages Prevented — by District"),
+  barChart(cc("r-ov1","ov-cm","🛡️ CM Prevented — by District"),
     grp(d,"district",function(g,r){g.v=(g.v||0)+n(r.cm_prevented);}).sort(function(a,b){return b.v-a.v;}),
     "label",[{k:"v",l:"CM Prevented",c:"#DB2777"}]);
   var pMap={};d.forEach(function(r){pMap[r.partner_org]=(pMap[r.partner_org]||0)+1;});
-  pieChart(cc("r-ov-2","ov-part","🏢 Partner Coverage — Submissions"),Object.entries(pMap).map(function(e){return{n:e[0],v:e[1]};}),PAL);
-  barChart(cc("r-ov-2","ov-gp","🏘️ Submissions — by District"),
-    grp(d,"district",function(g,r){g.v=(g.v||0)+1;}).sort(function(a,b){return b.v-a.v;}),"label",[{k:"v",l:"Submissions",c:"#0891B2"}]);
+  pieChart(cc("r-ov2","ov-part","🏢 Submissions by Partner"),
+    Object.entries(pMap).map(function(e){return{n:e[0],v:e[1]};}),PAL);
+  barChart(cc("r-ov2","ov-gp","🗺️ Submissions — by District"),
+    grp(d,"district",function(g,r){g.v=(g.v||0)+1;}).sort(function(a,b){return b.v-a.v;}),"label",[{k:"v",l:"GPs",c:"#0891B2"}]);
+  barChart(cc("r-ov3","ov-sbc","📣 SBC Reach — by District"),
+    grp(d,"district",function(g,r){g.v=(g.v||0)+n(r.sbc_reach_tot);}),"label",[{k:"v",l:"People",c:"#CA8A04"}]);
+  barChart(cc("r-ov3","ov-vol","🙋 Volunteers Identified — by District"),
+    grp(d,"district",function(g,r){g.m=(g.m||0)+n(r.vol_identified_m);g.f=(g.f||0)+n(r.vol_identified_f);}),
+    "label",[{k:"m",l:"Male",c:"#2563EB"},{k:"f",l:"Female",c:"#DB2777"}],{legend:true});
+  progChart(cc("r-ov3","ov-verif","✅ Verification Pipeline"),
+    [{n:"PCWPC Formed",v:cnt(d,"pcwpc_formed","yes")},{n:"Vulnerability Mapping",v:cnt(d,"vulnerability_mapping","yes")},
+     {n:"Quarterly Review",v:cnt(d,"quarterly_review","yes")},{n:"Third-Party Verify",v:cnt(d,"third_party_conducted","yes")},
+     {n:"GP Declared CM-Free",v:cnt(d,"gp_declared_cm_free","yes")},{n:"CM-Free Continued",v:cnt(d,"cm_status_continued","yes")}],
+    nt,["#7C3AED","#0D9488","#2563EB","#EA580C","#16A34A","#9333EA"]);
 
-  // ════════ CHILD PROTECTION TAB ════════
-  document.getElementById("kpi-protection").innerHTML=kpiHTML([
+  // ── CHILD PROTECTION ────────────────────────────────────
+  document.getElementById("kpi-pr").innerHTML=kpiHTML([
     {ico:"🛡️",lbl:"CM Prevented — Girls",val:sum(d,"cm_prevented_g"),sub:"This period",col:"#DB2777"},
     {ico:"🛡️",lbl:"CM Prevented — Boys",val:sum(d,"cm_prevented_b"),sub:"This period",col:"#2563EB"},
-    {ico:"👧",lbl:"Vulnerable Girls",val:sum(d,"vul_girls_no"),sub:sum(d,"vul_girls_cwsn")+" with disability (CWSN)",col:"#EA580C"},
-    {ico:"👦",lbl:"Vulnerable Boys",val:sum(d,"vul_boys_no"),sub:sum(d,"vul_boys_cwsn")+" with disability (CWSN)",col:"#2563EB"},
-    {ico:"🗺️",lbl:"Vulnerability Mapping Done",val:cnt(d,"vulnerability_mapping","yes"),sub:"of "+nt+" GPs",col:"#16A34A"},
-    {ico:"👪",lbl:"Vulnerable Families Identified",val:sum(d,"vul_families_id"),sub:sum(d,"families_counselled")+" counselled",col:"#9333EA"},
+    {ico:"👧",lbl:"Vulnerable Girls",val:sum(d,"vul_girls_no"),sub:sum(d,"vul_girls_cwsn")+" CWSN",col:"#EA580C"},
+    {ico:"👦",lbl:"Vulnerable Boys",val:sum(d,"vul_boys_no"),sub:sum(d,"vul_boys_cwsn")+" CWSN",col:"#2563EB"},
+    {ico:"👪",lbl:"Families Counselled",val:sum(d,"families_counselled"),sub:"of "+sum(d,"vul_families_id")+" identified",col:"#9333EA"},
+    {ico:"🗺️",lbl:"Vulnerability Mapping",val:cnt(d,"vulnerability_mapping","yes"),sub:"of "+nt+" GPs ("+pct(cnt(d,"vulnerability_mapping","yes"),nt)+"%)",col:"#16A34A"},
   ]);
-  document.getElementById("r-pr-1").innerHTML="";document.getElementById("r-pr-2").innerHTML="";
-  hbarChart(cc("r-pr-1","pr-vuln","👶 Vulnerable Children — Gender Split by District"),
+  clearRows(["r-pr1","r-pr2"]);
+  hbarChart(cc("r-pr1","pr-vuln","👶 Vulnerable Children — by District"),
     grp(d,"district",function(g,r){g.m=(g.m||0)+n(r.vul_boys_no);g.f=(g.f||0)+n(r.vul_girls_no);}));
-  progChart(cc("r-pr-1","pr-hlp","📞 Helpline Numbers Painted in Public Spaces"),
+  progChart(cc("r-pr1","pr-hlp","📞 Helplines Painted in GPs"),
     [{n:"Childhelp 1098",v:cnt(d,"helpline_1098","yes")},{n:"Police 112",v:cnt(d,"helpline_112","yes")},{n:"Women HL 181",v:cnt(d,"helpline_181","yes")}],
     nt,["#16A34A","#2563EB","#DB2777"]);
-  barChart(cc("r-pr-2","pr-cwsn","♿ Children with Special Needs (CWSN) — by District"),
-    grp(d,"district",function(g,r){g.boys=(g.boys||0)+n(r.vul_boys_cwsn);g.girls=(g.girls||0)+n(r.vul_girls_cwsn);}),
-    "label",[{k:"boys",l:"Boys CWSN",c:"#2563EB"},{k:"girls",l:"Girls CWSN",c:"#DB2777"}],{legend:true});
-  barChart(cc("r-pr-2","pr-sbc","📣 SBC Campaign Reach — by District"),
-    grp(d,"district",function(g,r){g.v=(g.v||0)+n(r.sbc_reach_tot);}),"label",[{k:"v",l:"People Reached",c:"#0D9488"}]);
+  hbarChart(cc("r-pr2","pr-cwsn","♿ CWSN Children — by District"),
+    grp(d,"district",function(g,r){g.m=(g.m||0)+n(r.vul_boys_cwsn);g.f=(g.f||0)+n(r.vul_girls_cwsn);}));
+  barChart(cc("r-pr2","pr-cm-dist","🛡️ CM Prevented — Girls vs Boys by District"),
+    grp(d,"district",function(g,r){g.g=(g.g||0)+n(r.cm_prevented_g);g.b=(g.b||0)+n(r.cm_prevented_b);}),
+    "label",[{k:"g",l:"Girls",c:"#DB2777"},{k:"b",l:"Boys",c:"#2563EB"}],{legend:true});
 
-  // ════════ ADOLESCENT GROUPS TAB ════════
-  document.getElementById("kpi-adol").innerHTML=kpiHTML([
-    {ico:"👥",lbl:"Total Functional Groups",val:sum(d,"total_func_groups"),sub:"Across all GPs",col:"#0D9488"},
-    {ico:"🟣",lbl:"Mahadalit Tola Groups",val:sum(d,"mahadalit_count"),sub:sum(d,"mahadalit_g")+"G + "+sum(d,"mahadalit_b")+"B members",col:"#9333EA"},
-    {ico:"🌸",lbl:"Meena Manch Groups",val:sum(d,"meena_count"),sub:sum(d,"meena_g")+"G + "+sum(d,"meena_b")+"B members",col:"#DB2777"},
-    {ico:"👶",lbl:"Baal Sansad Groups",val:sum(d,"bal_count"),sub:sum(d,"bal_g")+"G + "+sum(d,"bal_b")+"B members",col:"#EA580C"},
-    {ico:"💗",lbl:"RKSK Groups",val:sum(d,"rksk_count"),sub:sum(d,"rksk_g")+"G + "+sum(d,"rksk_b")+"B members",col:"#2563EB"},
-    {ico:"🏫",lbl:"Out-of-School Children Linked",val:sum(d,"oosc_linked_g")+sum(d,"oosc_linked_b"),sub:"of "+(sum(d,"oosc_total_g")+sum(d,"oosc_total_b"))+" identified",col:"#16A34A"},
+  // ── ADOLESCENT GROUPS ────────────────────────────────────
+  var totalCWSN=sum(d,"mahadalit_cwsn_g")+sum(d,"mahadalit_cwsn_b")+sum(d,"meena_cwsn_g")+sum(d,"meena_cwsn_b")+sum(d,"bal_cwsn_g")+sum(d,"bal_cwsn_b")+sum(d,"rksk_cwsn_g")+sum(d,"rksk_cwsn_b");
+  var totalMbrs=sum(d,"mahadalit_g")+sum(d,"mahadalit_b")+sum(d,"meena_g")+sum(d,"meena_b")+sum(d,"bal_g")+sum(d,"bal_b")+sum(d,"rksk_g")+sum(d,"rksk_b");
+  document.getElementById("kpi-ad").innerHTML=kpiHTML([
+    {ico:"👥",lbl:"Total Functional Groups",val:sum(d,"total_func_groups"),sub:"All types combined",col:"#0D9488"},
+    {ico:"🟣",lbl:"Mahadalit Tola Groups",val:sum(d,"mahadalit_count"),sub:sum(d,"mahadalit_cwsn_g")+sum(d,"mahadalit_cwsn_b")+" CWSN members",col:"#9333EA"},
+    {ico:"🌸",lbl:"Meena Manch Groups",val:sum(d,"meena_count"),sub:sum(d,"meena_cwsn_g")+sum(d,"meena_cwsn_b")+" CWSN members",col:"#DB2777"},
+    {ico:"👶",lbl:"Baal Sansad Groups",val:sum(d,"bal_count"),sub:sum(d,"bal_cwsn_g")+sum(d,"bal_cwsn_b")+" CWSN members",col:"#EA580C"},
+    {ico:"💗",lbl:"RKSK Groups",val:sum(d,"rksk_count"),sub:sum(d,"rksk_cwsn_g")+sum(d,"rksk_cwsn_b")+" CWSN members",col:"#2563EB"},
+    {ico:"♿",lbl:"Total CWSN in Groups",val:totalCWSN,sub:pct(totalCWSN,totalMbrs)+"% of total members",col:"#CA8A04"},
   ]);
-  document.getElementById("r-ad-1").innerHTML="";document.getElementById("r-ad-2").innerHTML="";
-  pieChart(cc("r-ad-1","ad-type","👥 Adolescent Groups — by Type"),
-    [{n:"Mahadalit Tola",v:sum(d,"mahadalit_count")},{n:"Meena Manch",v:sum(d,"meena_count")},
+  clearRows(["r-ad1","r-ad2","r-ad3"]);
+  pieChart(cc("r-ad1","ad-type","👥 Groups — by Type"),
+    [{n:"Mahadalit",v:sum(d,"mahadalit_count")},{n:"Meena Manch",v:sum(d,"meena_count")},
      {n:"Baal Sansad",v:sum(d,"bal_count")},{n:"RKSK",v:sum(d,"rksk_count")}],
     ["#9333EA","#DB2777","#EA580C","#2563EB"]);
-  barChart(cc("r-ad-1","ad-dist","👥 Functional Adolescent Groups — by District"),
+  barChart(cc("r-ad1","ad-dist","👥 Groups — by District"),
     grp(d,"district",function(g,r){g.v=(g.v||0)+n(r.total_func_groups);}),"label",[{k:"v",l:"Groups",c:"#0D9488"}]);
-  barChart(cc("r-ad-2","ad-oos","🏫 Out-of-School Children — Identified vs Linked"),
-    [{label:"Girls",identified:sum(d,"oosc_total_g"),linked:sum(d,"oosc_linked_g")},
-     {label:"Boys",identified:sum(d,"oosc_total_b"),linked:sum(d,"oosc_linked_b")}],
-    "label",[{k:"identified",l:"Identified",c:"#CA8A04"},{k:"linked",l:"Linked to School",c:"#16A34A"}],{legend:true});
-  hbarChart(cc("r-ad-2","ad-gendergroups","⚖️ Adolescent Group Membership — Gender Split"),
+  barChart(cc("r-ad2","ad-oos","🏫 Out-of-School: Identified vs Linked"),
+    [{label:"Girls",id:sum(d,"oosc_total_g"),lk:sum(d,"oosc_linked_g")},
+     {label:"Boys",id:sum(d,"oosc_total_b"),lk:sum(d,"oosc_linked_b")}],
+    "label",[{k:"id",l:"Identified",c:"#CA8A04"},{k:"lk",l:"Linked to School",c:"#16A34A"}],{legend:true});
+  // CWSN per group type
+  barChart(cc("r-ad2","ad-cwsn","♿ CWSN Members — by Group Type"),
+    [{label:"Mahadalit",g:sum(d,"mahadalit_cwsn_g"),b:sum(d,"mahadalit_cwsn_b")},
+     {label:"Meena Manch",g:sum(d,"meena_cwsn_g"),b:sum(d,"meena_cwsn_b")},
+     {label:"Baal Sansad",g:sum(d,"bal_cwsn_g"),b:sum(d,"bal_cwsn_b")},
+     {label:"RKSK",g:sum(d,"rksk_cwsn_g"),b:sum(d,"rksk_cwsn_b")}],
+    "label",[{k:"g",l:"CWSN Girls",c:"#DB2777"},{k:"b",l:"CWSN Boys",c:"#2563EB"}],{legend:true});
+  hbarChart(cc("r-ad3","ad-mem","⚖️ Group Membership — Gender Split by Group Type"),
     [{label:"Mahadalit Tola",m:sum(d,"mahadalit_b"),f:sum(d,"mahadalit_g")},
      {label:"Meena Manch",m:sum(d,"meena_b"),f:sum(d,"meena_g")},
      {label:"Baal Sansad",m:sum(d,"bal_b"),f:sum(d,"bal_g")},
      {label:"RKSK",m:sum(d,"rksk_b"),f:sum(d,"rksk_g")}]);
+  hbarChart(cc("r-ad3","ad-oos-blk","🏫 Out-of-School — by Block"),
+    grp(d,"block",function(g,r){g.m=(g.m||0)+n(r.oosc_total_b);g.f=(g.f||0)+n(r.oosc_total_g);})
+      .filter(function(x){return(x.m||0)+(x.f||0)>0;}));
 
-  // ════════ CAPACITY BUILDING TAB ════════
-  document.getElementById("kpi-capacity").innerHTML=kpiHTML([
-    {ico:"📖",lbl:"PCMA Sessions",val:sum(d,"pcma_sessions"),sub:sum(d,"pcma_part_tot")+" participants trained",col:"#7C3AED"},
-    {ico:"⚖️",lbl:"JJ Act Sessions",val:sum(d,"jj_sessions"),sub:sum(d,"jj_part_tot")+" participants trained",col:"#0D9488"},
-    {ico:"🔒",lbl:"POCSO Sessions",val:sum(d,"pocso_sessions"),sub:sum(d,"pocso_part_tot")+" participants trained",col:"#EA580C"},
-    {ico:"📋",lbl:"SOPs / Other Sessions",val:sum(d,"sops_sessions"),sub:sum(d,"sops_part_tot")+" participants trained",col:"#CA8A04"},
-    {ico:"♀️",lbl:"Female Participants Trained",val:sum(d,"pcma_part_f")+sum(d,"jj_part_f")+sum(d,"pocso_part_f")+sum(d,"sops_part_f"),sub:"Across all trainings",col:"#DB2777"},
-    {ico:"♂️",lbl:"Male Participants Trained",val:sum(d,"pcma_part_m")+sum(d,"jj_part_m")+sum(d,"pocso_part_m")+sum(d,"sops_part_m"),sub:"Across all trainings",col:"#2563EB"},
+  // ── CAPACITY BUILDING ───────────────────────────────────
+  document.getElementById("kpi-cb").innerHTML=kpiHTML([
+    {ico:"📖",lbl:"PCMA Sessions",val:sum(d,"pcma_sessions"),sub:sum(d,"pcma_part_tot")+" trained",col:"#7C3AED"},
+    {ico:"⚖️",lbl:"JJ Act Sessions",val:sum(d,"jj_sessions"),sub:sum(d,"jj_part_tot")+" trained",col:"#0D9488"},
+    {ico:"🔒",lbl:"POCSO Sessions",val:sum(d,"pocso_sessions"),sub:sum(d,"pocso_part_tot")+" trained",col:"#EA580C"},
+    {ico:"📋",lbl:"SOPs / Other Sessions",val:sum(d,"sops_sessions"),sub:sum(d,"sops_part_tot")+" trained",col:"#CA8A04"},
+    {ico:"♀️",lbl:"Female Participants",val:sum(d,"pcma_part_f")+sum(d,"jj_part_f")+sum(d,"pocso_part_f")+sum(d,"sops_part_f"),sub:"Across all trainings",col:"#DB2777"},
+    {ico:"♂️",lbl:"Male Participants",val:sum(d,"pcma_part_m")+sum(d,"jj_part_m")+sum(d,"pocso_part_m")+sum(d,"sops_part_m"),sub:"Across all trainings",col:"#2563EB"},
   ]);
-  document.getElementById("r-cb-1").innerHTML="";document.getElementById("r-cb-2").innerHTML="";
-  barChart(cc("r-cb-1","cb-sessions","📚 Number of Training Sessions — by Programme"),
+  clearRows(["r-cb1","r-cb2"]);
+  barChart(cc("r-cb1","cb-sess","📚 Sessions — by Programme"),
     [{label:"PCMA",v:sum(d,"pcma_sessions")},{label:"JJ Act",v:sum(d,"jj_sessions")},{label:"POCSO",v:sum(d,"pocso_sessions")},{label:"SOPs",v:sum(d,"sops_sessions")}],
     "label",[{k:"v",l:"Sessions",c:"#7C3AED"}]);
-  barChart(cc("r-cb-1","cb-genderpart","⚖️ Training Participants — Gender Split"),
-    [{label:"PCMA",m:sum(d,"pcma_part_m"),f:sum(d,"pcma_part_f")},
-     {label:"JJ Act",m:sum(d,"jj_part_m"),f:sum(d,"jj_part_f")},
-     {label:"POCSO",m:sum(d,"pocso_part_m"),f:sum(d,"pocso_part_f")},
-     {label:"SOPs",m:sum(d,"sops_part_m"),f:sum(d,"sops_part_f")}],
+  barChart(cc("r-cb1","cb-gend","⚖️ Participants — Gender Split by Programme"),
+    [{label:"PCMA",m:sum(d,"pcma_part_m"),f:sum(d,"pcma_part_f")},{label:"JJ Act",m:sum(d,"jj_part_m"),f:sum(d,"jj_part_f")},
+     {label:"POCSO",m:sum(d,"pocso_part_m"),f:sum(d,"pocso_part_f")},{label:"SOPs",m:sum(d,"sops_part_m"),f:sum(d,"sops_part_f")}],
     "label",[{k:"m",l:"Male",c:"#2563EB"},{k:"f",l:"Female",c:"#DB2777"}],{legend:true});
-  barChart(cc("r-cb-2","cb-dist","📍 Total Training Sessions — by District"),
+  barChart(cc("r-cb2","cb-dist","📍 Total Sessions — by District"),
     grp(d,"district",function(g,r){g.v=(g.v||0)+n(r.pcma_sessions)+n(r.jj_sessions)+n(r.pocso_sessions)+n(r.sops_sessions);}),
-    "label",[{k:"v",l:"Total Sessions",c:"#9333EA"}]);
-  pieChart(cc("r-cb-2","cb-total","📊 Total Participants — by Programme"),
-    [{n:"PCMA",v:sum(d,"pcma_part_tot")},{n:"JJ Act",v:sum(d,"jj_part_tot")},{n:"POCSO",v:sum(d,"pocso_part_tot")},{n:"SOPs",v:sum(d,"sops_part_tot")}],
-    PAL);
+    "label",[{k:"v",l:"Sessions",c:"#9333EA"}]);
+  pieChart(cc("r-cb2","cb-pie","📊 Participants — by Programme"),
+    [{n:"PCMA",v:sum(d,"pcma_part_tot")},{n:"JJ Act",v:sum(d,"jj_part_tot")},{n:"POCSO",v:sum(d,"pocso_part_tot")},{n:"SOPs",v:sum(d,"sops_part_tot")}],PAL);
 
-  // ════════ SCHEME LINKAGES TAB ════════
-  var schemeTotal=sum(d,"linked_ration_m")+sum(d,"linked_ration_f")+sum(d,"linked_jeevika_f")+sum(d,"linked_shatabdi_m")+sum(d,"linked_shatabdi_f")+
-    sum(d,"linked_lakshmi_f")+sum(d,"linked_disability_m")+sum(d,"linked_disability_f")+sum(d,"linked_vridjan_m")+sum(d,"linked_vridjan_f")+
-    sum(d,"linked_bscc_m")+sum(d,"linked_bscc_f")+sum(d,"linked_manrega_m")+sum(d,"linked_manrega_f")+sum(d,"linked_bocw_m")+sum(d,"linked_bocw_f")+
-    sum(d,"linked_pm_surya_ghar_m")+sum(d,"linked_pm_surya_ghar_f")+sum(d,"linked_pmay_g_m")+sum(d,"linked_pmay_g_f")+
-    sum(d,"linked_lakhpati_didi_f")+sum(d,"linked_pm_svanidhi_m")+sum(d,"linked_pm_svanidhi_f")+sum(d,"linked_pm_kisan_m")+sum(d,"linked_pm_kisan_f");
+  // ── SCHEME LINKAGES ──────────────────────────────────────
+  var adultScheme=sum(d,"linked_ration_m")+sum(d,"linked_ration_f")+sum(d,"linked_jeevika_f")+
+    sum(d,"linked_manrega_m")+sum(d,"linked_manrega_f")+sum(d,"linked_pm_kisan_m")+sum(d,"linked_pm_kisan_f")+
+    sum(d,"linked_pmay_g_m")+sum(d,"linked_pmay_g_f")+sum(d,"linked_shatabdi_m")+sum(d,"linked_shatabdi_f")+
+    sum(d,"linked_lakshmi_f")+sum(d,"linked_lakhpati_didi_f");
   var skillTotal=sum(d,"linked_ddu_gky_g")+sum(d,"linked_ddu_gky_b")+sum(d,"linked_pmyva_g")+sum(d,"linked_pmyva_b")+
-    sum(d,"linked_pmkvy_g")+sum(d,"linked_pmkvy_b")+sum(d,"linked_kyp_g")+sum(d,"linked_kyp_b")+sum(d,"linked_jss_g")+sum(d,"linked_jss_b")+
-    sum(d,"linked_rseti_g")+sum(d,"linked_rseti_b");
-  var adolSchemeTotal=sum(d,"diff_bicycle_g")+sum(d,"diff_bicycle_b")+sum(d,"diff_scholarship_g")+sum(d,"diff_scholarship_b")+
-    sum(d,"diff_sponsorship_g")+sum(d,"diff_sponsorship_b")+sum(d,"diff_mkuy_g")+sum(d,"diff_parvarish_g")+sum(d,"diff_parvarish_b")+
-    sum(d,"diff_disability_g")+sum(d,"diff_disability_b")+sum(d,"diff_pm_surya_ghar_g")+sum(d,"diff_pm_surya_ghar_b")+
-    sum(d,"diff_icds_g")+sum(d,"diff_icds_b")+sum(d,"diff_rksk_g")+sum(d,"diff_rksk_b")+sum(d,"diff_cmrf_g")+sum(d,"diff_cmrf_b")+
-    sum(d,"diff_pm_kisan_g")+sum(d,"diff_pm_kisan_b");
-  document.getElementById("kpi-schemes").innerHTML=kpiHTML([
-    {ico:"🏛️",lbl:"Adult Social Scheme Linkages",val:schemeTotal,sub:"PMGKAY, Jeevika, pensions etc.",col:"#7C3AED"},
-    {ico:"🎓",lbl:"Skill / Vocational Linkages",val:skillTotal,sub:"DDU-GKY, PMKVY, RSETI etc.",col:"#0D9488"},
-    {ico:"🚲",lbl:"Adolescent Scheme Linkages",val:adolSchemeTotal,sub:"Bicycle, scholarship, MKUY etc.",col:"#EA580C"},
-    {ico:"🚲",lbl:"Bicycle Scheme",val:sum(d,"diff_bicycle_g")+sum(d,"diff_bicycle_b"),sub:"Girls + boys linked",col:"#DB2777"},
-    {ico:"🎓",lbl:"State Scholarship",val:sum(d,"diff_scholarship_g")+sum(d,"diff_scholarship_b"),sub:"Girls + boys linked",col:"#2563EB"},
-    {ico:"👧",lbl:"MKUY (Kanya Utthan)",val:sum(d,"diff_mkuy_g"),sub:"Girls linked",col:"#9333EA"},
+    sum(d,"linked_pmkvy_g")+sum(d,"linked_pmkvy_b")+sum(d,"linked_kyp_g")+sum(d,"linked_kyp_b")+
+    sum(d,"linked_jss_g")+sum(d,"linked_jss_b")+sum(d,"linked_rseti_g")+sum(d,"linked_rseti_b");
+  var adolScheme=sum(d,"diff_bicycle_g")+sum(d,"diff_bicycle_b")+sum(d,"diff_scholarship_g")+sum(d,"diff_scholarship_b")+
+    sum(d,"diff_mkuy_g")+sum(d,"diff_parvarish_g")+sum(d,"diff_parvarish_b")+sum(d,"diff_rksk_g")+sum(d,"diff_rksk_b");
+  document.getElementById("kpi-sc").innerHTML=kpiHTML([
+    {ico:"🏛️",lbl:"Adult Scheme Linkages",val:adultScheme,sub:"PMGKAY·Jeevika·MGNREGA etc.",col:"#7C3AED"},
+    {ico:"🎓",lbl:"Skill Training Linkages",val:skillTotal,sub:"DDU-GKY·PMKVY·RSETI etc.",col:"#0D9488"},
+    {ico:"🚲",lbl:"Adolescent Scheme Links",val:adolScheme,sub:"Bicycle·Scholarship·MKUY etc.",col:"#EA580C"},
+    {ico:"👩",lbl:"Jeevika (SHG) Linked",val:sum(d,"linked_jeevika_f"),sub:"Women linked",col:"#DB2777"},
+    {ico:"🏠",lbl:"PMAY-G Housing",val:sum(d,"linked_pmay_g_m")+sum(d,"linked_pmay_g_f"),sub:"Families linked",col:"#2563EB"},
+    {ico:"👧",lbl:"Bicycle Scheme — Girls",val:sum(d,"diff_bicycle_g"),sub:"Girls receiving bicycles",col:"#9333EA"},
   ]);
-  document.getElementById("r-sc-1").innerHTML="";document.getElementById("r-sc-2").innerHTML="";
-  barChart(cc("r-sc-1","sc-adult","🏛️ Top Adult Social Scheme Linkages"),
-    [{label:"Ration (PMGKAY)",v:sum(d,"linked_ration_m")+sum(d,"linked_ration_f")},
-     {label:"Jeevika",v:sum(d,"linked_jeevika_f")},
+  clearRows(["r-sc1","r-sc2","r-sc3"]);
+  barChart(cc("r-sc1","sc-adult","🏛️ Top Adult Scheme Linkages"),
+    [{label:"PMGKAY (Ration)",v:sum(d,"linked_ration_m")+sum(d,"linked_ration_f")},
      {label:"MGNREGA",v:sum(d,"linked_manrega_m")+sum(d,"linked_manrega_f")},
      {label:"PM-KISAN",v:sum(d,"linked_pm_kisan_m")+sum(d,"linked_pm_kisan_f")},
      {label:"PMAY-G",v:sum(d,"linked_pmay_g_m")+sum(d,"linked_pmay_g_f")},
-     {label:"Surya Ghar",v:sum(d,"linked_pm_surya_ghar_m")+sum(d,"linked_pm_surya_ghar_f")}],
-    "label",[{k:"v",l:"Families Linked",c:"#7C3AED"}]);
-  pieChart(cc("r-sc-1","sc-skill","🎓 Skill Training Linkages — by Programme"),
+     {label:"Jeevika",v:sum(d,"linked_jeevika_f")},{label:"Lakhpati Didi",v:sum(d,"linked_lakhpati_didi_f")}],
+    "label",[{k:"v",l:"Families",c:"#7C3AED"}]);
+  pieChart(cc("r-sc1","sc-skill","🎓 Skill Training — by Programme"),
     [{n:"DDU-GKY",v:sum(d,"linked_ddu_gky_g")+sum(d,"linked_ddu_gky_b")},
      {n:"PMYVA",v:sum(d,"linked_pmyva_g")+sum(d,"linked_pmyva_b")},
      {n:"PMKVY",v:sum(d,"linked_pmkvy_g")+sum(d,"linked_pmkvy_b")},
      {n:"KYP",v:sum(d,"linked_kyp_g")+sum(d,"linked_kyp_b")},
      {n:"JSS",v:sum(d,"linked_jss_g")+sum(d,"linked_jss_b")},
      {n:"RSETI",v:sum(d,"linked_rseti_g")+sum(d,"linked_rseti_b")}],PAL);
-  barChart(cc("r-sc-2","sc-adol","🚲 Adolescent Scheme Linkages — Gender Split"),
+  barChart(cc("r-sc2","sc-adol","🚲 Adolescent Scheme Linkages — Girls vs Boys"),
     [{label:"Bicycle",g:sum(d,"diff_bicycle_g"),b:sum(d,"diff_bicycle_b")},
      {label:"Scholarship",g:sum(d,"diff_scholarship_g"),b:sum(d,"diff_scholarship_b")},
      {label:"Sponsorship",g:sum(d,"diff_sponsorship_g"),b:sum(d,"diff_sponsorship_b")},
      {label:"ICDS",g:sum(d,"diff_icds_g"),b:sum(d,"diff_icds_b")},
-     {label:"RKSK",g:sum(d,"diff_rksk_g"),b:sum(d,"diff_rksk_b")}],
+     {label:"RKSK",g:sum(d,"diff_rksk_g"),b:sum(d,"diff_rksk_b")},{label:"MKUY",g:sum(d,"diff_mkuy_g"),b:0}],
     "label",[{k:"g",l:"Girls",c:"#DB2777"},{k:"b",l:"Boys",c:"#2563EB"}],{legend:true});
-  barChart(cc("r-sc-2","sc-bydist","🗺️ Total Scheme Linkages — by District"),
+  barChart(cc("r-sc2","sc-dist","🗺️ Total Scheme Linkages — by District"),
     grp(d,"district",function(g,r){
       g.v=(g.v||0)+n(r.linked_ration_m)+n(r.linked_ration_f)+n(r.linked_manrega_m)+n(r.linked_manrega_f)+
         n(r.diff_bicycle_g)+n(r.diff_bicycle_b)+n(r.diff_scholarship_g)+n(r.diff_scholarship_b);
     }),"label",[{k:"v",l:"Linkages",c:"#0891B2"}]);
+  // Skill linkage gender split
+  hbarChart(cc("r-sc3","sc-skill-gend","🎓 Skill Training — Gender Split by Programme"),
+    [{label:"DDU-GKY",m:sum(d,"linked_ddu_gky_b"),f:sum(d,"linked_ddu_gky_g")},
+     {label:"PMKVY",m:sum(d,"linked_pmkvy_b"),f:sum(d,"linked_pmkvy_g")},
+     {label:"KYP",m:sum(d,"linked_kyp_b"),f:sum(d,"linked_kyp_g")},
+     {label:"JSS",m:sum(d,"linked_jss_b"),f:sum(d,"linked_jss_g")},
+     {label:"RSETI",m:sum(d,"linked_rseti_b"),f:sum(d,"linked_rseti_g")}]);
+  barChart(cc("r-sc3","sc-pension","🏦 Adult Pension Scheme Linkages"),
+    [{label:"Disability Pension",v:sum(d,"linked_disability_m")+sum(d,"linked_disability_f")},
+     {label:"Lakshmi Bai",v:sum(d,"linked_lakshmi_f")},
+     {label:"Vridjan Pension",v:sum(d,"linked_vridjan_m")+sum(d,"linked_vridjan_f")},
+     {label:"Shatabdi Yojna",v:sum(d,"linked_shatabdi_m")+sum(d,"linked_shatabdi_f")},
+     {label:"BSCC",v:sum(d,"linked_bscc_m")+sum(d,"linked_bscc_f")}],
+    "label",[{k:"v",l:"Beneficiaries",c:"#9333EA"}]);
 
-  // ════════ COMMUNITY & VERIFICATION TAB ════════
-  document.getElementById("kpi-community").innerHTML=kpiHTML([
+  // ── COMMUNITY & VERIFICATION ─────────────────────────────
+  document.getElementById("kpi-cm").innerHTML=kpiHTML([
     {ico:"🤝",lbl:"Community Meetings",val:sum(d,"community_meetings_no"),sub:"Total conducted",col:"#7C3AED"},
-    {ico:"👥",lbl:"Community Participants",val:sum(d,"community_part_m")+sum(d,"community_part_f")+sum(d,"community_part_g")+sum(d,"community_part_b"),sub:"All stakeholders",col:"#0D9488"},
-    {ico:"🙋",lbl:"Volunteers Identified",val:sum(d,"vol_identified_m")+sum(d,"vol_identified_f"),sub:sum(d,"vol_identified_f")+"F + "+sum(d,"vol_identified_m")+"M",col:"#EA580C"},
-    {ico:"🔍",lbl:"Quarterly Reviews Conducted",val:cnt(d,"quarterly_review","yes"),sub:"of "+nt+" GPs",col:"#2563EB"},
-    {ico:"✅",lbl:"Third-Party Verification Done",val:cnt(d,"third_party_conducted","yes"),sub:"of "+nt+" GPs",col:"#16A34A"},
-    {ico:"🏆",lbl:"GPs Declared CM-Free",val:cnt(d,"gp_declared_cm_free","yes"),sub:cnt(d,"cm_status_continued","yes")+" status continued",col:"#9333EA"},
+    {ico:"👥",lbl:"Total Participants",val:sum(d,"community_part_m")+sum(d,"community_part_f")+sum(d,"community_part_g")+sum(d,"community_part_b"),sub:"All dialogues",col:"#0D9488"},
+    {ico:"🙋",lbl:"Volunteers Identified",val:sum(d,"vol_identified_m")+sum(d,"vol_identified_f"),sub:sum(d,"vol_identified_f")+"F · "+sum(d,"vol_identified_m")+"M",col:"#EA580C"},
+    {ico:"🔍",lbl:"Quarterly Reviews",val:cnt(d,"quarterly_review","yes"),sub:"of "+nt+" GPs",col:"#2563EB"},
+    {ico:"✅",lbl:"Third-Party Verified",val:cnt(d,"third_party_conducted","yes"),sub:"of "+nt+" GPs",col:"#16A34A"},
+    {ico:"🏆",lbl:"CM-Free GPs",val:cnt(d,"gp_declared_cm_free","yes"),sub:cnt(d,"cm_status_continued","yes")+" status continued",col:"#9333EA"},
   ]);
-  document.getElementById("r-cm-1").innerHTML="";document.getElementById("r-cm-2").innerHTML="";
-  pieChart(cc("r-cm-1","cm-dialogue","🤝 Community Dialogue — Participant Type"),
-    [{n:"Men",v:sum(d,"community_part_m")},{n:"Women",v:sum(d,"community_part_f")},{n:"Girls",v:sum(d,"community_part_g")},{n:"Boys",v:sum(d,"community_part_b")}],
+  clearRows(["r-cm1","r-cm2"]);
+  pieChart(cc("r-cm1","cm-dial","🤝 Dialogue Participants — by Category"),
+    [{n:"Men",v:sum(d,"community_part_m")},{n:"Women",v:sum(d,"community_part_f")},
+     {n:"Girls",v:sum(d,"community_part_g")},{n:"Boys",v:sum(d,"community_part_b")}],
     ["#2563EB","#0D9488","#DB2777","#EA580C"]);
-  progChart(cc("r-cm-1","cm-verify","✅ Verification Pipeline Progress"),
-    [{n:"Quarterly Review Conducted",v:cnt(d,"quarterly_review","yes")},
-     {n:"Third-Party Verification",v:cnt(d,"third_party_conducted","yes")},
-     {n:"GP Declared CM-Free",v:cnt(d,"gp_declared_cm_free","yes")},
-     {n:"Annual Re-verification",v:cnt(d,"annual_reverification","yes")},
+  progChart(cc("r-cm1","cm-pipeline","✅ CM-Free Verification Pipeline"),
+    [{n:"GP Resolution Passed",v:cnt(d,"gp_resolution","yes")},
+     {n:"Quarterly Review Done",v:cnt(d,"quarterly_review","yes")},
+     {n:"Third-Party Verify",v:cnt(d,"third_party_conducted","yes")},
+     {n:"Declared CM-Free",v:cnt(d,"gp_declared_cm_free","yes")},
+     {n:"Annual Re-Verified",v:cnt(d,"annual_reverification","yes")},
      {n:"CM-Free Status Continued",v:cnt(d,"cm_status_continued","yes")}],
-    nt,["#7C3AED","#0D9488","#16A34A","#CA8A04","#9333EA"]);
-  hbarChart(cc("r-cm-2","cm-vol","🙋 Volunteers Identified — by District"),
+    nt,["#7C3AED","#2563EB","#EA580C","#16A34A","#0D9488","#9333EA"]);
+  hbarChart(cc("r-cm2","cm-vol","🙋 Volunteers — by District"),
     grp(d,"district",function(g,r){g.m=(g.m||0)+n(r.vol_identified_m);g.f=(g.f||0)+n(r.vol_identified_f);}));
-  barChart(cc("r-cm-2","cm-meetings","🤝 Community Meetings — by District"),
+  barChart(cc("r-cm2","cm-meet","🤝 Meetings — by District"),
     grp(d,"district",function(g,r){g.v=(g.v||0)+n(r.community_meetings_no);}),"label",[{k:"v",l:"Meetings",c:"#7C3AED"}]);
 
-  // ════════ DATA TABLE ════════
-  var cols=["district","block","gp_name","partner_org","reporting_period","cm_prevented","vul_girls_no","vul_boys_no",
-            "total_func_groups","oosc_total_g","oosc_total_b","sbc_reach_tot","pcwpc_formed","vulnerability_mapping",
-            "helpline_1098","helpline_112","helpline_181","gp_declared_cm_free"];
-  var hdrs=["District","Block","GP","Partner","Month","CM Prev.","Vuln ♀","Vuln ♂","Adol Grps","OOS ♀","OOS ♂","SBC Reach","PCWPC","V-Map","1098","112","181","CM-Free"];
-  var ynCols=["pcwpc_formed","vulnerability_mapping","helpline_1098","helpline_112","helpline_181","gp_declared_cm_free"];
+  // ── CROSS-TAB ANALYSIS ─────────────────────────────────
+  clearRows(["r-xt1","r-xt2","r-xt3"]);
+
+  // XT1: CM Prevented by District × Partner
+  var xt1=cc("r-xt1","xt-cm","📐 CM Prevented — District × Partner");
+  crossTab(xt1,d,"district","partner_org",function(r){return n(r.cm_prevented);},"CM Prevented");
+
+  // XT2: Vulnerable Children by District × Month
+  var xt2=cc("r-xt1","xt-vuln","📐 Vulnerable Children — District × Month");
+  crossTab(xt2,d,"district","reporting_period",function(r){return n(r.vul_boys_no)+n(r.vul_girls_no);},"Vulnerable");
+
+  // XT3: Adol. Groups by District × Partner
+  var xt3=cc("r-xt2","xt-adol","📐 Adolescent Groups — District × Partner");
+  crossTab(xt3,d,"district","partner_org",function(r){return n(r.total_func_groups);},"Groups");
+
+  // XT4: Training participants by District × Programme (aggregated row)
+  var trainData=[];
+  d.forEach(function(r){
+    trainData.push({district:r.district,prog:"PCMA",v:n(r.pcma_part_tot)});
+    trainData.push({district:r.district,prog:"JJ Act",v:n(r.jj_part_tot)});
+    trainData.push({district:r.district,prog:"POCSO",v:n(r.pocso_part_tot)});
+    trainData.push({district:r.district,prog:"SOPs",v:n(r.sops_part_tot)});
+  });
+  var xt4=cc("r-xt2","xt-train","📐 Training Participants — District × Programme");
+  crossTab(xt4,trainData,"district","prog",function(r){return n(r.v);},"Participants");
+
+  // XT5: OOS Linkage rate by District
+  var xt5=cc("r-xt3","xt-oos","📐 Out-of-School Children — Identified vs Linked by Block");
+  var oosData=grp(d,"block",function(g,r){g.id=(g.id||0)+n(r.oosc_total_g)+n(r.oosc_total_b);g.lk=(g.lk||0)+n(r.oosc_linked_g)+n(r.oosc_linked_b);});
+  oosData=oosData.filter(function(x){return(x.id||0)>0;});
+  if(oosData.length){
+    xt5.innerHTML='<div class="xtab-wrap"><table class="xtab"><thead><tr><th class="row-hdr">Block</th><th>Identified</th><th>Linked</th><th>Pending</th><th class="tot">Linkage %</th></tr></thead><tbody>'+
+      oosData.map(function(x){var p=pct(x.lk,x.id);return'<tr><td class="row-hdr">'+x.label+'</td><td>'+x.id+'</td><td>'+x.lk+'</td><td>'+(x.id-x.lk)+'</td><td class="tot heat-'+Math.round(p/20)+'">'+p+'%</td></tr>';}).join("")+'</tbody></table></div>';
+  } else xt5.innerHTML=nd();
+
+  // XT6: Helpline painting × District
+  var xt6=cc("r-xt3","xt-hlp","📐 Helpline Painting — GP Status by District");
+  var hlpRows=[];
+  d.forEach(function(r){
+    hlpRows.push({district:r.district,hlp:"1098",v:r.helpline_1098==="yes"?1:0});
+    hlpRows.push({district:r.district,hlp:"112",v:r.helpline_112==="yes"?1:0});
+    hlpRows.push({district:r.district,hlp:"181",v:r.helpline_181==="yes"?1:0});
+  });
+  crossTab(xt6,hlpRows,"district","hlp",function(r){return n(r.v);},"GPs Painted");
+
+  // ── SCORECARD ──────────────────────────────────────────
+  var scEl=document.getElementById("r-score");
+  scEl.innerHTML="";
+
+  // Per-GP scorecard
+  var gpCards=d.map(function(r){
+    var score=0,max=10;
+    if(r.pcwpc_formed==="yes") score++;
+    if(r.vulnerability_mapping==="yes") score++;
+    if(r.helpline_1098==="yes") score++;
+    if(r.helpline_112==="yes") score++;
+    if(r.helpline_181==="yes") score++;
+    if(n(r.total_func_groups)>0) score++;
+    if(n(r.cm_prevented)>0) score++;
+    if(r.quarterly_review==="yes") score++;
+    if(r.third_party_conducted==="yes") score++;
+    if(r.gp_declared_cm_free==="yes") score++;
+    var p=pct(score,max);
+    var col=p>=80?"#16A34A":p>=50?"#CA8A04":"#DC2626";
+    return{gp:r.gp_name,block:r.block,district:r.district,partner:r.partner_org,score:score,max:max,p:p,col:col,period:r.reporting_period};
+  }).sort(function(a,b){return b.p-a.p;});
+
+  // Summary by district
+  var distScores={};
+  gpCards.forEach(function(c){
+    if(!distScores[c.district]) distScores[c.district]={tot:0,max:0,count:0};
+    distScores[c.district].tot+=c.score; distScores[c.district].max+=c.max; distScores[c.district].count++;
+  });
+
+  var summHTML='<div class="sec">District-Level Achievement Summary</div><div class="score-grid">'+
+    Object.entries(distScores).sort(function(a,b){return pct(b[1].tot,b[1].max)-pct(a[1].tot,a[1].max);}).map(function(e){
+      var nm=e[0],s=e[1],p=pct(s.tot,s.max),col=p>=80?"#16A34A":p>=50?"#CA8A04":"#DC2626";
+      return'<div class="score-card"><div class="score-hdr"><span class="score-title">'+nm+'</span><span class="score-pct" style="color:'+col+'">'+p+'%</span></div>'+
+        '<div class="score-bar"><div class="score-fill" style="width:'+p+'%;background:'+col+'"></div></div>'+
+        '<div class="score-detail">'+s.count+' GPs · Avg score '+Math.round(s.tot/s.count)+'/10</div></div>';
+    }).join("")+'</div>';
+
+  var tblHTML='<div class="sec" style="margin-top:18px">GP-Level Scorecard (10-point index)</div>'+
+    '<div class="xtab-wrap"><table class="xtab"><thead><tr>'+
+    '<th class="row-hdr">GP Name</th><th>District</th><th>Block</th><th>Partner</th><th>Period</th>'+
+    '<th>PCWPC</th><th>V-Map</th><th>1098</th><th>112</th><th>181</th>'+
+    '<th>Adol Grp</th><th>CM Prev</th><th>Q-Review</th><th>3P Verify</th><th>CM-Free</th>'+
+    '<th class="tot">Score</th></tr></thead><tbody>'+
+    gpCards.map(function(c){
+      var r=d.find(function(x){return x.gp_name===c.gp;});if(!r)return"";
+      function cell(v){return'<td>'+(v==="yes"?'<span class="tag tag-y">✓</span>':'<span class="tag tag-n">✗</span>')+'</td>';}
+      return'<tr>'+
+        '<td class="row-hdr">'+c.gp+'</td><td>'+c.district+'</td><td>'+c.block+'</td><td>'+c.partner+'</td><td>'+c.period+'</td>'+
+        cell(r.pcwpc_formed)+cell(r.vulnerability_mapping)+cell(r.helpline_1098)+cell(r.helpline_112)+cell(r.helpline_181)+
+        '<td>'+(n(r.total_func_groups)>0?'<span class="tag tag-y">'+n(r.total_func_groups)+'</span>':'<span class="tag tag-n">0</span>')+'</td>'+
+        '<td>'+(n(r.cm_prevented)>0?'<span class="tag tag-y">'+n(r.cm_prevented)+'</span>':'<span class="tag tag-n">0</span>')+'</td>'+
+        cell(r.quarterly_review)+cell(r.third_party_conducted)+cell(r.gp_declared_cm_free)+
+        '<td class="tot" style="color:'+c.col+';font-weight:900">'+c.score+'/10</td></tr>';
+    }).join("")+'</tbody></table></div>';
+
+  scEl.innerHTML=summHTML+tblHTML;
+
+  // ── RAW DATA TABLE ──────────────────────────────────────
+  var cols=["district","block","gp_name","partner_org","reporting_period","cm_prevented","vul_girls_no","vul_boys_no","vul_girls_cwsn","vul_boys_cwsn","total_func_groups","oosc_total_g","oosc_total_b","oosc_linked_g","oosc_linked_b","sbc_reach_tot","pcwpc_formed","vulnerability_mapping","helpline_1098","helpline_112","helpline_181","gp_declared_cm_free","quarterly_review","third_party_conducted","vol_identified_m","vol_identified_f"];
+  var hdrs=["District","Block","GP","Partner","Month","CM Prev.","Vuln ♀","Vuln ♂","CWSN ♀","CWSN ♂","Adol Grp","OOS ♀","OOS ♂","Linked ♀","Linked ♂","SBC Reach","PCWPC","V-Map","1098","112","181","CM-Free","Q-Rev","3P-Verify","Vol ♂","Vol ♀"];
+  var ynCols=["pcwpc_formed","vulnerability_mapping","helpline_1098","helpline_112","helpline_181","gp_declared_cm_free","quarterly_review","third_party_conducted"];
   document.getElementById("dtable").innerHTML=
     '<thead><tr>'+hdrs.map(function(h){return'<th>'+h+'</th>';}).join("")+'</tr></thead>'+
     '<tbody>'+d.map(function(r){
       return'<tr>'+cols.map(function(c){
         var v=r[c];
-        if(ynCols.indexOf(c)>-1)v='<span class="tag '+(v==="yes"?"tag-yes":"tag-no")+'">'+v+'</span>';
+        if(ynCols.indexOf(c)>-1)v='<span class="tag '+(v==="yes"?"tag-y":"tag-n")+'">'+v+'</span>';
         return'<td>'+v+'</td>';
       }).join("")+'</tr>';
     }).join("")+'</tbody>';
-
-  document.getElementById("fcnt").textContent="Showing "+nt+" of "+RAW.length+" records";
 }
 
 // ══════════════════════════════════════════════════════════
-//  BOOT
+//  BOOT — show empty state first, then load
 // ══════════════════════════════════════════════════════════
+document.getElementById("main-page").style.display="none";
 loadData();
 </script>
 </body>
