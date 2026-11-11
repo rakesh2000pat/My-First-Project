@@ -1,12 +1,18 @@
 name: Fetch KoboToolbox Data
 
 on:
+  repository_dispatch:
+    types: [kobo-submission]
   schedule:
-    - cron: '7,22,37,52 * * * *'
+    - cron: '17,47 * * * *'
   workflow_dispatch:
 
 permissions:
   contents: write
+
+concurrency:
+  group: kobo-sync
+  cancel-in-progress: false
 
 jobs:
   fetch:
@@ -14,6 +20,10 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+
+      - name: Wait for Kobo to finish saving the submission
+        if: github.event_name == 'repository_dispatch'
+        run: sleep 20
 
       - name: Fetch data from KoboToolbox
         run: |
